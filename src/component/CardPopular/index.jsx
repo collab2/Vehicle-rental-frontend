@@ -6,49 +6,70 @@ import card1 from "../../assets/img/card-1.png";
 export default function CardPopular() {
   return (
     <>
-      <Card className="w-25 border-0 me-3">
-        <Card.Img src={card1} alt="Card image" className="rounded-image" />
-        <Card.ImgOverlay className="d-flex image-popular">
-          <div className="box-image">
-            <span className="fw-bold">Merapi</span>
-            <br />
-            <span>Yogyakarta</span>
-          </div>
-        </Card.ImgOverlay>
-      </Card>
+      <div className=" col-3 card-responsive">
+        <Card className="border-0 me-3">
+          <Card.Img src={card1} alt="Card image" className="rounded-image" />
+          <Card.ImgOverlay className="d-flex image-popular">
+            <div className="box-image">
+              <p className="fw-bold">Merapi</p>
 
-      <Card className="w-25 border-0 me-3">
-        <Card.Img src={card1} alt="Card image" className="rounded-image" />
-        <Card.ImgOverlay className="d-flex image-popular">
-          <div className="box-image">
-            <span className="fw-bold">Merapi</span>
-            <br />
-            <span>Yogyakarta</span>
-          </div>
-        </Card.ImgOverlay>
-      </Card>
+              <p>Yogyakarta</p>
+            </div>
+          </Card.ImgOverlay>
+        </Card>
+      </div>
 
-      <Card className="w-25 border-0 me-3">
-        <Card.Img src={card1} alt="Card image" className="rounded-image" />
-        <Card.ImgOverlay className="d-flex image-popular">
-          <div className="box-image">
-            <span className="fw-bold">Merapi</span>
-            <br />
-            <span>Yogyakarta</span>
-          </div>
-        </Card.ImgOverlay>
-      </Card>
+      <div className=" col-3 card-responsive">
+        <Card className="border-0 me-3">
+          <Card.Img src={card1} alt="Card image" className="rounded-image" />
+          <Card.ImgOverlay className="d-flex image-popular">
+            <div className="box-image">
+              <p className="fw-bold">Merapi</p>
 
-      <Card className="w-25 border-0">
-        <Card.Img src={card1} alt="Card image" className="rounded-image" />
-        <Card.ImgOverlay className="d-flex image-popular">
-          <div className="box-image">
-            <span className="fw-bold">Merapi</span>
-            <br />
-            <span>Yogyakarta</span>
-          </div>
-        </Card.ImgOverlay>
-      </Card>
+              <p>Yogyakarta</p>
+            </div>
+          </Card.ImgOverlay>
+        </Card>
+      </div>
+
+      <div className=" col-3 card-responsive">
+        <Card className="border-0 me-3">
+          <Card.Img src={card1} alt="Card image" className="rounded-image" />
+          <Card.ImgOverlay className="d-flex image-popular">
+            <div className="box-image">
+              <p className="fw-bold">Merapi</p>
+
+              <p>Yogyakarta</p>
+            </div>
+          </Card.ImgOverlay>
+        </Card>
+      </div>
+
+      <div className=" col-3 card-responsive">
+        <Card className="border-0 me-3">
+          <Card.Img src={card1} alt="Card image" className="rounded-image" />
+          <Card.ImgOverlay className="d-flex image-popular">
+            <div className="box-image">
+              <p className="fw-bold">Merapi</p>
+
+              <p>Yogyakarta</p>
+            </div>
+          </Card.ImgOverlay>
+        </Card>
+      </div>
+
+      <div className=" col-3 card-responsive">
+        <Card className="border-0 me-3">
+          <Card.Img src={card1} alt="Card image" className="rounded-image" />
+          <Card.ImgOverlay className="d-flex image-popular">
+            <div className="box-image">
+              <p className="fw-bold">Merapi</p>
+
+              <p>Yogyakarta</p>
+            </div>
+          </Card.ImgOverlay>
+        </Card>
+      </div>
     </>
   );
 }

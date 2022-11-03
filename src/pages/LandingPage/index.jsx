@@ -52,7 +52,7 @@ export default function LandingPage() {
             <h1>Popular in town</h1>
             <button className="btn color-yellow">View all {">"}</button>
           </div>
-          <div className="d-flex my-5">
+          <div className="d-flex flex-nowrap my-5 overflow-auto">
             <CardPopular />
           </div>
 
@@ -62,13 +62,13 @@ export default function LandingPage() {
           <div className="row">
             <div className="col-6 d-flex flex-column justify-content-center">
               <img src={stars} alt="rating" className="w-25 my-3" />
-              <p>
+              <p className="testimonial-text">
                 ”It was the right decision to rent vehicle here, I spent less
                 money and enjoy the trip. It was an amazing experience to have a
                 ride for wildlife trip!”
               </p>
-              <p className="fw-bold mt-5">Edward Newgate</p>
-              <p>Founder Circle</p>
+              <p className="fw-bold mt-3 testimonial-text">Edward Newgate</p>
+              <p className="testimonial-text">Founder Circle</p>
             </div>
             <div className="col-6 text-center">
               <img src={testimonial} alt="testimonial-pict" className="w-75" />
