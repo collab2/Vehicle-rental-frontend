@@ -5,6 +5,7 @@ import PrivateRoute from "./utils/routes/privateRoute";
 import LandingPage from "./pages/LandingPage/index.jsx";
 import Profile1 from "./pages/ProfileUser/profile1";
 import History from "./pages/History";
+import Payment from "./pages/Payment/payment";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         {/* PRIVATE ROUTE */}
         <Route element={<PrivateRoute />}></Route>
         <Route path="/profile" element={<Profile1 />} />
+        <Route path="/payment" element={<Payment />} />
 
         {/* PRIVATE ADMIN ROUTE */}
         <Route element={<PrivateRoute isAdmin={true} />}></Route>
