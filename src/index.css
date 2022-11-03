@@ -124,3 +124,33 @@ body {
   border-radius: unset !important;
   padding-left: 0px !important;
 }
+
+@import url("https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;600;700&family=Nunito:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap");
+
+.font-mulish {
+  font-family: "Mulish", sans-serif;
+}
+
+.font-nunito {
+  font-family: "Nunito", sans-serif;
+}
+
+.font-playfair {
+  font-family: "Playfair Display", serif;
+}
+
+.font-poppins {
+  font-family: "Poppins", sans-serif;
+}
+
+.color-yellow {
+  color: #ffcd61;
+}
+
+.border-yellow {
+  border: 1px solid #ffcd61;
+}
+
+.background-yellow {
+  background-color: #ffcd61;
+}
