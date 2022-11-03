@@ -4,6 +4,8 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* PAGE PROFILE */
+
 .profile-name {
   font-family: "Playfair Display";
   font-style: normal;
@@ -26,6 +28,21 @@ body {
   align-items: center;
   text-align: center;
   color: #b8becd;
+}
+
+.profile-image-wrapper {
+  position: relative;
+}
+
+.profile-icon {
+  font-size: 30px;
+}
+
+.profile-edit-image {
+  position: absolute;
+  top: 250px;
+  right: 40px;
+  border-radius: 50% !important;
 }
 
 .gold-buttons {
@@ -124,6 +141,8 @@ body {
   border-radius: unset !important;
   padding-left: 0px !important;
 }
+
+/* END OF PROFILE PAGE */
 
 @import url("https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;600;700&family=Nunito:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap");
 
