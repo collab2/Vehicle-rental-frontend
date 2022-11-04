@@ -12,6 +12,7 @@ import AddVehicle from "./pages/AddVehicle";
 import Payment from "./pages/Payment/payment";
 import VehicleType from "./pages/VehicleType";
 import EditVehicle from "./pages/EditVehicle";
+import Reservation from "./pages/Reservation";
 
 function App() {
   return (
@@ -36,6 +37,7 @@ function App() {
         <Route path="/add-vehicle" element={<AddVehicle />} />
         <Route path="/vehicle-type" element={<VehicleType />} />
         <Route path="/edit-vehicle" element={<EditVehicle />} />
+        <Route path="/reservation" element={<Reservation />} />
       </Routes>
     </BrowserRouter>
   );
