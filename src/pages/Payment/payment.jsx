@@ -2,7 +2,7 @@ import React from "react";
 import Header from "../../component/Header";
 import Bike from "../../assets/img/bike.png";
 import Dropdown from "react-bootstrap/Dropdown";
-import Button from "react-bootstrap/Button";
+// import Button from "react-bootstrap/Button";
 import { Icon } from "@iconify/react";
 
 export default function Payment() {
@@ -72,9 +72,9 @@ export default function Payment() {
             </div>
           </div>
           <div className="d-grid gap-2 pe-5 mb-5">
-            <Button className="py-3 payment-finish" size="lg">
+            <button className="py-3 payment-finish rounded" size="lg">
               Finish payment : <span className="text-danger">59:30</span>
-            </Button>
+            </button>
           </div>
         </div>
       </div>
