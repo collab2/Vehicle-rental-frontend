@@ -6,7 +6,7 @@ import Footer from "../../component/Footer";
 
 import Bicycle from "../../assets/img/vehicle/bicycle-full.png";
 import { useDispatch } from "react-redux";
-import { getCategory, addCategory } from "../../stores/action/category";
+import { getCategory, addCategory } from "../../stores/actions/category";
 
 export default function EditVehicle() {
   const [category, setCategory] = useState({});

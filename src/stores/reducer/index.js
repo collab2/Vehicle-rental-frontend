@@ -6,6 +6,7 @@ import signup from "./signup";
 import signin from "./signin";
 import forgotPassword from "./forgotPassword";
 import resetPassword from "./resetPassword";
+import product from "./product";
 
 export default combineReducers({
   user,
@@ -13,5 +14,6 @@ export default combineReducers({
   signin,
   forgotPassword,
   resetPassword,
-  category
+  category,
+  product,
 });
