@@ -16,6 +16,9 @@ import ResetPasswordAdmin from "./pages/Auth/resetPasswordAdmin";
 import AddVehicle from "./pages/AddVehicle";
 import Payment from "./pages/Payment/payment";
 import VehicleType from "./pages/VehicleType";
+import VehicleDetailUser from "./pages/VehicleDetailUser";
+import VehicleDetailAdmin from "./pages/VehicleDetailAdmin";
+import ApprovalPayment from "./pages/ApprovalPayment";
 import EditVehicle from "./pages/EditVehicle";
 import Reservation from "./pages/Reservation";
 
@@ -52,6 +55,9 @@ function App() {
         />
         <Route path="/add-vehicle" element={<AddVehicle />} />
         <Route path="/vehicle-type" element={<VehicleType />} />
+        <Route path="/vehicle-detail-user" element={<VehicleDetailUser />} />
+        <Route path="/vehicle-detail-admin" element={<VehicleDetailAdmin />} />
+        <Route path="/approval-payment" element={<ApprovalPayment />} />
         <Route path="/edit-vehicle" element={<EditVehicle />} />
         <Route path="/reservation" element={<Reservation />} />
       </Routes>
