@@ -27,3 +27,29 @@
 .background-yellow {
   background-color: #ffcd61;
 }
+
+footer {
+  background-color: #f9f9fb;
+  color: #848484;
+  font-size: 18px;
+  padding-top: 75px;
+  padding-bottom: 35px;
+}
+
+.footer-title {
+  color: #393939;
+  font-size: 19px;
+}
+
+footer ul {
+  padding: 0;
+}
+
+footer li {
+  list-style: none;
+  margin-bottom: 15px;
+}
+
+#footer-socmed {
+  color: #393939;
+}
