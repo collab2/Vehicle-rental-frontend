@@ -2,55 +2,38 @@ import React from "react";
 import authimage from "../../assets/img/authimage.png";
 import "./index.css";
 import { Icon } from "@iconify/react";
+import { useParams } from "react-router-dom";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import Logo from "../../component/Logo";
-import { login } from "../../stores/actions/signin";
+import { resetPassword } from "../../stores/actions/resetPassword";
 import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 // import axios from "../../utils/axios";
 
-export default function SigninAdmin() {
+export default function Signin() {
+  const { OTPReset } = useParams();
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [form, setForm] = useState({
-    email: "",
-    password: "",
+    newPassword: "",
+    confirmPassword: "",
   });
 
   const handleNavigate = (nav) => {
     navigate(`/${nav}`);
   };
 
-  // const handleSignin = async (e) => {
-  //   try {
-  //     e.preventDefault();
-  //     const result = await axios.post("/auth/login", form);
-  //     toast.success(result.data.msg, {
-  //       position: toast.POSITION.TOP_CENTER,
-  //     });
-  //     setTimeout(() => {
-  //       navigate("/");
-  //     }, 3000);
-  //   } catch (error) {
-  //     console.log(error);
-  //     toast.error(error.response.data.msg, {
-  //       position: toast.POSITION.TOP_CENTER,
-  //     });
-  //   }
-  // };
-
-  const handleSignin = (e) => {
+  const handleResetPassword = (e) => {
     e.preventDefault();
-    dispatch(login(form))
+    dispatch(resetPassword(OTPReset, form))
       .then((response) => {
         toast.success(response.value.data.msg, {
           position: toast.POSITION.TOP_CENTER,
         });
-        localStorage.setItem("token", response.value.data.data.token);
         setTimeout(() => {
-          navigate("/");
+          navigate("/signin");
         }, 3000);
       })
       .catch((error) =>
@@ -78,32 +61,32 @@ export default function SigninAdmin() {
           </div> */}
           <div className="desktop-display">
             <div className="m-5 p-5">
-              <h1>Login</h1>
+              <h1>Reset Password</h1>
+              <h3 className="mt-1">
+                Change your password to reactivate <br /> your account
+              </h3>
             </div>
             <form className="form-login ms-5 ps-5">
               <input
-                type="email"
-                name="email"
-                placeholder="Email"
+                type="password"
+                name="newPassword"
+                placeholder="Password"
                 className="form-input text-start px-5 mb-5"
                 onChange={handleChangeForm}
               />
               <input
                 type="password"
-                name="password"
-                placeholder="Password"
+                name="confirmPassword"
+                placeholder="Confirm Password"
                 className="form-input text-start px-5 mb-5"
                 onChange={handleChangeForm}
               />
               <div className="d-grid">
-                <button className="auth-btn" onClick={handleSignin}>
-                  Login
+                <button className="auth-btn" onClick={handleResetPassword}>
+                  Reset Password
                 </button>
               </div>
-              <button
-                className="text-start click-me mt-4"
-                onClick={() => handleNavigate("forgot-password")}
-              >
+              <button className="text-start click-me mt-2">
                 Forgot password?
               </button>
               <h1 className="separator pt-4 mb-5 mt-5">or try another way</h1>
@@ -111,14 +94,14 @@ export default function SigninAdmin() {
             <div className="m-5 ps-5 form-login">
               <div className="">
                 <div className="d-grid">
-                  <button className="google-btn mt-4">
+                  <button className="google-btn mt-2">
                     <Icon icon="flat-color-icons:google" width="40px" /> Sign up
                     with Google
                   </button>
                 </div>
-                <div className="d-grid mt-5">
+                <div className="d-grid mt-3">
                   <button
-                    className="sign-btn mt-4"
+                    className="sign-btn mt-3"
                     onClick={() => handleNavigate("signup")}
                   >
                     Sign Up
