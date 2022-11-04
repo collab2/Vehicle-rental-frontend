@@ -2,6 +2,7 @@ import React from "react";
 import "./index.css";
 import { useState } from "react";
 import Header from "../../component/Header";
+import Footer from "../../component/Footer";
 import Camera from "../../assets/img/camera.png";
 import SmallCamera from "../../assets/img/smallcamera.png";
 import { Icon } from "@iconify/react";
@@ -26,14 +27,14 @@ export default function EditVehicle() {
         <div className="container">
           <div className="d-flex flex-wrap my-5 justify-content-evenly">
             <div className="col-lg-6 col-sm-12 text-center">
-              <label htmlFor="image">
+              <label htmlFor="image" className="w-100">
                 <input
                   type="file"
                   name="image"
                   id="image"
                   style={{ display: "none" }}
                 />
-                <div className="case d-flex flex-column align-items-center justify-content-center">
+                <div className="case w-100 d-flex flex-column align-items-center justify-content-center">
                   <img src={Camera} alt="camera" />
                   <h1 className="mt-3">Click to add image</h1>
                 </div>
@@ -42,7 +43,7 @@ export default function EditVehicle() {
                     <img src={SmallCamera} alt="camera" />
                     <h1 className="mt-1">Click to add image</h1>
                   </div>
-                  <div className="col-6 case3 ms-4 d-flex flex-column align-items-center justify-content-center">
+                  <div className="col-6 case3 ms-2 d-flex flex-column align-items-center justify-content-center">
                     <Icon icon="entypo:plus" color="#B8BECD" width="54px" />
                     <h1>Add more</h1>
                   </div>
@@ -153,10 +154,11 @@ export default function EditVehicle() {
                 </option>
               </li>
             </ul>
-            <button className="btn btn-yellow-black-add me-5">Save Item</button>
+            <button className="btn save-item me-5">Save Item</button>
           </div>
         </div>
       </div>
+      <Footer />
     </>
   );
 }

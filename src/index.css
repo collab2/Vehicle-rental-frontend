@@ -13,8 +13,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* PAGE PROFILE */
-
 .profile-name {
   font-family: "Playfair Display";
   font-style: normal;
@@ -118,7 +116,6 @@ body {
   font-weight: 700;
   font-size: 36px;
   line-height: 24px;
-  /* identical to box height, or 67% */
 
   display: flex;
   align-items: center;
@@ -151,8 +148,6 @@ body {
   padding-left: 0px !important;
 }
 
-/* END OF PROFILE PAGE */
-
 @import url("https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;600;700&family=Nunito:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700;900&family=Poppins:wght@300;400;500;600;700&display=swap");
 
 .font-mulish {
@@ -182,8 +177,6 @@ body {
 .background-yellow {
   background-color: #ffcd61;
 }
-
-/* payment page */
 
 .payment-dropdown {
   background: unset !important;
