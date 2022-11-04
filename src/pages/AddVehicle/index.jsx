@@ -50,7 +50,7 @@ export default function EditVehicle() {
               </label>
             </div>
 
-            <div className="col-lg-4 col-sm-12 mt-5 ms-2">
+            <div className="col-lg-4 col-sm-12 ms-2">
               <input
                 type="text"
                 name="nameproduct"
@@ -71,7 +71,7 @@ export default function EditVehicle() {
                 maxLength="150"
                 className="form-control mb-4 border-0 border-bottom"
               />
-              <label htmlFor="" className="mb-2 h5 font-playfair fw-bold">
+              <label htmlFor="" className="mb-2 ms-1 h5 font-playfair fw-bold">
                 Price :
               </label>
               <input
@@ -80,7 +80,7 @@ export default function EditVehicle() {
                 placeholder="Type the price"
                 className="form-control mb-4 border-0 bg-light price-input"
               />
-              <label htmlFor="" className="mb-2 h5 font-playfair fw-bold">
+              <label htmlFor="" className="mb-2 ms-1 h5 font-playfair fw-bold">
                 Status :
               </label>
               <select className="form-select mb-3 bg-light border-0 status-input">
@@ -96,8 +96,11 @@ export default function EditVehicle() {
                   Full Booked
                 </option>
               </select>
-              <div className="d-flex align-items-center justify-content-between">
-                <label htmlFor="" className="mb-2 h5 font-playfair fw-bold">
+              <div className="d-flex align-items-center justify-content-between mt-5">
+                <label
+                  htmlFor=""
+                  className="mb-2 ms-1 h5 font-playfair fw-bold"
+                >
                   Stock :{" "}
                 </label>
                 <div className="d-flex align-items-center justify-content-evenly">
