@@ -1,0 +1,77 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.vehicle-type {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.main-section {
+  margin: 2% 5%;
+}
+.navbar-search-vehicle {
+  padding: 1% 10%;
+}
+.collapse-search {  
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.form-control {
+  font-family: Nunito;
+  font-size: 20px;
+  font-weight: 700;
+  margin-right: 2%; 
+}
+.form-control::placeholder {
+  color: rgba(184, 190, 205, 1);
+  font-size: 18px;
+}
+.dropdown-searchbar-filter {
+  font-family: Nunito;
+  font-size: 20px;
+  font-weight: 600;
+  color: black;
+  margin-right: 2%;
+}
+.dropdown-menu {
+  font-family: Nunito;
+  font-size: 18px;
+  font-weight: 700;
+}
+.btn-search {
+  background: rgba(255, 205, 97, 1);
+  border-radius: 10px;
+  border: none;
+  padding: 0 7%;
+  font-family: Nunito;
+  font-size: 20px;
+  font-weight: 900;
+}
+
+@media (max-width: 425px) {
+  .dropdown-searchbar-filter {
+    font-size: 14px;
+  }
+  .navbar-search-vehicle {
+    padding: 2% 2%;
+  }
+  .form-control-location {
+    display: none;
+  }
+  .form-control {
+    font-size: 14px;
+  }
+  .form-control::placeholder {
+    font-size: 12px;
+  }
+  .btn-search {
+    font-size: 14px;
+    padding: 0 3%;
+  }
+}
