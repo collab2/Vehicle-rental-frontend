@@ -71,6 +71,18 @@
   color: #1b1b1b;
 }
 
+.selected-category {
+  font-size: 1rem;
+  padding: 5px 0 5px 2px;
+}
+
+.selected-category:hover {
+  font-weight: 500;
+  cursor: pointer;
+  background-color: #ffe2a2;
+  border-radius: 5px;
+}
+
 @media screen and (max-width: 425px) {
   .btn-black-yellow {
     padding: 10px 0;
