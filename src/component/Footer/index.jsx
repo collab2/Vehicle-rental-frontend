@@ -6,8 +6,8 @@ import ListFooter from "./ListFooter";
 
 export default function Footer() {
   return (
-    <Container>
-      <footer>
+    <footer>
+      <Container>
         <div
           className="d-flex mb-5 flex-column flex-xl-row"
           style={{ columnGap: "10rem" }}
@@ -63,7 +63,7 @@ export default function Footer() {
             <Icon icon={"akar-icons:youtube-fill"} width={25} height={25} />
           </div>
         </div>
-      </footer>
-    </Container>
+      </Container>
+    </footer>
   );
 }
