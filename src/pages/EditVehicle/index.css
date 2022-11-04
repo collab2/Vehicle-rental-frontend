@@ -50,12 +50,11 @@
   color: #ffe2a2;
 }
 
-.selected-dropup:hover {
-  color: rgb(0, 0, 0);
+.selected-dropup {
+  color: #ffcd61;
   padding: 5px 0;
-  background-color: #e2e2e2;
-  font-weight: bold;
-  cursor: pointer;
+  background-color: #1b1b1b;
+  /* font-weight: bold; */
 }
 
 .btn-yellow-black {
@@ -70,4 +69,19 @@
 .btn-yellow-black:hover {
   background-color: #ffe2a2;
   color: #1b1b1b;
+}
+
+@media screen and (max-width: 425px) {
+  .btn-black-yellow {
+    padding: 10px 0;
+    width: auto;
+    /* width: 100%; */
+    font-weight: bold;
+    font-size: 12px;
+  }
+  .btn-yellow-black {
+    padding: 5px 0;
+    font-size: 12px;
+    /* width: 100%; */
+  }
 }
