@@ -5,53 +5,30 @@ import { Icon } from "@iconify/react";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import Logo from "../../component/Logo";
-import { login } from "../../stores/actions/signin";
+import { forgotPassword } from "../../stores/actions/forgotPassword";
 import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 // import axios from "../../utils/axios";
 
-export default function SigninAdmin() {
+export default function ForgotPasswordAdmin() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [form, setForm] = useState({
     email: "",
-    password: "",
   });
 
   const handleNavigate = (nav) => {
     navigate(`/${nav}`);
   };
 
-  // const handleSignin = async (e) => {
-  //   try {
-  //     e.preventDefault();
-  //     const result = await axios.post("/auth/login", form);
-  //     toast.success(result.data.msg, {
-  //       position: toast.POSITION.TOP_CENTER,
-  //     });
-  //     setTimeout(() => {
-  //       navigate("/");
-  //     }, 3000);
-  //   } catch (error) {
-  //     console.log(error);
-  //     toast.error(error.response.data.msg, {
-  //       position: toast.POSITION.TOP_CENTER,
-  //     });
-  //   }
-  // };
-
-  const handleSignin = (e) => {
+  const handleForgotPassword = (e) => {
     e.preventDefault();
-    dispatch(login(form))
+    dispatch(forgotPassword(form))
       .then((response) => {
         toast.success(response.value.data.msg, {
           position: toast.POSITION.TOP_CENTER,
         });
-        localStorage.setItem("token", response.value.data.data.token);
-        setTimeout(() => {
-          navigate("/");
-        }, 3000);
       })
       .catch((error) =>
         toast.error(error.response.data.msg, {
@@ -78,7 +55,11 @@ export default function SigninAdmin() {
           </div> */}
           <div className="desktop-display">
             <div className="m-5 p-5">
-              <h1>Login</h1>
+              <h1>Forgot Password</h1>
+              <h3 className="mb-5">
+                Enter your verified account email and we <br /> will send you a
+                link to reset your password
+              </h3>
             </div>
             <form className="form-login ms-5 ps-5">
               <input
@@ -88,37 +69,27 @@ export default function SigninAdmin() {
                 className="form-input text-start px-5 mb-5"
                 onChange={handleChangeForm}
               />
-              <input
-                type="password"
-                name="password"
-                placeholder="Password"
-                className="form-input text-start px-5 mb-5"
-                onChange={handleChangeForm}
-              />
               <div className="d-grid">
-                <button className="auth-btn" onClick={handleSignin}>
-                  Login
+                <button
+                  className="auth-btn mb-5"
+                  onClick={handleForgotPassword}
+                >
+                  Send Password Reset Email
                 </button>
               </div>
-              <button
-                className="text-start click-me mt-4"
-                onClick={() => handleNavigate("forgot-password")}
-              >
-                Forgot password?
-              </button>
               <h1 className="separator pt-4 mb-5 mt-5">or try another way</h1>
             </form>
             <div className="m-5 ps-5 form-login">
               <div className="">
                 <div className="d-grid">
-                  <button className="google-btn mt-4">
+                  <button className="google-btn-forgot mt-4 mb-3">
                     <Icon icon="flat-color-icons:google" width="40px" /> Sign up
                     with Google
                   </button>
                 </div>
                 <div className="d-grid mt-5">
                   <button
-                    className="sign-btn mt-4"
+                    className="sign-btn-forgot mt-4"
                     onClick={() => handleNavigate("signup")}
                   >
                     Sign Up
