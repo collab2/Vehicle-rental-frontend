@@ -1,0 +1,70 @@
+.text-slide-banner {
+  font-size: 4rem;
+  font-weight: 600;
+  color: #fff;
+  text-align: left;
+  margin: 20% 3rem;
+  font-family: "Times New Roman", Times, serif;
+}
+
+.slide-banner {
+  background: rgba(rgb(0, 0, 0));
+  opacity: 0.5;
+}
+
+.rounded-image {
+  border-radius: 10px;
+}
+
+.image-popular {
+  align-items: flex-end;
+}
+
+
+.image-popular p {
+  color: rgb(0, 0, 0);
+  padding: 0 30px 0 10px;
+  margin: 0;
+}
+
+.box-image {
+  background: rgb(255, 255, 255);
+  border-radius: 5px;
+}
+
+.card-popular {
+  width: 25%;
+  border: 50px #0000;
+  border-radius: 50px;
+}
+
+@media screen and (max-width: 768px) {
+  .text-slide-banner {
+    font-size: 1rem;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .testimonial-text {
+    font-size: 12px;
+    margin: 0;
+  }
+
+  .card-responsive {
+    width: 50%;
+  }
+
+  .image-popular p {
+    color: rgb(0, 0, 0);
+    padding: 0 20px;
+    text-align: center;
+    font-size: 12px;
+  }
+
+  .box-image {
+    /* display: none; */
+    background: rgb(255, 255, 255);
+    border-radius: 5px;
+  }
+}
+

@@ -1,0 +1,87 @@
+.big-image {
+  width: 90%;
+}
+
+.small-image {
+  width: 80%;
+  border-radius: 10px;
+}
+
+.btn-yellow-plus {
+  color: black;
+  background-color: #ffcd61;
+  font-weight: bold;
+  border-radius: 5px;
+  padding: 2px 7px;
+  border: 0;
+}
+
+.btn-yellow-plus:hover {
+  color: rgb(255, 255, 255);
+  background-color: #ffae00;
+}
+
+.btn-grey-minus {
+  color: black;
+  background-color: #e2e2e2;
+  font-weight: bold;
+  border-radius: 5px;
+  padding: 2px 9px;
+  border: 0;
+}
+
+.btn-grey-minus:hover {
+  color: rgb(255, 255, 255);
+  background-color: #757575;
+  font-weight: bold;
+}
+
+.btn-black-yellow {
+  background-color: #393939;
+  color: #ffcd61;
+  padding: 20px 0;
+  border-radius: 5px;
+  border: 0;
+  font-weight: bold;
+}
+
+.btn-black-yellow:hover {
+  background-color: #1b1b1b;
+  color: #ffe2a2;
+}
+
+.selected-dropup {
+  color: #ffcd61;
+  padding: 5px 0;
+  background-color: #1b1b1b;
+  /* font-weight: bold; */
+}
+
+.btn-yellow-black {
+  background-color: #ffcd61;
+  color: #393939;
+  padding: 20px 0;
+  border-radius: 5px;
+  border: 0;
+  font-weight: bold;
+}
+
+.btn-yellow-black:hover {
+  background-color: #ffe2a2;
+  color: #1b1b1b;
+}
+
+@media screen and (max-width: 425px) {
+  .btn-black-yellow {
+    padding: 10px 0;
+    width: auto;
+    /* width: 100%; */
+    font-weight: bold;
+    font-size: 12px;
+  }
+  .btn-yellow-black {
+    padding: 5px 0;
+    font-size: 12px;
+    /* width: 100%; */
+  }
+}

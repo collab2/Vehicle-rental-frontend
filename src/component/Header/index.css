@@ -1,0 +1,19 @@
+.list-navbar {
+  list-style: none;
+}
+
+.list-navbar > li {
+  margin-right: 30px;
+}
+
+.list-navbar > li > a {
+  color: #b8becd;
+  text-decoration: none;
+}
+
+.button-navbar {
+  font-size: 15px;
+  width: 132px;
+  height: 44px;
+  border-radius: 8px;
+}

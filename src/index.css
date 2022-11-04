@@ -1,13 +1,409 @@
+*,
+::before,
+::after {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;600;700&family=Nunito:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap");
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+/* PAGE PROFILE */
+
+.profile-name {
+  font-family: "Playfair Display";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 24px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #000000;
+}
+
+.profile-contact {
+  font-family: "Nunito";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #b8becd;
+}
+
+.profile-image-wrapper {
+  position: relative;
+}
+
+.profile-icon {
+  font-size: 30px;
+}
+
+.profile-edit-image {
+  position: absolute;
+  top: 250px;
+  right: 40px;
+  border-radius: 50% !important;
+}
+
+.gold-buttons {
+  background: #ffcd61;
+  border-radius: 10px;
+  font-family: "Nunito";
+  font-style: normal;
+  font-weight: 900;
+  font-size: 24px;
+  line-height: 33px;
+  text-align: center;
+  color: #393939;
+  border: unset;
+  padding-top: 7px;
+  padding-bottom: 7px;
+  padding-left: 35px;
+  padding-right: 35px;
+}
+
+.black-buttons {
+  background: #393939;
+  border-radius: 10px;
+  font-family: "Nunito" !important;
+  font-style: normal;
+  font-weight: 900;
+  font-size: 24px;
+  line-height: 33px;
+  text-align: center;
+  color: #ffcd61;
+  border: unset;
+  padding-top: 7px;
+  padding-bottom: 7px;
+  padding-left: 35px;
+  padding-right: 35px;
+}
+
+.silver-buttons {
+  background: rgba(203, 203, 212, 0.27);
+  border-radius: 10px;
+  font-family: "Nunito";
+  font-style: normal;
+  font-weight: 900;
+  font-size: 24px;
+  line-height: 33px;
+  text-align: center;
+  color: #393939;
+  border: unset;
+  padding-top: 7px;
+  padding-bottom: 7px;
+  padding-left: 35px;
+  padding-right: 35px;
+}
+
+.profile-block-button {
+  background: #393939 !important;
+  border: unset !important;
+  font-family: "Nunito" !important;
+  color: #ffcd61 !important;
+}
+
+.profile-title {
+  font-family: "Nunito";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 24px;
+  /* identical to box height, or 67% */
+
+  display: flex;
+  align-items: center;
+
+  color: #000000;
+}
+
+.profile-contacts {
+  font-family: "Nunito";
+  font-style: normal;
+  font-weight: 900;
+  font-size: 24px;
+  line-height: 33px;
+  color: #4f5665;
+}
+
+.profile-input-title {
+  font-family: "Nunito";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 33px;
+  color: #9f9f9f;
+}
+
+.profile-input {
+  border: unset !important;
+  border-bottom: 1px solid black !important;
+  border-radius: unset !important;
+  padding-left: 0px !important;
+}
+
+/* END OF PROFILE PAGE */
+
+@import url("https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;600;700&family=Nunito:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700;900&family=Poppins:wght@300;400;500;600;700&display=swap");
+
+.font-mulish {
+  font-family: "Mulish", sans-serif;
+}
+
+.font-nunito {
+  font-family: "Nunito", sans-serif;
+}
+
+.font-playfair {
+  font-family: "Playfair Display", serif;
+}
+
+.font-poppins {
+  font-family: "Poppins", sans-serif;
+}
+
+.color-yellow {
+  color: #ffcd61;
+}
+
+.border-yellow {
+  border: 1px solid #ffcd61;
+}
+
+.background-yellow {
+  background-color: #ffcd61;
+}
+
+/* payment page */
+
+.payment-dropdown {
+  background: unset !important;
+  border: 0px !important;
+  border-radius: unset !important;
+  font-family: "Nunito" !important;
+  font-style: normal !important;
+  font-weight: 600 !important;
+  font-size: 24px !important;
+  line-height: 24px !important;
+  color: #80918e !important;
+}
+
+.payment-title {
+  font-family: "Nunito";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 24px;
+  display: flex;
+  align-items: center;
+  color: #000000;
+}
+
+.payment-back-button {
+  background: unset !important;
+  border: unset !important;
+}
+
+.payment-item-name {
+  font-family: "Playfair Display";
+  font-style: normal;
+  font-weight: 900;
+  font-size: 48px;
+  line-height: 25px;
+  color: #042521;
+}
+
+.payment-item-location {
+  font-family: "Playfair Display";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 38px;
+  line-height: 25px;
+  color: #042521;
+}
+
+.payment-prepayment {
+  font-family: "Nunito";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 26px;
+  line-height: 24px;
+  color: #b8becd;
+}
+
+.payment-code-top {
+  font-family: "Playfair Display";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 26px;
+  line-height: 24px;
+  color: #393939;
+}
+
+.payment-copy-button-top {
+  font-family: "Nunito";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+  color: #393939;
+  background: #ffcd61;
+  border-radius: 10px;
+  border: unset;
+}
+
+.payment-quantity {
+  font-family: "Nunito";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 24px;
+  color: #393939;
+}
+
+.payment-date {
+  font-family: "Nunito";
+  font-style: normal;
+  font-weight: 300;
+  font-size: 24px;
+  line-height: 24px;
+  color: #393939;
+}
+
+.payment-order-identity {
+  font-family: "Nunito";
+  font-style: normal;
+  font-weight: 900;
+  font-size: 24px;
+  line-height: 24px;
+  color: #393939;
+}
+
+.payment-order {
+  font-family: "Nunito";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 24px;
+  color: #393939;
+}
+
+.payment-total {
+  font-family: "Nunito";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 24px;
+  color: #393939;
+}
+
+.payment-identity {
+  font-family: "Nunito";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 24px;
+  color: #393939;
+}
+
+.payment-payment-code {
+  font-family: "Nunito";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 24px;
+  color: #393939;
+}
+
+.payment-code-bottom {
+  font-family: "Playfair Display";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 24px;
+  color: #393939;
+}
+
+.payment-copy-bottom {
+  font-family: "Nunito";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 24px;
+  color: #ffcd61;
+  background: #393939;
+  border-radius: 10px;
+}
+
+.payment-finish {
+  background: #ffcd61 !important;
+  border: unset !important;
+  font-family: "Nunito" !important;
+  font-style: normal !important;
+  font-weight: 900 !important;
+  font-size: 24px !important;
+  line-height: 25px !important;
+  color: #393939 !important;
+}
+#search-form input,
+select {
+  width: 100%;
+  display: block;
+  background-color: #dadada45;
+  border: 0.5px solid #c4c4c4;
+  border-radius: 10px;
+  padding: 15px 25px;
+  padding-right: 55px;
+  font-size: 18px;
+}
+
+#search-input::placeholder {
+  color: #b8becd;
+}
+
+.title-history {
+  font-weight: 600;
+  color: #c4c4c4;
+  font-size: 24px;
+}
+
+.text-history {
+  font-size: 24px;
+  font-weight: 600;
+  color: #393939;
+}
+
+footer {
+  background-color: #f9f9fb;
+  color: #848484;
+  font-size: 18px;
+  padding-top: 75px;
+  padding-bottom: 35px;
+}
+
+.footer-title {
+  color: #393939;
+  font-size: 19px;
+}
+
+footer ul {
+  padding: 0;
+}
+
+footer li {
+  list-style: none;
+  margin-bottom: 15px;
+}
+
+#footer-socmed {
+  color: #393939;
 }
