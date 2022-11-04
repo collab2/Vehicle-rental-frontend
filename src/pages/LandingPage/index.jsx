@@ -12,6 +12,7 @@ import testimonial from "../../assets/img/testimonial-photo.png";
 import stars from "../../assets/img/stars.png";
 
 import CardPopular from "../../component/CardPopular";
+import Footer from "../../component/Footer";
 
 export default function LandingPage() {
   return (
@@ -76,6 +77,7 @@ export default function LandingPage() {
           </div>
         </div>
       </div>
+      <Footer />
     </>
   );
 }
