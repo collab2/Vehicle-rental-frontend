@@ -117,15 +117,13 @@ export default function Profile1() {
             </InputGroup>
           </div>
           <div className="col-12 d-flex justify-content-between my-5 mx-4">
-            <button type="btn" className="gold-buttons d-flex d-md-block">
+            <button className="gold-buttons d-flex d-md-block">
               Save Change
             </button>
             <button className="black-buttons px-5 py-2 d-none d-md-block">
               Edit Password
             </button>
-            <button type="btn" className="silver-buttons d-none d-md-block">
-              Cancel
-            </button>
+            <button className="silver-buttons d-none d-md-block">Cancel</button>
           </div>
         </div>
       </div>
