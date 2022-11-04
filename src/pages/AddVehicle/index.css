@@ -1,0 +1,153 @@
+.case {
+  width: 100%;
+  height: 412px;
+  left: 115px;
+  top: 369px;
+
+  background: #f5f5f6;
+  border-radius: 10px;
+}
+.case h1 {
+  font-family: "Nunito";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 24px;
+
+  display: flex;
+  align-items: center;
+
+  color: #b8becd;
+}
+.case2 {
+  width: 290px;
+  height: 164px;
+  left: 115px;
+  top: 965px;
+
+  background: #f5f5f6;
+  border-radius: 10px;
+}
+.case2 h1 {
+  font-family: "Nunito";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 24px;
+
+  display: flex;
+  align-items: center;
+
+  color: #b8becd;
+}
+.case3 {
+  width: 300px;
+  height: 164px;
+  left: 441px;
+  top: 965px;
+
+  background: #f5f5f6;
+  border-radius: 10px;
+}
+.case3 h1 {
+  font-family: "Nunito";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 24px;
+
+  display: flex;
+  align-items: center;
+
+  color: #b8becd;
+}
+
+.price-input {
+  width: 100%;
+  height: 83px;
+
+  background: #f5f5f6;
+  border-radius: 10px;
+}
+
+.price-input::-webkit-outer-spin-button,
+.price-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.status-input {
+  width: 100%;
+  height: 83px;
+  left: 798px;
+  top: 648px;
+
+  background: #f5f5f6;
+  border-radius: 10px;
+}
+.btn-yellow-plus {
+  color: black;
+  background-color: #ffcd61;
+  font-weight: bold;
+  border-radius: 5px;
+  padding: 2px 7px;
+  border: 0;
+}
+
+.btn-yellow-plus:hover {
+  color: rgb(255, 255, 255);
+  background-color: #ffae00;
+}
+
+.btn-grey-minus {
+  color: black;
+  background-color: #e2e2e2;
+  font-weight: bold;
+  border-radius: 5px;
+  padding: 2px 9px;
+  border: 0;
+}
+
+.btn-grey-minus:hover {
+  color: rgb(255, 255, 255);
+  background-color: #757575;
+  font-weight: bold;
+}
+
+.add-item {
+  background-color: #393939;
+  color: #ffcd61;
+  padding: 20px 0;
+  border-radius: 5px;
+  border: 0;
+  font-weight: bold;
+  margin-left: 80px;
+  width: 443px;
+}
+
+.add-item:hover {
+  background-color: #1b1b1b;
+  color: #ffe2a2;
+}
+
+.selected-dropup:hover {
+  color: rgb(0, 0, 0);
+  padding: 5px 0;
+  background-color: #e2e2e2;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.btn-yellow-black-add {
+  background-color: #ffcd61;
+  color: #393939;
+  padding: 20px 0;
+  border-radius: 5px;
+  border: 0;
+  font-weight: bold;
+  width: 672px;
+}
+
+.btn-yellow-black-add:hover {
+  background-color: #ffe2a2;
+  color: #1b1b1b;
+}
