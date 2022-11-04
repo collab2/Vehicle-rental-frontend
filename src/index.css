@@ -144,7 +144,7 @@ body {
 
 /* END OF PROFILE PAGE */
 
-@import url("https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;600;700&family=Nunito:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;600;700&family=Nunito:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700;900&family=Poppins:wght@300;400;500;600;700&display=swap");
 
 .font-mulish {
   font-family: "Mulish", sans-serif;
@@ -344,4 +344,57 @@ body {
   font-size: 24px !important;
   line-height: 25px !important;
   color: #393939 !important;
+}
+#search-form input,
+select {
+  width: 100%;
+  display: block;
+  background-color: #dadada45;
+  border: 0.5px solid #c4c4c4;
+  border-radius: 10px;
+  padding: 15px 25px;
+  padding-right: 55px;
+  font-size: 18px;
+}
+
+#search-input::placeholder {
+  color: #b8becd;
+}
+
+.title-history {
+  font-weight: 600;
+  color: #c4c4c4;
+  font-size: 24px;
+}
+
+.text-history {
+  font-size: 24px;
+  font-weight: 600;
+  color: #393939;
+}
+
+footer {
+  background-color: #f9f9fb;
+  color: #848484;
+  font-size: 18px;
+  padding-top: 75px;
+  padding-bottom: 35px;
+}
+
+.footer-title {
+  color: #393939;
+  font-size: 19px;
+}
+
+footer ul {
+  padding: 0;
+}
+
+footer li {
+  list-style: none;
+  margin-bottom: 15px;
+}
+
+#footer-socmed {
+  color: #393939;
 }
