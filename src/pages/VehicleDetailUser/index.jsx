@@ -1,5 +1,6 @@
 import React from "react";
 import Header from "../../component/Header";
+import Footer from "../../component/Footer";
 import Arrow from "../../assets/img/vehicle/arrow.png";
 import love from "../../assets/img/vehicle/favorite.png";
 import "./index.css";
@@ -33,6 +34,7 @@ export default function VehicleDetailUser() {
           </button>
         </div>
       </main>
+      <Footer />
     </>
   );
 }
