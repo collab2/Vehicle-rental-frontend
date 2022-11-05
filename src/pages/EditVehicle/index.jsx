@@ -7,6 +7,11 @@ import Footer from "../../component/Footer";
 import Bicycle from "../../assets/img/vehicle/bicycle-full.png";
 import { useDispatch } from "react-redux";
 import { getCategory, addCategory } from "../../stores/actions/category";
+// import {
+//   updateProduct,
+//   deleteProduct,
+//   getProductById,
+// } from "../../stores/actions/product";
 
 export default function EditVehicle() {
   const [category, setCategory] = useState({});
@@ -52,10 +57,16 @@ export default function EditVehicle() {
   };
 
   const handleUpdate = () => {
+    // dispatch(updateProduct(id, data))
+    //   .then((res) => alert(res.value.data.msg), dispatch(getProductById()))
+    //   .catch((err) => alert(err.response.response.msg));
     console.log(form);
   };
 
   const handleDelete = () => {
+    // dispatch(deleteProduct(id,data))
+    //   .then((res) => (alert(res.value.data.msg), dispatch(getProductById())))
+    //   .catch((err) => alert(err.value.response.msg));
     console.log(form);
   };
 
@@ -151,9 +162,9 @@ export default function EditVehicle() {
           </div>
 
           <div className="d-flex justify-content-between flex-wrap mb-5">
-            <div className="input-group" style={{ width: "40%" }}>
+            <div className="input-group text-center btn-edit-category">
               <select
-                className="form-select btn-black-yellow text-center"
+                className="form-select text-center"
                 name="category"
                 onChange={handleChange}
               >
@@ -173,7 +184,7 @@ export default function EditVehicle() {
                 )}
               </select>
               <button
-                className="input-group-text btn-yellow-black"
+                className="input-group-text btn-add-category"
                 data-bs-toggle="modal"
                 data-bs-target="#manageCategory"
                 style={{ padding: "0 1rem" }}
@@ -181,11 +192,14 @@ export default function EditVehicle() {
                 +
               </button>
             </div>
-            <button className="btn-yellow-black w-25" onClick={handleUpdate}>
+            <button
+              className="btn-yellow-black btn-responsive-edit"
+              onClick={handleUpdate}
+            >
               Save Changes
             </button>
             <button
-              className="btn-black-yellow shadow w-25"
+              className="btn-black-yellow shadow btn-responsive-edit"
               onClick={handleDelete}
             >
               Delete
@@ -245,7 +259,11 @@ export default function EditVehicle() {
                     </div>
                   ))
                 ) : (
-                  <div className="h6">You have not add any category!</div>
+                  <>
+                    <div className="h6 selected-category">Bicycle</div>
+                    <div className="h6 selected-category">Cars</div>
+                    <div className="h6 selected-category">Bus</div>
+                  </>
                 )}
               </div>
             </div>

@@ -13,8 +13,14 @@ import stars from "../../assets/img/stars.png";
 
 import CardPopular from "../../component/CardPopular";
 import Footer from "../../component/Footer";
+import { useNavigate } from "react-router-dom";
 
 export default function LandingPage() {
+  const navigate = useNavigate();
+
+  const handleNav = (path) => {
+    navigate(`/${path}`);
+  };
   return (
     <>
       <Header />
@@ -51,7 +57,12 @@ export default function LandingPage() {
         <div className="container mt-5">
           <div className="d-flex justify-content-between my-5">
             <h1>Popular in town</h1>
-            <button className="btn color-yellow">View all {">"}</button>
+            <button
+              className="btn color-yellow"
+              onClick={() => handleNav("vehicle-type")}
+            >
+              View all {">"}
+            </button>
           </div>
           <div className="d-flex flex-nowrap my-5 overflow-auto">
             <CardPopular />
