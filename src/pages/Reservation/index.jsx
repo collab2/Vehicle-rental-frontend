@@ -3,9 +3,14 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import "./Reservation.css";
 import defaultImage from "../../assets/images/vehicle-default.jpg";
+
+import Header from "../../component/Header";
+import Footer from "../../component/Footer";
+
 export default function Reservation() {
   return (
     <>
+      <Header />
       <div className="row mt-5 ms-lg-5 d-md-flex justify-content-md-center container-main mb-lg-5 ">
         <div className="col-lg-12 p-0 ">
           <div className="col-lg-4 mb-5 d-flex flex-row align-items-center wrapper-link-detail">
@@ -67,6 +72,7 @@ export default function Reservation() {
           </div>
         </div>
       </div>
+      <Footer />
     </>
   );
 }
