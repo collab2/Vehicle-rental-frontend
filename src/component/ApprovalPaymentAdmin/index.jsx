@@ -6,44 +6,50 @@ export default function ApprovalPaymentAdmin() {
   return (
     <>
       <main className="main-approval">
-        <div className="left-approval">
-          <div className="left-approval-img">
+        <div className="first-row">
+          <div className="left-row">
             <img src={bicycle} alt="vehicle" />
           </div>
-          <div className="left-details">
-            <h1>Order Details :</h1>
-            <p>Quantity : 2 bikes</p>
-            <p>Price : Rp.78.000</p>
-            <hr />
-            <p>Total : Rp.156.000</p>
-          </div>
-        </div>
-        <div className="right-approval">
-          <div className="right-approval-desc">
+          <div className="right-row">
             <h1>Fixie - Gray Only</h1>
             <h2>Yogyakarta</h2>
-            <p>No Prepayment</p>
+            <h4>No Prepayment</h4>
             <h2>#FG1209878YZS</h2>
             <button>Copy Booking Code</button>
           </div>
-          <div className="reservation-date">
-            <h1>Reservation Date : Jan 18 - 20 2023</h1>
+        </div>
+        <div className="second-row">
+          <div className="left-row">
+            <h3>Quantity : 2 Bikes</h3>
           </div>
-          <div className="right-details">
-            <h1>Identity :</h1>
-            <p>Samantha Doe (+62808080808)</p>
+          <div className="right-row">
+            <h3>Reservation Date : 18 - 20 Jan 2023</h3>
+          </div>
+        </div>
+        <div className="third-row">
+          <div className="left-row">
+            <h3>Order Details :</h3>
+            <p>1 bike : Rp. 78.000</p>
+            <p>1 bike : Rp. 78.000</p>
+            <h3>Total : Rp. 156.000</h3>
+          </div>
+          <div className="right-row">
+            <h3>Identity :</h3>
+            <p>Samantha Doe (+6282345678)</p>
             <p>samantha@gmail.com</p>
           </div>
         </div>
-      </main>
-      <div className="payment-row">
-        <h1>Payment Code :</h1>
-        <div className="code">
-          <h2>#FG1209878YZS</h2>
-          <button>copy</button>
+        <div className="fourth-row">
+          <h1>Payment Code :</h1>
+          <div className="code">
+            <h2>#FG1209878YZS</h2>
+            <button>Copy</button>
+          </div>
+          <div className="payment-row">
+            <h1>Pay With Transfer</h1>
+          </div>
         </div>
-        <div className="transfer-row">Pay With Transfer</div>
-      </div>
+      </main>
     </>
   );
 }
