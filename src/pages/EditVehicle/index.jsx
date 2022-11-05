@@ -1,20 +1,38 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./index.css";
 
 import Header from "../../component/Header";
-import ManageCatagory from "../../component/ManageCategory";
+import Footer from "../../component/Footer";
 
 import Bicycle from "../../assets/img/vehicle/bicycle-full.png";
+import { useDispatch } from "react-redux";
+import { getCategory, addCategory } from "../../stores/actions/category";
+// import {
+//   updateProduct,
+//   deleteProduct,
+//   getProductById,
+// } from "../../stores/actions/product";
 
 export default function EditVehicle() {
-  const catagory = [
-    { name: "Bike", value: "bike" },
-    { name: "Car", value: "car" },
-    { name: "Bus", value: "bus" },
-  ];
-
-  const [vehicle, setVehicle] = useState({});
+  const [category, setCategory] = useState({});
+  const [addCategories, setAddCategories] = useState({});
   const [form, setForm] = useState({});
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    getCategoryData();
+  }, []);
+
+  const getCategoryData = () => {
+    dispatch(getCategory())
+      .then((res) => {
+        setCategory(res.value.data.data);
+      })
+      .catch((err) => {
+        alert(err.value.data.message);
+      });
+  };
 
   const handleChange = (e) => {
     setForm({
@@ -24,22 +42,31 @@ export default function EditVehicle() {
   };
 
   const handleManageCatagory = (e) => {
-    setVehicle({
-      ...vehicle,
+    setAddCategories({
+      ...addCategories,
       [e.target.name]: e.target.value,
     });
   };
 
-  const handleUpdateCatageory = (e) => {
+  const handleAddCategory = (e) => {
     e.preventDefault();
-    console.log(vehicle);
+    dispatch(addCategory(addCategories)).then(
+      (res) => alert(res.value.data.msg),
+      dispatch(getCategory())
+    );
   };
 
   const handleUpdate = () => {
+    // dispatch(updateProduct(id, data))
+    //   .then((res) => alert(res.value.data.msg), dispatch(getProductById()))
+    //   .catch((err) => alert(err.response.response.msg));
     console.log(form);
   };
 
   const handleDelete = () => {
+    // dispatch(deleteProduct(id,data))
+    //   .then((res) => (alert(res.value.data.msg), dispatch(getProductById())))
+    //   .catch((err) => alert(err.value.response.msg));
     console.log(form);
   };
 
@@ -135,19 +162,29 @@ export default function EditVehicle() {
           </div>
 
           <div className="d-flex justify-content-between flex-wrap mb-5">
-            <div className="input-group" style={{ width: "40%" }}>
+            <div className="input-group text-center btn-edit-category">
               <select
-                className="form-select btn btn-black-yellow"
+                className="form-select text-center"
                 name="category"
                 onChange={handleChange}
               >
                 <option selected>Add item to</option>
-                {catagory.map((item, index) => {
-                  return <ManageCatagory key={index} name={item.name} />;
-                })}
+                {category.length > 0 ? (
+                  category.map((item, index) => (
+                    <option key={index} value={item}>
+                      {item}
+                    </option>
+                  ))
+                ) : (
+                  <>
+                    <option value="Bicycle">Bicycle</option>
+                    <option value="Cars">Cars</option>
+                    <option value="Bus">Bus</option>
+                  </>
+                )}
               </select>
               <button
-                className="btn input-group-text btn-yellow-black"
+                className="input-group-text btn-add-category"
                 data-bs-toggle="modal"
                 data-bs-target="#manageCategory"
                 style={{ padding: "0 1rem" }}
@@ -156,13 +193,13 @@ export default function EditVehicle() {
               </button>
             </div>
             <button
-              className="btn btn-yellow-black w-25"
+              className="btn-yellow-black btn-responsive-edit"
               onClick={handleUpdate}
             >
               Save Changes
             </button>
             <button
-              className="btn btn-black-yellow shadow w-25"
+              className="btn-black-yellow shadow btn-responsive-edit"
               onClick={handleDelete}
             >
               Delete
@@ -198,31 +235,42 @@ export default function EditVehicle() {
                   type="text"
                   className="form-control"
                   placeholder="Name Category"
-                  name="namecategory"
+                  name="categoryName"
                   onChange={handleManageCatagory}
                 />
                 <button
-                  className="btn btn-yellow-black"
+                  className="btn-yellow-black"
                   style={{ padding: "0.5rem 0", width: "25%" }}
-                  onClick={handleUpdateCatageory}
+                  onClick={handleAddCategory}
                 >
                   Add
                 </button>
               </div>
               <div className="d-flex flex-column mt-3">
-                {catagory.map((item, index) => {
-                  return (
-                    <div className="col-6" key={index}>
-                      <ManageCatagory name={item.name} />
+                {category.length > 0 ? (
+                  category.map((item, index) => (
+                    <div key={index} className="row">
+                      <div className="col-10">
+                        <div className="selected-category">{item}</div>
+                      </div>
+                      <div className="col-2">
+                        <button className="border-0 bg-white">&#128465;</button>
+                      </div>
                     </div>
-                  );
-                })}
+                  ))
+                ) : (
+                  <>
+                    <div className="h6 selected-category">Bicycle</div>
+                    <div className="h6 selected-category">Cars</div>
+                    <div className="h6 selected-category">Bus</div>
+                  </>
+                )}
               </div>
             </div>
             <div className="modal-footer">
               <button
                 type="button"
-                className="btn btn-black-yellow"
+                className="btn-black-yellow"
                 data-bs-dismiss="modal"
                 style={{ padding: "0.5rem 0", width: "25%" }}
               >
@@ -232,6 +280,7 @@ export default function EditVehicle() {
           </div>
         </div>
       </div>
+      <Footer />
     </>
   );
 }
