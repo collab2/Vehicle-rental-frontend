@@ -7,6 +7,8 @@ import Footer from "../../component/Footer";
 import Bicycle from "../../assets/img/vehicle/bicycle-full.png";
 import { useDispatch } from "react-redux";
 import { getCategory, addCategory } from "../../stores/actions/category";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 // import {
 //   updateProduct,
 //   deleteProduct,
@@ -51,22 +53,45 @@ export default function EditVehicle() {
   const handleAddCategory = (e) => {
     e.preventDefault();
     dispatch(addCategory(addCategories)).then(
-      (res) => alert(res.value.data.msg),
-      dispatch(getCategory())
+      (res) =>
+        toast.success(res.value.data.msg, {
+          position: toast.POSITION.TOP_CENTER,
+        }),
+      dispatch(getCategory()).catch((err) =>
+        toast.error(err.value.response.msg, {
+          position: toast.POSITION.TOP_CENTER,
+        })
+      )
     );
   };
 
   const handleUpdate = () => {
-    // dispatch(updateProduct(id, data))
-    //   .then((res) => alert(res.value.data.msg), dispatch(getProductById()))
-    //   .catch((err) => alert(err.response.response.msg));
+    // dispatch(updateProduct(id, data)).then(
+    //   (res) =>
+    //     toast.success(res.value.data.msg, {
+    //       position: toast.POSITION.TOP_CENTER,
+    //     }),
+    //   dispatch(getProductById()).catch((err) =>
+    //     toast.error(err.value.response.msg, {
+    //       position: toast.POSITION.TOP_CENTER,
+    //     })
+    //   )
+    // );
     console.log(form);
   };
 
   const handleDelete = () => {
-    // dispatch(deleteProduct(id,data))
-    //   .then((res) => (alert(res.value.data.msg), dispatch(getProductById())))
-    //   .catch((err) => alert(err.value.response.msg));
+    // dispatch(deleteProduct(id)).then(
+    //   (res) =>
+    //     toast.success(res.value.data.msg, {
+    //       position: toast.POSITION.TOP_CENTER,
+    //     }),
+    //   dispatch(getProductById(id)).catch((err) =>
+    //     toast.error(err.value.response.msg, {
+    //       position: toast.POSITION.TOP_CENTER,
+    //     })
+    //   )
+    // );
     console.log(form);
   };
 
@@ -197,12 +222,14 @@ export default function EditVehicle() {
               onClick={handleUpdate}
             >
               Save Changes
+              <ToastContainer />
             </button>
             <button
               className="btn-black-yellow shadow btn-responsive-edit"
               onClick={handleDelete}
             >
               Delete
+              <ToastContainer />
             </button>
           </div>
         </div>
@@ -244,6 +271,7 @@ export default function EditVehicle() {
                   onClick={handleAddCategory}
                 >
                   Add
+                  <ToastContainer />
                 </button>
               </div>
               <div className="d-flex flex-column mt-3">
