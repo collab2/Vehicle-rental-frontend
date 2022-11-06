@@ -81,8 +81,8 @@ export default function ForgotPasswordAdmin() {
               <div className="">
                 <div className="d-grid mt-5">
                   <button
-                    className="sign-btn-forgot "
-                    onClick={() => handleNavigate("signup")}
+                    className="sign-btn-forgot mt-4"
+                    onClick={() => handleNavigate("signup-admin")}
                   >
                     Sign Up
                   </button>

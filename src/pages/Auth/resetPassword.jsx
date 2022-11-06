@@ -12,7 +12,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 // import axios from "../../utils/axios";
 
-export default function Signin() {
+export default function ResetPassword() {
   const { OTPReset } = useParams();
   const navigate = useNavigate();
   const dispatch = useDispatch();
