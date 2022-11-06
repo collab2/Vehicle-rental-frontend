@@ -2,43 +2,45 @@ import React from "react";
 import authimage from "../../assets/img/authimage.png";
 import "./index.css";
 import { Icon } from "@iconify/react";
+import { useParams } from "react-router-dom";
 import { useState } from "react";
-// import { useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import Logo from "../../component/Logo";
-// import { register } from "../../stores/actions/signup";
+import { resetPassword } from "../../stores/actions/resetPassword";
 import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import axios from "../../utils/axios";
+// import axios from "../../utils/axios";
 
-export default function Signin() {
+export default function ResetPasswordAdmin() {
+  const { OTPReset } = useParams();
   const navigate = useNavigate();
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const [form, setForm] = useState({
-    email: "",
-    password: "",
+    newPassword: "",
+    confirmPassword: "",
   });
 
   const handleNavigate = (nav) => {
     navigate(`/${nav}`);
   };
 
-  const handleSignin = async (e) => {
-    try {
-      e.preventDefault();
-      const result = await axios.post("/auth/login", form);
-      toast.success(result.data.msg, {
-        position: toast.POSITION.TOP_CENTER,
-      });
-      setTimeout(() => {
-        navigate("/");
-      }, 3000);
-    } catch (error) {
-      console.log(error);
-      toast.error(error.response.data.msg, {
-        position: toast.POSITION.TOP_CENTER,
-      });
-    }
+  const handleResetPassword = (e) => {
+    e.preventDefault();
+    dispatch(resetPassword(OTPReset, form))
+      .then((response) => {
+        toast.success(response.value.data.msg, {
+          position: toast.POSITION.TOP_CENTER,
+        });
+        setTimeout(() => {
+          navigate("/signin-admin");
+        }, 3000);
+      })
+      .catch((error) =>
+        toast.error(error.response.data.msg, {
+          position: toast.POSITION.TOP_CENTER,
+        })
+      );
   };
 
   const handleChangeForm = (e) => {
@@ -67,7 +69,7 @@ export default function Signin() {
             <form className="form-login ms-5 ps-5">
               <input
                 type="password"
-                name="password"
+                name="newPassword"
                 placeholder="Password"
                 className="form-input text-start px-5 mb-5"
                 onChange={handleChangeForm}
@@ -80,7 +82,7 @@ export default function Signin() {
                 onChange={handleChangeForm}
               />
               <div className="d-grid">
-                <button className="auth-btn" onClick={handleSignin}>
+                <button className="auth-btn" onClick={handleResetPassword}>
                   Reset Password
                 </button>
               </div>
@@ -100,7 +102,7 @@ export default function Signin() {
                 <div className="d-grid mt-3">
                   <button
                     className="sign-btn mt-3"
-                    onClick={() => handleNavigate("signup")}
+                    onClick={() => handleNavigate("signup-admin")}
                   >
                     Sign Up
                   </button>

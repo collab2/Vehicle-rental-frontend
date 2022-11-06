@@ -102,7 +102,7 @@ export default function SigninAdmin() {
               </div>
               <button
                 className="text-start click-me mt-4"
-                onClick={() => handleNavigate("forgot-password")}
+                onClick={() => handleNavigate("forgot-password-admin")}
               >
                 Forgot password?
               </button>
@@ -119,7 +119,7 @@ export default function SigninAdmin() {
                 <div className="d-grid mt-5">
                   <button
                     className="sign-btn mt-4"
-                    onClick={() => handleNavigate("signup")}
+                    onClick={() => handleNavigate("signup-admin")}
                   >
                     Sign Up
                   </button>
