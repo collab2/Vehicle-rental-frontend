@@ -43,6 +43,7 @@
   border-radius: 5px;
   border: 0;
   font-weight: bold;
+  width: 25%;
 }
 
 .btn-black-yellow:hover {
@@ -50,12 +51,10 @@
   color: #ffe2a2;
 }
 
-.selected-dropup:hover {
-  color: rgb(0, 0, 0);
+.selected-dropup {
+  color: #ffcd61;
   padding: 5px 0;
-  background-color: #e2e2e2;
-  font-weight: bold;
-  cursor: pointer;
+  background-color: #1b1b1b;
 }
 
 .btn-yellow-black {
@@ -65,9 +64,54 @@
   border-radius: 5px;
   border: 0;
   font-weight: bold;
+  width: 25%;
 }
 
 .btn-yellow-black:hover {
   background-color: #ffe2a2;
   color: #1b1b1b;
+}
+
+.btn-edit-category {
+  width: 35% !important;
+}
+
+.selected-category {
+  font-size: 1rem;
+  padding: 5px 0 5px 2px;
+}
+
+.selected-category:hover {
+  font-weight: 500;
+  cursor: pointer;
+  background-color: #ffe2a2;
+  border-radius: 5px;
+}
+
+@media screen and (max-width: 425px) {
+  .btn-black-yellow {
+    padding: 10px 0;
+    width: auto;
+    font-weight: bold;
+    font-size: 12px;
+  }
+  .btn-yellow-black {
+    padding: 10px 0;
+    font-size: 12px;
+  }
+
+  .btn-responsive-edit {
+    width: 100%;
+    margin: 10px;
+  }
+
+  .btn-add-category {
+    /* width: 10%; */
+    text-align: center;
+  }
+
+  .btn-edit-category {
+    margin: 10px;
+    width: 100% !important;
+  }
 }

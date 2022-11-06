@@ -12,14 +12,14 @@ export default function Header() {
   return (
     <Navbar bg="white" expand="lg" className="font-nunito py-4">
       <Container>
-        <Navbar.Brand href="#home">
+        <Navbar.Brand href="/">
           <Logo />
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
           <Nav className="align-items-center gap-4 me-5">
-            <Nav.Link href="">Home</Nav.Link>
-            <Nav.Link href="">Vehicle Type</Nav.Link>
+            <Nav.Link href="/">Home</Nav.Link>
+            <Nav.Link href="/vehicle-type">Vehicle Type</Nav.Link>
             <Nav.Link href="">History</Nav.Link>
             <Nav.Link href="">About</Nav.Link>
             <Nav.Link href=""></Nav.Link>
@@ -37,7 +37,7 @@ export default function Header() {
                 }
                 id="basic-nav-dropdown"
               >
-                <NavDropdown.Item href="#action/3.1">
+                <NavDropdown.Item href="/profile">
                   Edit Profile
                 </NavDropdown.Item>
                 <NavDropdown.Item href="#action/3.2">Help</NavDropdown.Item>

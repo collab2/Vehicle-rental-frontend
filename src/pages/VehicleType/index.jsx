@@ -1,4 +1,5 @@
 import React from "react";
+import Footer from "../../component/Footer";
 import Header from "../../component/Header";
 import Vehicle from "../../component/Vehicle";
 import "./index.css";
@@ -61,6 +62,7 @@ export default function VehicleType() {
           <Vehicle />
         </section>
       </main>
+      <Footer />
     </>
   );
 }
