@@ -13,6 +13,9 @@
 }
 .main-section {
   margin: 2% 5%;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
 }
 .navbar-search-vehicle {
   padding: 1% 10%;
@@ -73,5 +76,9 @@
   .btn-search {
     font-size: 14px;
     padding: 0 3%;
+  }
+  .main-section {
+    display: flex;
+    flex-direction: column;
   }
 }

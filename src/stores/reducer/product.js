@@ -83,7 +83,7 @@ const product = (state = initialState, action) => {
     case "GET_PRODUCT_BY_ID_FULFILLED":
       return {
         ...state,
-        data: action.payload.data.data,
+        data: action.payload.data.data[0],
         isLoading: false,
         isError: false,
         message: action.payload.data.message,
