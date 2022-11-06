@@ -1,5 +1,6 @@
 import React from "react";
 import Header from "../../component/Header";
+import Footer from "../../component/Footer";
 import Arrow from "../../assets/img/vehicle/arrow.png";
 import "./index.css";
 import { useNavigate } from "react-router-dom";
@@ -27,6 +28,7 @@ export default function ApprovalPayment() {
           <button className="approve-payment">Approve Payment</button>
         </div>
       </main>
+      <Footer />
     </>
   );
 }
