@@ -34,10 +34,13 @@ export default function LandingPage() {
   const dispatch = useDispatch();
 
   const getDataProduct = () => {
-    dispatch(getProduct()).then((res) => {
+    dispatch(getProduct(50)).then((res) => {
+      console.log(res);
       setProducts(res.value.data.data);
     });
   };
+
+  console.log(products);
 
   return (
     <>
