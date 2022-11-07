@@ -54,7 +54,7 @@ const user = (state = initialState, action) => {
     case "EDIT_USER_FULFILLED":
       return {
         ...state,
-        data: action.payload.data.data,
+        data: action.payload.data.data[0],
         isLoading: false,
         isError: false,
         message: action.payload.data.message,

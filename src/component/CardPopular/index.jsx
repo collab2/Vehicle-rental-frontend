@@ -8,14 +8,14 @@ export default function CardPopular(props) {
   const navigate = useNavigate();
   const isLogin = localStorage.getItem("token");
 
-  const imageProduct1 = `https://res.cloudinary.com/dtjeegwiz/image/upload/v1667656027/${props.image}`;
+  const imageProduct1 = `https://res.cloudinary.com/dtjeegwiz/image/upload/v1667656027/${props.data.image1}`;
 
   const handleDetailVehicleUser = () => {
-    navigate(`/vehicle-detail-user/${props.id}`);
+    navigate(`/vehicle-detail-user/${props.data.productId}`);
   };
 
   const handleDetailVehicleAdmin = () => {
-    navigate(`/vehicle-detail-admin/${props.id}`);
+    navigate(`/vehicle-detail-admin/${props.data.productId}`);
   };
 
   return (
@@ -23,7 +23,7 @@ export default function CardPopular(props) {
       <div className=" col-3 card-responsive">
         <Card className="border-0 me-3">
           <Card.Img
-            src={props.image !== null ? imageProduct1 : card1}
+            src={props.data.image !== null ? imageProduct1 : card1}
             alt="Card image"
             className="rounded-image"
           />
@@ -31,11 +31,13 @@ export default function CardPopular(props) {
             <div
               className="box-image"
               onClick={
-                isLogin ? handleDetailVehicleAdmin : handleDetailVehicleUser
+                isLogin ? handleDetailVehicleUser : handleDetailVehicleAdmin
               }
             >
-              <p className="fw-bold">{props.name ? props.name : "-"}</p>
-              <p>{props.location ? props.location : "-"}</p>
+              <p className="fw-bold">
+                {props.data.nameProduct ? props.data.nameProduct : "-"}
+              </p>
+              <p>{props.data.location ? props.data.location : "-"}</p>
             </div>
           </Card.ImgOverlay>
         </Card>

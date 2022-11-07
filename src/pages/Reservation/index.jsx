@@ -1,7 +1,7 @@
 import { useNavigate, useParams } from "react-router-dom";
-// import DatePicker from "react-datepicker";
-// import "react-datepicker/dist/react-datepicker.css";
-// import addDays from "date-fns/addDays";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import addDays from "date-fns/addDays";
 import "./Reservation.css";
 import { useEffect, useState } from "react";
 // import { useSelector } from "react-redux";
@@ -20,12 +20,13 @@ export default function Reservation() {
   const imageProduct = `https://res.cloudinary.com/dtjeegwiz/image/upload/v1667656027/${product[0]?.image1}`;
   // const userId = localStorage.getItem("userId");
 
-  const { id } = useParams();
+  const { productId } = useParams();
+
   const dispatch = useDispatch();
 
   const getData = () => {
     try {
-      dispatch(getProductById(id))
+      dispatch(getProductById(productId))
         .then((res) => setProduct(res.value.data.data))
         .catch((err) => console.log(err));
     } catch (error) {
@@ -36,10 +37,8 @@ export default function Reservation() {
   const handleNavigate = (nav) => {
     navigate(`/${nav}`);
   };
-  // const [startDate, setStartDate] = useState(new Date());
-  // console.log(startDate);
-  // const [endDate, setEndDate] = useState(new Date());
-  // console.log(endDate);
+  const [startDate, setStartDate] = useState(new Date());
+  const [endDate, setEndDate] = useState(new Date());
 
   const navigate = useNavigate();
 
@@ -47,9 +46,10 @@ export default function Reservation() {
     navigate("/payment", {
       state: {
         quantity: counter,
-        // startDate: startDate,
-        // endDate: endDate,
-        amount: "",
+        productId: productId,
+        startDate: startDate,
+        endDate: endDate,
+        amount: "20000",
       },
     });
   };
@@ -113,15 +113,15 @@ export default function Reservation() {
 
             <p className="date-reservation">Start Date :</p>
 
-            {/* <DatePicker
+            <DatePicker
               className="datePicker"
               dateFormat="dd-MM-yyyy"
               placeholderText="Select Date"
               selected={startDate}
               onChange={(date: Date) => setStartDate(date)}
-            /> */}
+            />
             <p className="date-reservation">Return Date :</p>
-            {/* <DatePicker
+            <DatePicker
               className="datePicker"
               dateFormat="dd-MM-yyyy"
               placeholderText="Select Date"
@@ -129,7 +129,7 @@ export default function Reservation() {
               selected={endDate}
               maxDate={addDays(new Date(), 7)}
               onChange={(date: Date) => setEndDate(date)}
-            /> */}
+            />
 
             {/* <select className="datePicker">
               <option value="" disabled selected>

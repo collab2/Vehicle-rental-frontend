@@ -1,9 +1,9 @@
 import axios from "../../utils/axios";
 
-export const getProduct = () => {
+export const getProduct = (limit) => {
   return {
     type: "GET_PRODUCT",
-    payload: axios.get("/product"),
+    payload: axios.get(`/product?limit=${limit}`),
   };
 };
 
