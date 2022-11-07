@@ -59,7 +59,7 @@ function App() {
         <Route path="/vehicle-detail-admin" element={<VehicleDetailAdmin />} />
         <Route path="/approval-payment" element={<ApprovalPayment />} />
         <Route path="/edit-vehicle" element={<EditVehicle />} />
-        <Route path="/reservation" element={<Reservation />} />
+        <Route path="/reservation/:productId" element={<Reservation />} />
       </Routes>
     </BrowserRouter>
   );

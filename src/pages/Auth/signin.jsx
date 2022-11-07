@@ -6,6 +6,7 @@ import { useDispatch } from "react-redux";
 import { login } from "../../stores/actions/signin";
 import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
+import { getProductById } from "../../stores/actions/product";
 import "react-toastify/dist/ReactToastify.css";
 // import axios from "../../utils/axios";
 
@@ -46,7 +47,9 @@ export default function Signin() {
         toast.success(response.value.data.msg, {
           position: toast.POSITION.TOP_CENTER,
         });
+        dispatch(getProductById(response.value.data.data.productId));
         localStorage.setItem("token", response.value.data.data.token);
+        localStorage.setItem("userId", response.value.data.data.userId);
         setTimeout(() => {
           navigate("/");
         }, 3000);

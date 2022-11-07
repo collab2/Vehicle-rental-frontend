@@ -16,7 +16,7 @@ export const addProduct = (data) => {
 
 export const getProductById = (id) => {
   return {
-    type: "GET_PRODUT_BY_ID",
+    type: "GET_PRODUCT_BY_ID",
     payload: axios.get(`/product/${id}`),
   };
 };
