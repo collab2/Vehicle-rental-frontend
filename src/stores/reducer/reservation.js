@@ -15,6 +15,7 @@ const reservation = (state = initialState, action) => {
         isError: false,
         message: "Loading...",
       };
+
     case "GET_RESERVATION_REJECTED":
       return {
         ...state,
@@ -23,6 +24,7 @@ const reservation = (state = initialState, action) => {
         isError: true,
         message: action.payload.response.data,
       };
+
     case "GET_RESERVATION_FULFILLED":
       return {
         ...state,
