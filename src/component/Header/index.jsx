@@ -8,11 +8,17 @@ import "./index.css";
 import people from "../../assets/img/default-profile.png";
 import axios from "../../utils/axios";
 import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getUserById } from "../../stores/actions/user";
 
-export default function Header(props) {
+export default function Header() {
   const id = localStorage.getItem("userId");
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const isLogin = localStorage.getItem("token");
+
+  const user = useSelector((state) => state.user);
   const handleLogout = async () => {
     try {
       await axios.post("auth/logout");
@@ -26,8 +32,10 @@ export default function Header(props) {
     e.preventDefault();
     navigate(`/profile/${id}`);
   };
-  const data = props;
-  console.log(data);
+  useEffect(() => {
+    dispatch(getUserById(id));
+  }, []);
+  console.log(user);
   return (
     <Navbar bg="white" expand="lg" className="font-nunito py-4">
       <Container>
@@ -45,11 +53,17 @@ export default function Header(props) {
           </Nav>
           {isLogin ? (
             <div className="d-flex align-items-center justify-content-center">
-              <div>{props.name}</div>
+              <div>
+                {user?.data.data?.name ? user.data.data.name : "no name"}
+              </div>
               <NavDropdown
                 title={
                   <img
-                    src={people}
+                    src={
+                      user.data.data?.image
+                        ? `https://res.cloudinary.com/dtjeegwiz/image/upload/v1667500751/AutoRent/user/${user.data.data.image}`
+                        : people
+                    }
                     className="rounded-circle"
                     style={{ width: "50px", height: "50px" }}
                   />
