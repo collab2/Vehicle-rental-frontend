@@ -29,6 +29,8 @@ export default function VehicleType() {
     });
   };
 
+  console.log(category);
+
   const handleFilter = (e) => {
     e.preventDefault();
     axios
@@ -62,7 +64,7 @@ export default function VehicleType() {
     dispatch(getCategory());
   }, []);
 
-  console.log(form);
+  console.log(products);
 
   return (
     <>

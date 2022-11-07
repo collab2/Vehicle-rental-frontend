@@ -45,23 +45,23 @@ export default function Signin() {
     e.preventDefault();
     dispatch(login(form))
       .then((response) => {
-        toast.success(response.value.data.msg, {
+        toast.success(response.value?.data?.msg, {
           position: toast.POSITION.TOP_CENTER,
         });
-        // dispatch(getProductById(response.value.data.data.productId));
-        dispatch(getProduct());
-        localStorage.setItem("token", response.value.data.data.token);
+        // dispatch(getProductById(response.value?.data?.data?.productId));
+        dispatch(getProduct(50));
+        localStorage.setItem("token", response.value?.data?.data?.token);
         localStorage.setItem(
           "refreshtoken",
-          response.value.data.data.refreshToken
+          response.value?.data?.data?.refreshToken
         );
-        localStorage.setItem("userId", response.value.data.data.userId);
+        localStorage.setItem("userId", response.value?.data?.data?.userId);
         setTimeout(() => {
           navigate("/");
         }, 3000);
       })
       .catch((error) =>
-        toast.error(error.response.data.msg, {
+        toast.error(error.response?.data?.msg, {
           position: toast.POSITION.TOP_CENTER,
         })
       );
