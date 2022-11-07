@@ -10,6 +10,6 @@ export const getUserById = (userId) => {
 export const editUser = (userId, data) => {
   return {
     type: "EDIT_USER",
-    payload: axios.patch(`/user/update/${userId}`, data),
+    payload: axios.patch(`/user/${userId}`, data),
   };
 };

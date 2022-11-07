@@ -1,5 +1,6 @@
+/* eslint-disable no-unused-vars */
 import React from "react";
-import PP from "../../assets/img/photoProfile.png";
+// import PP from "../../assets/img/photoProfile.png";
 import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
 import Button from "react-bootstrap/Button";
@@ -8,34 +9,58 @@ import { Icon } from "@iconify/react";
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getUserById, editUser } from "../../stores/actions/user";
+import { editUser, getUserById } from "../../stores/actions/user";
 import Personal from "../../component/Personal/Personal";
 import { Toast, ToastContainer } from "react-bootstrap";
 
 export default function Profile1() {
   const { id } = useParams();
   const [isLoading, setIsloading] = useState(false);
-  const [form, setForm] = useState({});
   const user = useSelector((state) => state.user.data);
+  const [form, setForm] = useState({
+    name: user.name,
+    email: user.email,
+    phone: user.phone,
+    gender: user.gender,
+    address: user.address,
+    birthDate: user.birthDate,
+  });
+  const [imagePreview, setImagePreview] = useState("");
   const [showToast, setShowToast] = useState(false);
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(getUserById(id));
-  }, []);
+  // useEffect(() => {
+  //   dispatch(getUserById(id));
+  // }, []);
 
-  const updateHandler = async () => {
-    try {
-      setIsloading(true);
-      await dispatch(editUser(form, id));
-    } catch (error) {
-      setShowToast(true);
-      setIsloading(false);
+  const updateHandler = () => {
+    setIsloading(true);
+    const formData = new FormData();
+    for (const data in form) {
+      formData.append(data, form[data]);
     }
+    // setIsloading(true);
+    dispatch(editUser(id, formData)).then(() => {
+      dispatch(getUserById(id));
+      setIsloading(false);
+    });
+    // try {
+    //   console.log(form);
+    // } catch (error) {
+    //   setShowToast(true);
+    //   setIsloading(false);
+    // }
   };
 
   const handleChangeForm = (e) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
+    const { name, value, files } = e.target;
+
+    if (name === "image") {
+      setForm({ ...form, [name]: files[0] });
+      setImagePreview(URL.createObjectURL(files[0]));
+    } else {
+      setForm({ ...form, [name]: value });
+    }
   };
   // console.log(user);
   console.log(id);
@@ -50,11 +75,34 @@ export default function Profile1() {
             </Button>
           </div>
           <div className="col-12 d-flex flex-column gap-5 align-items-center px-5 mt-5">
-            <div className="d-block profile-image-wrapper align-content-end align-items-end">
-              <img src={PP} className="rounded-circle" alt="photoProfile" />
-              <button className="btn btn-warning profile-edit-image">
+            <div
+              className="d-flex profile-image-wrapper justify-content-center align-items-center rounded-circle overflow-hidden position-relative"
+              style={{ width: "200px", height: "200px" }}
+            >
+              <img
+                src={
+                  form.image
+                    ? imagePreview
+                    : user.image
+                    ? process.env.REACT_APP_CLOUDINARY_URL_IMAGE + user.image
+                    : process.env.REACT_APP_CLOUDINARY_DEFAULT_IMAGE
+                }
+                className="img-fluid"
+                alt="photoProfile"
+              />
+              <label
+                htmlFor="image"
+                className="btn btn-warning profile-edit-image position-absolute top-50 end-0"
+              >
+                <input
+                  id="image"
+                  type="file"
+                  name="image"
+                  className="w-100 h-100 d-none"
+                  onChange={handleChangeForm}
+                />
                 <Icon icon="bx:pencil" className="profile-icon" />
-              </button>
+              </label>
             </div>
             <Personal data={user} />
             <div className="col-3 d-flex justify-content-between my-4">
@@ -62,11 +110,13 @@ export default function Profile1() {
                 <input
                   className="form-check-input"
                   type="radio"
-                  name="inlineRadioOptions"
-                  id="inlineRadio1"
-                  value="option1"
+                  name="gender"
+                  id="male"
+                  value="male"
+                  checked={form.gender === "male" ? true : false}
+                  onChange={handleChangeForm}
                 />
-                <label className="form-check-label" htmlFor="inlineRadio1">
+                <label className="form-check-label" htmlFor="male">
                   Male
                 </label>
               </div>
@@ -74,11 +124,13 @@ export default function Profile1() {
                 <input
                   className="form-check-input"
                   type="radio"
-                  name="inlineRadioOptions"
-                  id="inlineRadio2"
-                  value="option2"
+                  name="gender"
+                  id="female"
+                  value="female"
+                  checked={form.gender === "female" ? true : false}
+                  onChange={handleChangeForm}
                 />
-                <label className="form-check-label" htmlFor="inlineRadio2">
+                <label className="form-check-label" htmlFor="female">
                   Female
                 </label>
               </div>
@@ -93,7 +145,7 @@ export default function Profile1() {
                 aria-label="Username"
                 aria-describedby="basic-addon1"
                 className="profile-input"
-                defaultValue={user.email}
+                defaultValue={form.email}
                 name="email"
                 onChange={handleChangeForm}
               />
@@ -107,7 +159,7 @@ export default function Profile1() {
                 aria-label="Username"
                 aria-describedby="basic-addon1"
                 className="profile-input"
-                defaultValue={user.address}
+                defaultValue={form.address}
                 name="address"
                 onChange={handleChangeForm}
               />
@@ -121,7 +173,7 @@ export default function Profile1() {
                 aria-label="Username"
                 aria-describedby="basic-addon1"
                 className="profile-input"
-                defaultValue={user.phone}
+                defaultValue={form.phone}
                 name="phone"
                 onChange={handleChangeForm}
               />
@@ -136,7 +188,7 @@ export default function Profile1() {
                 aria-label="Username"
                 aria-describedby="basic-addon1"
                 className="profile-input"
-                defaultValue={user.name}
+                defaultValue={form.name}
                 name="name"
                 onChange={handleChangeForm}
               />
@@ -146,6 +198,7 @@ export default function Profile1() {
             <span className="profile-input-title">DD/MM/YY :</span>
             <InputGroup className="my-3">
               <Form.Control
+                type="date"
                 placeholder="Username"
                 aria-label="Username"
                 aria-describedby="basic-addon1"
