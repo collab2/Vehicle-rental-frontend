@@ -14,7 +14,7 @@ import {
   editProduct,
   deleteProduct,
   getProductById,
-  // deleteProductImage,
+  deleteProductImage,
 } from "../../stores/actions/product";
 
 export default function EditVehicle() {
@@ -40,6 +40,8 @@ export default function EditVehicle() {
     dispatch(getCategory());
     dispatch(getProductById(id));
   }, []);
+
+  console.log(id);
 
   const handleChange = (e) => {
     setForm({
@@ -95,7 +97,7 @@ export default function EditVehicle() {
         toast.success(res.value.data.msg, {
           position: toast.POSITION.TOP_CENTER,
         }),
-      dispatch(getProductById()).catch((err) =>
+      dispatch(getProductById(id)).catch((err) =>
         toast.error(err.value.response.msg, {
           position: toast.POSITION.TOP_CENTER,
         })
@@ -115,7 +117,7 @@ export default function EditVehicle() {
           position: toast.POSITION.TOP_CENTER,
         }),
       dispatch(getProductById()).catch((err) =>
-        toast.error(err.value.response.data.msg, {
+        toast.error(err.value.data.msg, {
           position: toast.POSITION.TOP_CENTER,
         })
       )
@@ -139,9 +141,61 @@ export default function EditVehicle() {
     }
   };
 
-  const imageProduct1 = `https://res.cloudinary.com/dtjeegwiz/image/upload/v1667656027/${product.image1}`;
-  const imageProduct2 = `https://res.cloudinary.com/dtjeegwiz/image/upload/v1667656027/${product.image2}`;
-  const imageProduct3 = `https://res.cloudinary.com/dtjeegwiz/image/upload/v1667656027/${product.image3}`;
+  const handleDeleteImage1 = () => {
+    const deleteConfirm = window.confirm("Do you want delete the image?");
+    if (deleteConfirm) {
+      dispatch(deleteProductImage(id, product.image1)).then(
+        (res) =>
+          toast.success(res.value.data.msg, {
+            position: toast.POSITION.TOP_CENTER,
+          }),
+        dispatch(getProductById(id)).catch((err) =>
+          toast.error(err.value.response.msg, {
+            position: toast.POSITION.TOP_CENTER,
+          })
+        )
+      );
+    }
+  };
+
+  const handleDeleteImage2 = () => {
+    const deleteConfirm = window.confirm("Do you want delete the image?");
+    if (deleteConfirm) {
+      dispatch(deleteProductImage(id, product.image2)).then(
+        (res) =>
+          toast.success(res.value.data.msg, {
+            position: toast.POSITION.TOP_CENTER,
+          }),
+        dispatch(getProductById(id)).catch((err) =>
+          toast.error(err.value.response.msg, {
+            position: toast.POSITION.TOP_CENTER,
+          })
+        )
+      );
+    }
+  };
+
+  const handleDeleteImage3 = (productImage) => {
+    const deleteConfirm = window.confirm("Do you want delete the image?");
+    if (deleteConfirm) {
+      dispatch(deleteProductImage(id, productImage)).then(
+        (res) =>
+          toast.success(res.value.data.msg, {
+            position: toast.POSITION.TOP_CENTER,
+          }),
+        dispatch(getProductById(id)).catch((err) =>
+          toast.error(err.value.response.msg, {
+            position: toast.POSITION.TOP_CENTER,
+          })
+        )
+      );
+      window.location.reload();
+    }
+  };
+
+  const imageProduct1 = `https://res.cloudinary.com/dtjeegwiz/image/upload/v1667656027/${product?.image1}`;
+  const imageProduct2 = `https://res.cloudinary.com/dtjeegwiz/image/upload/v1667656027/${product?.image2}`;
+  const imageProduct3 = `https://res.cloudinary.com/dtjeegwiz/image/upload/v1667656027/${product?.image3}`;
 
   return (
     <>
@@ -153,51 +207,80 @@ export default function EditVehicle() {
 
         <div className="container">
           <div className="d-flex flex-wrap my-5 justify-content-evenly">
-            <div className="col-lg-6 col-sm-12 text-center">
-              <label htmlFor="image1">
-                <input
-                  type="file"
-                  name="image1"
-                  id="image1"
-                  style={{ display: "none" }}
-                  onChange={handleImageChange1}
-                />
-                <img
-                  src={
-                    lengthImage1 > 0
-                      ? imagePreview1
-                      : imageProduct1
-                      ? imageProduct1
-                      : addImage
-                  }
-                  alt=""
-                  className="big-image"
-                />
-              </label>
+            <div className="col-lg-6 col-sm-12">
+              <div className="text-end">
+                <button
+                  className="btn-yellow-black-delete"
+                  onClick={handleDeleteImage1}
+                >
+                  X
+                </button>
+              </div>
+              <div className="text-center">
+                <label htmlFor="image1">
+                  <input
+                    type="file"
+                    name="image1"
+                    id="image1"
+                    style={{ display: "none" }}
+                    onChange={handleImageChange1}
+                  />
+                  <img
+                    src={
+                      lengthImage1 > 0
+                        ? imagePreview1
+                        : imageProduct1
+                        ? imageProduct1
+                        : addImage
+                    }
+                    alt=""
+                    className="big-image"
+                  />
+                </label>
+              </div>
               <div className="d-flex mt-5">
-                <div className="col-6 text-start">
-                  <label htmlFor="image2">
-                    <input
-                      type="file"
-                      name="image2"
-                      id="image2"
-                      style={{ display: "none" }}
-                      onChange={handleImageChange2}
-                    />
-                    <img
-                      src={
-                        lengthImage2 > 0
-                          ? imagePreview2
-                          : imageProduct2
-                          ? imageProduct2
-                          : addImage
-                      }
-                      alt=""
-                      className="small-image"
-                    />
-                  </label>
+                <div className="col-6">
+                  <div className="text-end">
+                    <button
+                      className="btn-yellow-black-delete"
+                      onClick={handleDeleteImage2}
+                    >
+                      X
+                    </button>
+                  </div>
+                  <div className="text-start">
+                    <label htmlFor="image2">
+                      <input
+                        type="file"
+                        name="image2"
+                        id="image2"
+                        style={{ display: "none" }}
+                        onChange={handleImageChange2}
+                      />
+                      <img
+                        src={
+                          lengthImage2 > 0
+                            ? imagePreview2
+                            : imageProduct2
+                            ? imageProduct2
+                            : addImage
+                        }
+                        alt=""
+                        className="small-image"
+                      />
+                    </label>
+                  </div>
                 </div>
                 <div className="col-6 text-end">
+                  <button
+                    className="btn-yellow-black-delete"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      handleDeleteImage3(product.image3);
+                    }}
+                  >
+                    X
+                  </button>
                   <label htmlFor="image3">
                     <input
                       type="file"
@@ -298,7 +381,9 @@ export default function EditVehicle() {
                 onChange={handleChange}
               >
                 <option selected>
-                  {product.category ? product.category : "Add Category"}
+                  {product.category
+                    ? `Added to ${product.category}`
+                    : "Add Category"}
                 </option>
                 {category.length > 0 ? (
                   category.map((item, index) => (
@@ -338,7 +423,7 @@ export default function EditVehicle() {
               className="btn-black-yellow shadow btn-responsive-edit"
               onClick={handleDelete}
             >
-              Delete Image
+              Delete
             </button>
             <ToastContainer />
           </div>
