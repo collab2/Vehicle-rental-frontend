@@ -22,9 +22,11 @@ export default function VehicleDetailAdmin() {
     navigate(`/vehicle-type`);
   };
 
-  const handleEdit = (productId) => {
-    navigate(`/edit-vehicle/${productId}`);
+  const handleEdit = () => {
+    navigate(`/edit-vehicle/${product.productId}`);
   };
+
+  console.log(product);
 
   return (
     <>

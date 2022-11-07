@@ -78,6 +78,7 @@ export default function VehicleType() {
                 name="nameproduct"
                 onChange={handleChange}
                 placeholder="Vehicle Name"
+                aria-label="Search"
               />
               <input
                 className="form-control"
@@ -86,6 +87,7 @@ export default function VehicleType() {
                 onChange={handleChange}
                 value={form.location}
                 placeholder="Location"
+                aria-label="Search"
               />
               <select
                 className="form-select"

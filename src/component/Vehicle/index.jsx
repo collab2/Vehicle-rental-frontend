@@ -1,12 +1,19 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import "./index.css";
 
 export default function Vehicle(props) {
+  const user = useSelector((state) => state.signin);
+
   const navigate = useNavigate();
 
   const handleDetail = () => {
-    navigate(`/vehicle-detail-user/${props.data.productId}`);
+    if (user.data?.role === "user") {
+      navigate(`/vehicle-detail-user/${props.data.productId}`);
+    } else {
+      navigate(`/vehicle-detail-admin/${props.data.productId}`);
+    }
   };
   return (
     <>

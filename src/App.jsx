@@ -56,6 +56,7 @@ function App() {
           />
           <Route path="/reservation/:id" element={<Reservation />} />
           <Route path="/reservation/:productId" element={<Reservation />} />
+          <Route path="/profile/:id" element={<Profile1 />} />
           <Route path="/profile" element={<Profile1 />} />
           <Route path="/payment/" element={<Payment />} />
           <Route path="/reservation-list" element={<ReservationList />} />
