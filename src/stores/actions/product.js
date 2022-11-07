@@ -1,9 +1,11 @@
 import axios from "../../utils/axios";
 
-export const getProduct = (limit) => {
+export const getProduct = (limit, location, name) => {
   return {
     type: "GET_PRODUCT",
-    payload: axios.get(`/product?limit=${limit}`),
+    payload: axios.get(
+      `/product?limit=${limit}&location=${location}&nameproduct=${name}&sort=latest`
+    ),
   };
 };
 
@@ -39,5 +41,12 @@ export const deleteProductImage = (productId, data) => {
   return {
     type: "DELETE_IMAGE_PRODUCT",
     payload: axios.patch(`/product/delete/image/${productId}`, data),
+  };
+};
+
+export const getProductByCategory = (category) => {
+  return {
+    type: "GET_PRODUCT_BY_CATEGORY",
+    payload: axios.get(`/product/category?category=${category}`),
   };
 };

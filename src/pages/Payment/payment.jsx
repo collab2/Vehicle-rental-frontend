@@ -4,8 +4,11 @@ import Bike from "../../assets/img/bike.png";
 import Dropdown from "react-bootstrap/Dropdown";
 // import Button from "react-bootstrap/Button";
 import { Icon } from "@iconify/react";
+import { useLocation } from "react-router-dom";
 
 export default function Payment() {
+  const { state } = useLocation();
+  console.log(state);
   return (
     <>
       <Header />

@@ -170,6 +170,33 @@ const product = (state = initialState, action) => {
         message: action.payload.data.message,
       };
 
+    case "GET_PRODUCT_BY_CATEGORY_PENDING":
+      return {
+        ...state,
+        data: {},
+        isLoading: true,
+        isError: false,
+        message: "Loading...",
+      };
+
+    case "GET_PRODUCT_BY_CATEGORY_REJECTED":
+      return {
+        ...state,
+        data: {},
+        isLoading: false,
+        isError: true,
+        message: action.payload.message,
+      };
+
+    case "GET_PRODUCT_BY_CATEGORY_FULFILLED":
+      return {
+        ...state,
+        data: action.payload.data.data,
+        isLoading: false,
+        isError: false,
+        message: action.payload.data.message,
+      };
+
     default: {
       return state;
     }
