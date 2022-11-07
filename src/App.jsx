@@ -6,10 +6,7 @@ import LandingPage from "./pages/LandingPage/index.jsx";
 import Profile1 from "./pages/ProfileUser/profile1";
 import History from "./pages/History";
 import Signup from "./pages/Auth/signup";
-import SignupAdmin from "./pages/Auth/signupAdmin";
 import Signin from "./pages/Auth/signin";
-import SigninAdmin from "./pages/Auth/signinAdmin";
-import ForgotPassword from "./pages/Auth/forgotPassword";
 import ForgotPasswordAdmin from "./pages/Auth/forgotPasswordAdmin";
 import ResetPassword from "./pages/Auth/resetPassword";
 import ResetPasswordAdmin from "./pages/Auth/resetPasswordAdmin";
@@ -21,6 +18,9 @@ import VehicleDetailAdmin from "./pages/VehicleDetailAdmin";
 import ApprovalPayment from "./pages/ApprovalPayment";
 import EditVehicle from "./pages/EditVehicle";
 import Reservation from "./pages/Reservation";
+import SignupAdmin from "./pages/Auth/signupadmin";
+import SigninAdmin from "./pages/Auth/signinadmin";
+import ForgotPassword from "./pages/Auth/forgotpassword";
 
 function App() {
   return (
