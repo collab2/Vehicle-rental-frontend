@@ -1,9 +1,10 @@
 .big-image {
-  width: 90%;
+  width: 100%;
+  border-radius: 10px;
 }
 
 .small-image {
-  width: 80%;
+  width: 90%;
   border-radius: 10px;
 }
 
@@ -68,6 +69,24 @@
 }
 
 .btn-yellow-black:hover {
+  background-color: #ffe2a2;
+  color: #1b1b1b;
+}
+
+.btn-yellow-black-delete {
+  background-color: #ffcd61;
+  color: #393939;
+  padding: 5px 12px;
+  border-radius: 15px;
+  border: 0;
+  font-weight: bold;
+  /* position: absolute; */
+  float: right;
+  /* margin-right: ; */
+  /* margin-left: 20%; */
+}
+
+.btn-yellow-black-delete:hover {
   background-color: #ffe2a2;
   color: #1b1b1b;
 }

@@ -22,7 +22,7 @@ const category = (state = initialState, action) => {
         data: {},
         isLoading: false,
         isError: true,
-        message: action.payload.response.data,
+        message: action.payload.message,
       };
 
     case "GET_CATEGORY_FULFILLED":

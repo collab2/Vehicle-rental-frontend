@@ -14,13 +14,17 @@ import stars from "../../assets/img/stars.png";
 import CardPopular from "../../component/CardPopular";
 import Footer from "../../component/Footer";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 export default function LandingPage() {
+  const products = useSelector((state) => state.product.allData);
   const navigate = useNavigate();
 
   const handleNav = (path) => {
     navigate(`/${path}`);
   };
+
+  console.log(products);
 
   return (
     <>
@@ -66,7 +70,15 @@ export default function LandingPage() {
             </button>
           </div>
           <div className="d-flex flex-nowrap my-5 overflow-auto">
-            <CardPopular />
+            {products?.map((product) => (
+              <CardPopular
+                key={product.id}
+                id={product.productId}
+                name={product.nameProduct}
+                location={product.location}
+                image={product.image1}
+              />
+            ))}
           </div>
 
           <div className="my-5">

@@ -5,9 +5,8 @@ import Footer from "../../component/Footer";
 import { useDispatch } from "react-redux";
 import { getCategory, addCategory } from "../../stores/actions/category";
 import { addProduct } from "../../stores/actions/product";
-import Camera from "../../assets/img/camera.png";
-import SmallCamera from "../../assets/img/smallcamera.png";
-import { Icon } from "@iconify/react";
+
+import addImage from "../../assets/img/addImage.png";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -16,6 +15,15 @@ export default function EditVehicle() {
   const [form, setForm] = useState({});
   const [category, setCategory] = useState({});
   const [addCategories, setAddCategories] = useState({});
+  const [imagePreview1, setImagePreview1] = useState({});
+  const [imagePreview2, setImagePreview2] = useState({});
+  const [imagePreview3, setImagePreview3] = useState({});
+  const [newImage1, setNewImage1] = useState({});
+  const [newImage2, setNewImage2] = useState({});
+  const [newImage3, setNewImage3] = useState({});
+  const lengthImage1 = Object.keys(newImage1).length;
+  const lengthImage2 = Object.keys(newImage2).length;
+  const lengthImage3 = Object.keys(newImage3).length;
 
   useEffect(() => {
     getCategoryData();
@@ -60,17 +68,26 @@ export default function EditVehicle() {
     });
   };
 
-  const [counter, setCounter] = useState(0);
-
-  const increment = (data) => {
-    setCounter(counter + data);
-  };
-  const decrement = () => {
-    setCounter(counter - 1);
+  const handleImageChange1 = (e) => {
+    const { name, files } = e.target;
+    setNewImage1({ [name]: files[0] });
+    setImagePreview1(URL.createObjectURL(files[0]));
   };
 
-  const handleAddProduct = (e) => {
-    e.preventDefault();
+  const handleImageChange2 = (e) => {
+    const { name, files } = e.target;
+    setNewImage2({ [name]: files[0] });
+    setImagePreview2(URL.createObjectURL(files[0]));
+  };
+
+  const handleImageChange3 = (e) => {
+    const { name, files } = e.target;
+    setNewImage3({ [name]: files[0] });
+    setImagePreview3(URL.createObjectURL(files[0]));
+  };
+
+  const handleAddProduct = () => {
+    // e.preventDefault();
     dispatch(addProduct(form))
       .then((response) => {
         toast.success(response.value.data.msg, {
@@ -83,6 +100,26 @@ export default function EditVehicle() {
         });
       });
   };
+
+  const handleAddImage = () => {
+    // e.preventDefault();
+    const formData = new FormData();
+    formData.append("image1", newImage1.image1);
+    formData.append("image2", newImage2.image2);
+    formData.append("image3", newImage3.image3);
+    dispatch(addProduct(formData)).then((res) =>
+      toast
+        .success(res.value.data.msg, {
+          position: toast.POSITION.TOP_CENTER,
+        })
+        .catch((err) =>
+          toast.error(err.value.data.msg, {
+            position: toast.POSITION.TOP_CENTER,
+          })
+        )
+    );
+  };
+
   return (
     <>
       <Header />
@@ -94,28 +131,60 @@ export default function EditVehicle() {
         <div className="container">
           <div className="d-flex flex-wrap my-5 justify-content-evenly">
             <div className="col-lg-6 col-sm-12 text-center">
-              <label htmlFor="image" className="w-100">
-                <input
-                  type="file"
-                  name="image"
-                  id="image"
-                  style={{ display: "none" }}
-                />
-                <div className="case w-100 d-flex flex-column align-items-center justify-content-center">
-                  <img src={Camera} alt="camera" />
-                  <h1 className="mt-3">Click to add image</h1>
-                </div>
-                <div className="d-flex mt-4">
-                  <div className="col-6 case2 d-flex flex-column align-items-center justify-content-center">
-                    <img src={SmallCamera} alt="camera" />
-                    <h1 className="mt-1">Click to add image</h1>
+              <div className="text-end"></div>
+              <div className="text-center">
+                <label htmlFor="image1">
+                  <input
+                    type="file"
+                    name="image1"
+                    id="image1"
+                    style={{ display: "none" }}
+                    onChange={handleImageChange1}
+                  />
+                  <img
+                    src={lengthImage1 > 0 ? imagePreview1 : addImage}
+                    alt=""
+                    className="big-image"
+                  />
+                </label>
+              </div>
+              <div className="d-flex mt-5">
+                <div className="col-6">
+                  <div className="text-end"></div>
+                  <div className="text-start">
+                    <label htmlFor="image2">
+                      <input
+                        type="file"
+                        name="image2"
+                        id="image2"
+                        style={{ display: "none" }}
+                        onChange={handleImageChange2}
+                      />
+                      <img
+                        src={lengthImage2 > 0 ? imagePreview2 : addImage}
+                        alt=""
+                        className="small-image"
+                      />
+                    </label>
                   </div>
-                  <div className="col-6 case3 ms-2 d-flex flex-column align-items-center justify-content-center">
-                    <Icon icon="entypo:plus" color="#B8BECD" width="54px" />
-                    <h1>Add more</h1>
-                  </div>
                 </div>
-              </label>
+                <div className="col-6 text-end">
+                  <label htmlFor="image3">
+                    <input
+                      type="file"
+                      name="image3"
+                      id="image3"
+                      style={{ display: "none" }}
+                      onChange={handleImageChange3}
+                    />
+                    <img
+                      src={lengthImage3 > 0 ? imagePreview3 : addImage}
+                      alt=""
+                      className="small-image"
+                    />
+                  </label>
+                </div>
+              </div>
             </div>
 
             <div className="col-lg-4 col-sm-12 ms-2">
@@ -181,59 +250,56 @@ export default function EditVehicle() {
                   Stock :{" "}
                 </label>
                 <div className="d-flex align-items-center justify-content-evenly">
-                  <button
+                  <input
+                    type="number"
+                    className="border-0 text-center bg-light form-control"
                     name="stock"
-                    className="btn-yellow-plus"
-                    onClick={() => increment(1)}
+                    placeholder="Set Stock"
                     onChange={handleChange}
-                  >
-                    +
-                  </button>
-                  <p className="mx-5 fw-bold mt-3 mx-3">{counter}</p>
-                  <button
-                    name="stock"
-                    className="btn-grey-minus"
-                    onClick={decrement}
-                    disabled={counter === 0 ? true : false}
-                    onChange={handleChange}
-                  >
-                    -
-                  </button>
+                  />
                 </div>
               </div>
             </div>
           </div>
 
-          <div className="d-flex justify-content-between mb-5">
-            <select
-              className="form-select text-center"
-              name="category"
-              onChange={handleChange}
-            >
-              <option selected>Add item to</option>
-              {category.length > 0 ? (
-                category.map((item, index) => (
-                  <option key={index} value={item}>
-                    {item}
-                  </option>
-                ))
-              ) : (
-                <>
-                  <option value="Bicycle">Bicycle</option>
-                  <option value="Cars">Cars</option>
-                  <option value="Bus">Bus</option>
-                </>
-              )}
-            </select>
+          <div className="d-flex flex-wrap justify-content-between mb-5">
+            <div className="input-group text-center btn-edit-category">
+              <select
+                className="form-select text-center"
+                name="category"
+                onChange={handleChange}
+              >
+                <option selected>Add item to</option>
+                {category.length > 0 ? (
+                  category.map((item, index) => (
+                    <option key={index} value={item}>
+                      {item}
+                    </option>
+                  ))
+                ) : (
+                  <>
+                    <option value="Bicycle">Bicycle</option>
+                    <option value="Cars">Cars</option>
+                    <option value="Bus">Bus</option>
+                  </>
+                )}
+              </select>
+              <button
+                className="input-group-text btn-add-category"
+                data-bs-toggle="modal"
+                data-bs-target="#manageCategory"
+                style={{ padding: "0 1rem" }}
+              >
+                +
+              </button>
+            </div>
             <button
-              className="input-group-text btn-add-category"
-              data-bs-toggle="modal"
-              data-bs-target="#manageCategory"
-              style={{ padding: "0 1rem" }}
+              className="btn save-item"
+              onClick={() => {
+                handleAddProduct();
+                handleAddImage();
+              }}
             >
-              +
-            </button>
-            <button className="btn save-item me-5" onClick={handleAddProduct}>
               Save Item
             </button>
           </div>

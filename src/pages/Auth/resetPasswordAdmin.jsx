@@ -5,10 +5,11 @@ import "./index.css";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 // import Logo from "../../component/Logo";
-import { resetPassword } from "../../stores/actions/resetPassword";
+// import { register } from "../../stores/actions/signup";
 import { useNavigate, useParams } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { resetPassword } from "../../stores/actions/resetPassword";
 // import axios from "../../utils/axios";
 
 export default function ResetPasswordAdmin() {
