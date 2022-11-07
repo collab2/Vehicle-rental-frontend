@@ -9,6 +9,7 @@ import { ToastContainer, toast } from "react-toastify";
 import { getProduct } from "../../stores/actions/product";
 import "react-toastify/dist/ReactToastify.css";
 // import axios from "../../utils/axios";
+import logo from "../../assets/img/logo.png";
 
 export default function Signin() {
   const navigate = useNavigate();
@@ -77,11 +78,15 @@ export default function Signin() {
           <div className="left-side h-100"></div>
         </div>
         <div className="col-md-6 col-lg-6 col-xl-6 col-12 right-side d-flex flex-column justify-content-center px-0 py-0 h-100">
-          {/* <div className="mobile-display">
-            <img src={authimage} alt="van" className="" />
-          </div> */}
-          <div className="desktop-display h-100 overflow-hidden">
-            <div className="mx-5 px-5 mb-5 mt-5">
+          <div className="d-flex align-items-center auth-img-icon">
+            <img src={logo} alt="van" className="auth-img-logo" />
+            <div className="auth-img-text">
+              <h2>Auto Rent</h2>
+              <span>Best Solution for Your Journey</span>
+            </div>
+          </div>
+          <div className="desktop-display h-100">
+            <div className="mx-5 px-5 mb-3 mt-5">
               <h2>Login</h2>
             </div>
             <form className="form-login mx-5 px-5">
@@ -89,7 +94,7 @@ export default function Signin() {
                 type="email"
                 name="email"
                 placeholder="Email"
-                className="form-input text-start px-5 mb-5"
+                className="form-input text-start px-5 mb-3"
                 onChange={handleChangeForm}
               />
               <input
@@ -110,13 +115,13 @@ export default function Signin() {
               >
                 Forgot password?
               </button>
-              <h1 className="separator pt-4 mb-5 mt-5">
-                Already have account?
+              <h1 className="separator pt-4 my-2">
+                {"Don't have an account?"}
               </h1>
             </form>
             <div className="m-5 px-5 form-login">
               <div className="">
-                <div className="d-grid mt-5">
+                <div className="d-grid mt-3">
                   <button
                     className="sign-btn "
                     onClick={() => handleNavigate("signup")}

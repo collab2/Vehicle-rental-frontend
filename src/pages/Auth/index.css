@@ -273,6 +273,21 @@
 .Listfooter {
   display: none;
 }
+
+.auth-img-icon {
+  margin-top: 15%;
+  margin-left: 15%;
+}
+
+.auth-img-logo {
+  width: 15%;
+}
+
+.auth-img-text {
+  margin-left: 12px;
+  /* margin: 15% 10%; */
+}
+
 @media (max-width: 425px) {
   .container-image {
     display: none;

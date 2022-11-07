@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Header from "../../component/Header";
 import Card from "react-bootstrap/Card";
 import { Slide } from "react-slideshow-image";
@@ -14,17 +14,30 @@ import stars from "../../assets/img/stars.png";
 import CardPopular from "../../component/CardPopular";
 import Footer from "../../component/Footer";
 import { useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { getProduct } from "../../stores/actions/product";
+import { useEffect } from "react";
 
 export default function LandingPage() {
-  const products = useSelector((state) => state.product.allData);
+  const [products, setProducts] = useState({});
+
   const navigate = useNavigate();
 
   const handleNav = (path) => {
     navigate(`/${path}`);
   };
 
-  console.log(products);
+  useEffect(() => {
+    getDataProduct();
+  }, []);
+
+  const dispatch = useDispatch();
+
+  const getDataProduct = () => {
+    dispatch(getProduct()).then((res) => {
+      setProducts(res.value.data.data);
+    });
+  };
 
   return (
     <>
@@ -70,15 +83,13 @@ export default function LandingPage() {
             </button>
           </div>
           <div className="d-flex flex-nowrap my-5 overflow-auto">
-            {products?.map((product) => (
-              <CardPopular
-                key={product.id}
-                id={product.productId}
-                name={product.nameProduct}
-                location={product.location}
-                image={product.image1}
-              />
-            ))}
+            {products.length > 0 ? (
+              products.map((item, index) => (
+                <CardPopular key={index} data={item} />
+              ))
+            ) : (
+              <h6>Something Popular Coming ...</h6>
+            )}
           </div>
 
           <div className="my-5">
