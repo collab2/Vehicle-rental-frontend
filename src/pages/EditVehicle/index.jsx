@@ -201,8 +201,6 @@ export default function EditVehicle() {
   const imageProduct2 = `https://res.cloudinary.com/dtjeegwiz/image/upload/v1667656027/${product?.image2}`;
   const imageProduct3 = `https://res.cloudinary.com/dtjeegwiz/image/upload/v1667656027/${product?.image3}`;
 
-  console.log(id, product?.image1);
-
   return (
     <>
       <Header />
