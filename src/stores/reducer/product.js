@@ -7,7 +7,6 @@ const initialState = {
 };
 
 const product = (state = initialState, action) => {
-  console.log(action);
   switch (action.type) {
     case "GET_PRODUCT_PENDING":
       return {
@@ -159,7 +158,7 @@ const product = (state = initialState, action) => {
         data: {},
         isLoading: false,
         isError: true,
-        message: action.payload.response.data,
+        message: action.payload.message,
       };
 
     case "DELETE_IMAGE_PRODUCT_FULFILLED":

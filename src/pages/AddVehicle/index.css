@@ -136,10 +136,33 @@
   border-radius: 5px !important;
   border: 0 !important;
   font-weight: bold !important;
-  width: 672px !important;
+  width: 50% !important;
 }
 
 .save-item:hover {
   background-color: #ffe2a2 !important;
   color: #1b1b1b !important;
+}
+
+.btn-edit-category-add-vehicle {
+  background-color: #ffcd61 !important;
+  color: #393939 !important;
+  padding: 20px 0 !important;
+  border-radius: 5px !important;
+  border: 0 !important;
+  font-weight: bold !important;
+  width: 40% !important;
+}
+
+@media (max-width: 425px) {
+  .save-item {
+    width: 100% !important;
+    padding: 10px 0 !important;
+    margin-top: 12px;
+    float: center;
+  }
+
+  .btn-edit-category-add-vehicle {
+    width: 100% !important;
+  }
 }

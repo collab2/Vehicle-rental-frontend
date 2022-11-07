@@ -5,11 +5,7 @@ import "./index.css";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 // import Logo from "../../component/Logo";
-<<<<<<< HEAD
 // import { register } from "../../stores/actions/signup";
-=======
-import { resetPassword } from "../../stores/actions/resetPassword";
->>>>>>> 80e79fb96abd5e2017ffd8568f76a4e519e00983
 import { useNavigate, useParams } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
