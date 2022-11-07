@@ -3,19 +3,19 @@ import React from "react";
 import "./index.css";
 // import { Icon } from "@iconify/react";
 import { useState } from "react";
-// import { useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 // import Logo from "../../component/Logo";
 // import { register } from "../../stores/actions/signup";
-import { useNavigate } from "react-router-dom";
-import { ToastContainer } from "react-toastify";
+import { useNavigate, useParams } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 // import axios from "../../utils/axios";
-// import { resetPassword } from "../../stores/actions/resetPassword";
+import { resetPassword } from "../../stores/actions/resetPassword";
 
 export default function ResetPasswordAdmin() {
-  // const { OTPReset } = useParams();
+  const { OTPReset } = useParams();
   const navigate = useNavigate();
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const [form, setForm] = useState({
     newPassword: "",
     confirmPassword: "",
@@ -25,23 +25,23 @@ export default function ResetPasswordAdmin() {
     navigate(`/${nav}`);
   };
 
-  // const handleResetPassword = (e) => {
-  //   e.preventDefault();
-  //   dispatch(resetPassword(OTPReset, form))
-  //     .then((response) => {
-  //       toast.success(response.value.data.msg, {
-  //         position: toast.POSITION.TOP_CENTER,
-  //       });
-  //       setTimeout(() => {
-  //         navigate("/signin-admin");
-  //       }, 3000);
-  //     })
-  //     .catch((error) =>
-  //       toast.error(error.response.data.msg, {
-  //         position: toast.POSITION.TOP_CENTER,
-  //       })
-  //     );
-  // };
+  const handleResetPassword = (e) => {
+    e.preventDefault();
+    dispatch(resetPassword(OTPReset, form))
+      .then((response) => {
+        toast.success(response.value.data.msg, {
+          position: toast.POSITION.TOP_CENTER,
+        });
+        setTimeout(() => {
+          navigate("/signin-admin");
+        }, 3000);
+      })
+      .catch((error) =>
+        toast.error(error.response.data.msg, {
+          position: toast.POSITION.TOP_CENTER,
+        })
+      );
+  };
 
   const handleChangeForm = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -80,7 +80,9 @@ export default function ResetPasswordAdmin() {
                 onChange={handleChangeForm}
               />
               <div className="d-grid">
-                <button className="auth-btn">Reset Password</button>
+                <button className="auth-btn" onClick={handleResetPassword}>
+                  Reset Password
+                </button>
               </div>
               <button className="text-start click-me mt-2">
                 Forgot password?
