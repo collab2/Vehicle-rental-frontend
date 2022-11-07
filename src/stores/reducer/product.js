@@ -7,12 +7,11 @@ const initialState = {
 };
 
 const product = (state = initialState, action) => {
-  console.log(action);
   switch (action.type) {
     case "GET_PRODUCT_PENDING":
       return {
         ...state,
-        allData: {},
+        allData: [],
         isLoading: true,
         isError: false,
         message: "Loading...",
@@ -21,13 +20,39 @@ const product = (state = initialState, action) => {
     case "GET_PRODUCT_REJECTED":
       return {
         ...state,
-        allData: {},
+        allData: [],
         isLoading: false,
         isError: true,
         message: action.payload.response.data,
       };
 
     case "GET_PRODUCT_FULFILLED":
+      return {
+        ...state,
+        allData: action.payload.data.data,
+        isLoading: false,
+        isError: false,
+        message: action.payload.data.message,
+      };
+    case "FILTER_PRODUCT_PENDING":
+      return {
+        ...state,
+        allData: [],
+        isLoading: true,
+        isError: false,
+        message: "Loading...",
+      };
+
+    case "FILTER_PRODUCT_REJECTED":
+      return {
+        ...state,
+        allData: [],
+        isLoading: false,
+        isError: true,
+        message: action.payload.response.data,
+      };
+
+    case "FILTER_PRODUCT_FULFILLED":
       return {
         ...state,
         allData: action.payload.data.data,
@@ -159,7 +184,7 @@ const product = (state = initialState, action) => {
         data: {},
         isLoading: false,
         isError: true,
-        message: action.payload.response.data,
+        message: action.payload.message,
       };
 
     case "DELETE_IMAGE_PRODUCT_FULFILLED":

@@ -10,12 +10,10 @@ import {
   incrementCounter,
   decrementCounter,
 } from "../../stores/action/counter";
-// import { Card } from "react-bootstrap";
 
 export default function VehicleDetailComponent(props) {
   const counterData = useSelector((state) => state.counter);
   const dispatch = useDispatch();
-  console.log(props.data.image1);
 
   return (
     <>

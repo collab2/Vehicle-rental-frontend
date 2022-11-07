@@ -1,9 +1,9 @@
 import axios from "../../utils/axios";
 
-export const getProduct = () => {
+export const getProduct = (limit) => {
   return {
     type: "GET_PRODUCT",
-    payload: axios.get("/product"),
+    payload: axios.get(`/product?limit=${limit}`),
   };
 };
 
@@ -28,6 +28,16 @@ export const editProduct = (productId, data) => {
   };
 };
 
+export const filterVehicle = (sort, nameproduct, location) => {
+  console.log(nameproduct, location, sort);
+  return {
+    type: "FILTER_PRODUCT",
+    payload: axios.get(
+      `/product?location=${location}&sort=${sort}&nameproduct=${nameproduct}`
+    ),
+  };
+};
+
 export const deleteProduct = (id) => {
   return {
     type: "DELETE_PRODUCT",
@@ -38,6 +48,6 @@ export const deleteProduct = (id) => {
 export const deleteProductImage = (productId, data) => {
   return {
     type: "DELETE_IMAGE_PRODUCT",
-    payload: axios.patch(`/delete/image/${productId}`, data),
+    payload: axios.patch(`/product/delete/image/${productId}`, data),
   };
 };
