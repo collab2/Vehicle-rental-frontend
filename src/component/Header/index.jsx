@@ -81,10 +81,16 @@ export default function Header() {
             </div>
           ) : (
             <div className="d-flex gap-3 justify-content-center">
-              <button className="button-navbar bg-white border-yellow">
+              <button
+                className="button-navbar bg-white border-yellow"
+                onClick={() => navigate("/signin")}
+              >
                 Login
               </button>
-              <button className="button-navbar background-yellow border-0">
+              <button
+                className="button-navbar background-yellow border-0"
+                onClick={() => navigate("/signup")}
+              >
                 Register
               </button>
             </div>
