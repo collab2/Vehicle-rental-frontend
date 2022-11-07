@@ -55,11 +55,17 @@ function App() {
         />
         <Route path="/add-vehicle" element={<AddVehicle />} />
         <Route path="/vehicle-type" element={<VehicleType />} />
-        <Route path="/vehicle-detail-user" element={<VehicleDetailUser />} />
-        <Route path="/vehicle-detail-admin" element={<VehicleDetailAdmin />} />
+        <Route
+          path="/vehicle-detail-user/:id"
+          element={<VehicleDetailUser />}
+        />
+        <Route
+          path="/vehicle-detail-admin/:id"
+          element={<VehicleDetailAdmin />}
+        />
         <Route path="/approval-payment" element={<ApprovalPayment />} />
-        <Route path="/edit-vehicle" element={<EditVehicle />} />
-        <Route path="/reservation" element={<Reservation />} />
+        <Route path="/edit-vehicle/:id" element={<EditVehicle />} />
+        <Route path="/reservation/:id" element={<Reservation />} />
       </Routes>
     </BrowserRouter>
   );

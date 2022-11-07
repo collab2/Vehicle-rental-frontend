@@ -1,10 +1,19 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Footer from "../../component/Footer";
 import Header from "../../component/Header";
 import Vehicle from "../../component/Vehicle";
 import "./index.css";
+import { getProduct } from "../../stores/actions/product";
+import { useDispatch, useSelector } from "react-redux";
 
 export default function VehicleType() {
+  const dispatch = useDispatch();
+  const product = useSelector((state) => state.product.allData);
+
+  useEffect(() => {
+    dispatch(getProduct());
+  }, []);
+
   return (
     <>
       <Header />
@@ -58,8 +67,16 @@ export default function VehicleType() {
             </form>
           </div>
         </nav>
-        <section className="main-section">
-          <Vehicle />
+        <section className="main-section gap-3">
+          {product?.length > 0 ? (
+            product?.map((item) => (
+              <div key={item.productId}>
+                <Vehicle data={item} />
+              </div>
+            ))
+          ) : (
+            <div className="text-center">Data Not Found</div>
+          )}
         </section>
       </main>
       <Footer />
