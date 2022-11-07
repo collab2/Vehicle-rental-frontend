@@ -47,6 +47,10 @@ export default function Signin() {
           position: toast.POSITION.TOP_CENTER,
         });
         localStorage.setItem("token", response.value.data.data.token);
+        localStorage.setItem(
+          "refreshtoken",
+          response.value.data.data.refreshToken
+        );
         setTimeout(() => {
           navigate("/");
         }, 3000);
