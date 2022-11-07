@@ -9,7 +9,8 @@ import people from "../../assets/img/default-profile.png";
 import axios from "../../utils/axios";
 import { useNavigate } from "react-router-dom";
 
-export default function Header() {
+export default function Header(props) {
+  const id = localStorage.getItem("userId");
   const navigate = useNavigate();
   const isLogin = localStorage.getItem("token");
   const handleLogout = async () => {
@@ -21,6 +22,12 @@ export default function Header() {
       console.log(error);
     }
   };
+  const handleProfile = (e) => {
+    e.preventDefault();
+    navigate(`/profile/${id}`);
+  };
+  const data = props;
+  console.log(data);
   return (
     <Navbar bg="white" expand="lg" className="font-nunito py-4">
       <Container>
@@ -38,7 +45,7 @@ export default function Header() {
           </Nav>
           {isLogin ? (
             <div className="d-flex align-items-center justify-content-center">
-              <div>Muhammad Abdullah</div>
+              <div>{props.name}</div>
               <NavDropdown
                 title={
                   <img
@@ -49,7 +56,7 @@ export default function Header() {
                 }
                 id="basic-nav-dropdown"
               >
-                <NavDropdown.Item href="/profile">
+                <NavDropdown.Item href="/profile" onClick={handleProfile}>
                   Edit Profile
                 </NavDropdown.Item>
                 <NavDropdown.Divider />
