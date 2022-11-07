@@ -8,6 +8,7 @@ import signin from "./signin";
 import forgotPassword from "./forgotPassword";
 import resetPassword from "./resetPassword";
 import product from "./product";
+import reservation from "./reservation";
 
 export default combineReducers({
   user,
@@ -18,4 +19,5 @@ export default combineReducers({
   resetPassword,
   category,
   product,
+  reservation,
 });

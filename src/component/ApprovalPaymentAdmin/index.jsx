@@ -1,18 +1,47 @@
 import React from "react";
 import "./index.css";
-import bicycle from "../../assets/img/vehicle/bicycle.png";
+import Card from "react-bootstrap/Card";
+import { Slide } from "react-slideshow-image";
 
-export default function ApprovalPaymentAdmin() {
+export default function ApprovalPaymentAdmin(props) {
   return (
     <>
       <main className="main-approval">
         <div className="first-row">
           <div className="left-row">
-            <img src={bicycle} alt="vehicle" />
+            <Slide>
+              <Card.Img
+                className="vehicle-img"
+                src={
+                  props.data.image1
+                    ? `https://res.cloudinary.com/dtjeegwiz/image/upload/v1667656027/${props.data.image1}`
+                    : require("../../assets/images/vehicle-default.jpg")
+                }
+                alt="bike"
+              />
+              <Card.Img
+                className="vehicle-img"
+                src={
+                  props.data.image2
+                    ? `https://res.cloudinary.com/dtjeegwiz/image/upload/v1667656027/${props.data.image2}`
+                    : require("../../assets/images/vehicle-default.jpg")
+                }
+                alt="bike"
+              />
+              <Card.Img
+                className="vehicle-img"
+                src={
+                  props.data.image3
+                    ? `https://res.cloudinary.com/dtjeegwiz/image/upload/v1667656027/${props.data.image3}`
+                    : require("../../assets/images/vehicle-default.jpg")
+                }
+                alt="bike"
+              />
+            </Slide>
           </div>
           <div className="right-row">
-            <h1>Fixie - Gray Only</h1>
-            <h2>Yogyakarta</h2>
+            <h1>{props.data.nameproduct}</h1>
+            <h2>{props.data.location}</h2>
             <h4>No Prepayment</h4>
             <h2>#FG1209878YZS</h2>
             <button>Copy Booking Code</button>
@@ -20,10 +49,10 @@ export default function ApprovalPaymentAdmin() {
         </div>
         <div className="second-row">
           <div className="left-row">
-            <h3>Quantity : 2 Bikes</h3>
+            <h3>Quantity : {props.data.quantity}</h3>
           </div>
           <div className="right-row">
-            <h3>Reservation Date : 18 - 20 Jan 2023</h3>
+            <h3>Reservation Date : {props.data.reservationDate}</h3>
           </div>
         </div>
         <div className="third-row">
@@ -31,7 +60,7 @@ export default function ApprovalPaymentAdmin() {
             <h3>Order Details :</h3>
             <p>1 bike : Rp. 78.000</p>
             <p>1 bike : Rp. 78.000</p>
-            <h3>Total : Rp. 156.000</h3>
+            <h3>Total : Rp. {props.data.amount}</h3>
           </div>
           <div className="right-row">
             <h3>Identity :</h3>
@@ -46,7 +75,7 @@ export default function ApprovalPaymentAdmin() {
             <button>Copy</button>
           </div>
           <div className="payment-row">
-            <h1>Pay With Transfer</h1>
+            <h1>{props.data.paymentMethods}</h1>
           </div>
         </div>
       </main>

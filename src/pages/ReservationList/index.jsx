@@ -3,25 +3,24 @@ import Header from "../../component/Header";
 import Footer from "../../component/Footer";
 import Arrow from "../../assets/img/vehicle/arrow.png";
 import "./index.css";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "./index.css";
-import ApprovalPaymentAdmin from "../../component/ApprovalPaymentAdmin";
+import ReservationList from "../../component/ReseravtionListAdmin";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { getReservationById } from "../../stores/actions/reservation";
+import { getReservation } from "../../stores/actions/reservation";
 
 export default function ApprovalPayment() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { id } = useParams();
   const reservation = useSelector((state) => state.reservation.data);
 
   useEffect(() => {
-    dispatch(getReservationById(id));
+    dispatch(getReservation());
   }, []);
 
   const handleHome = () => {
-    navigate(`/reservation-list`);
+    navigate(`/`);
   };
   return (
     <>
@@ -31,11 +30,20 @@ export default function ApprovalPayment() {
           <button onClick={handleHome}>
             <img src={Arrow} alt="Arrow" />
           </button>
-          <h1>Approve Payment</h1>
+          <h1>Reservation</h1>
         </div>
-        <ApprovalPaymentAdmin data={reservation} />
-        <div className="row-button-detail">
-          <button className="approve-payment">Approve Payment</button>
+        <div className="row d-flex gap-5">
+          <div className="main-reservation col-md-6">
+            {reservation.length > 0 ? (
+              reservation.map((item) => (
+                <div key={item.reservationId}>
+                  <ReservationList data={item} />
+                </div>
+              ))
+            ) : (
+              <div className="text-center">Data Not Found</div>
+            )}
+          </div>
         </div>
       </main>
       <Footer />

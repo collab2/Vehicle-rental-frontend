@@ -15,7 +15,6 @@ import {
 export default function VehicleDetailComponent(props) {
   const counterData = useSelector((state) => state.counter);
   const dispatch = useDispatch();
-  console.log(props.data.image1);
 
   return (
     <>
