@@ -1,9 +1,10 @@
 .big-image {
-  width: 90%;
+  width: 100%;
+  border-radius: 10px;
 }
 
 .small-image {
-  width: 80%;
+  width: 90%;
   border-radius: 10px;
 }
 
