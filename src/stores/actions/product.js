@@ -14,10 +14,10 @@ export const addProduct = (data) => {
   };
 };
 
-export const getProductById = (id) => {
+export const getProductById = (productId) => {
   return {
     type: "GET_PRODUCT_BY_ID",
-    payload: axios.get(`/product/${id}`),
+    payload: axios.get(`/product/${productId}`),
   };
 };
 
