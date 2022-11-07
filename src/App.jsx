@@ -54,6 +54,7 @@ function App() {
             path="/vehicle-detail-user/:id"
             element={<VehicleDetailUser />}
           />
+          <Route path="/reservation/:id" element={<Reservation />} />
           <Route path="/reservation/:productId" element={<Reservation />} />
           <Route path="/profile" element={<Profile1 />} />
           <Route path="/payment/" element={<Payment />} />

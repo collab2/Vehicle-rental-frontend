@@ -28,6 +28,32 @@ const user = (state = initialState, action) => {
     case "GET_USER_BY_ID_FULFILLED":
       return {
         ...state,
+        data: action.payload.data.data,
+        isLoading: false,
+        isError: false,
+        message: action.payload.data.message,
+      };
+    case "EDIT_USER_PENDING":
+      return {
+        ...state,
+        data: {},
+        isLoading: true,
+        isError: false,
+        message: "Loading...",
+      };
+
+    case "EDIT_USER_REJECTED":
+      return {
+        ...state,
+        data: {},
+        isLoading: false,
+        isError: true,
+        message: action.payload.response.data,
+      };
+
+    case "EDIT_USER_FULFILLED":
+      return {
+        ...state,
         data: action.payload.data.data[0],
         isLoading: false,
         isError: false,
