@@ -38,6 +38,6 @@ export const deleteProduct = (id) => {
 export const deleteProductImage = (productId, data) => {
   return {
     type: "DELETE_IMAGE_PRODUCT",
-    payload: axios.patch(`/delete/image/${productId}`, data),
+    payload: axios.patch(`/product/delete/image/${productId}`, data),
   };
 };

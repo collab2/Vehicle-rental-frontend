@@ -4,12 +4,12 @@ import "./index.css";
 import Header from "../../component/Header";
 import Footer from "../../component/Footer";
 
-import addImage from "../../assets/img/add-image.png";
+import addImage from "../../assets/img/addImage.png";
 import { useDispatch, useSelector } from "react-redux";
 import { getCategory, addCategory } from "../../stores/actions/category";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import {
   editProduct,
   deleteProduct,
@@ -21,7 +21,7 @@ export default function EditVehicle() {
   const { id } = useParams();
   const dispatch = useDispatch();
 
-  const product = useSelector((state) => state.product.data);
+  const product = useSelector((state) => state.product?.data);
   const category = useSelector((state) => state.category.data);
 
   const [addCategories, setAddCategories] = useState({});
@@ -40,8 +40,6 @@ export default function EditVehicle() {
     dispatch(getCategory());
     dispatch(getProductById(id));
   }, []);
-
-  console.log(id);
 
   const handleChange = (e) => {
     setForm({
@@ -141,10 +139,10 @@ export default function EditVehicle() {
     }
   };
 
-  const handleDeleteImage1 = () => {
+  const handleDeleteImage1 = (image1) => {
     const deleteConfirm = window.confirm("Do you want delete the image?");
     if (deleteConfirm) {
-      dispatch(deleteProductImage(id, product.image1)).then(
+      dispatch(deleteProductImage(id, image1)).then(
         (res) =>
           toast.success(res.value.data.msg, {
             position: toast.POSITION.TOP_CENTER,
@@ -158,10 +156,10 @@ export default function EditVehicle() {
     }
   };
 
-  const handleDeleteImage2 = () => {
+  const handleDeleteImage2 = (data) => {
     const deleteConfirm = window.confirm("Do you want delete the image?");
     if (deleteConfirm) {
-      dispatch(deleteProductImage(id, product.image2)).then(
+      dispatch(deleteProductImage(id, data)).then(
         (res) =>
           toast.success(res.value.data.msg, {
             position: toast.POSITION.TOP_CENTER,
@@ -175,10 +173,10 @@ export default function EditVehicle() {
     }
   };
 
-  const handleDeleteImage3 = (productImage) => {
+  const handleDeleteImage3 = (data) => {
     const deleteConfirm = window.confirm("Do you want delete the image?");
     if (deleteConfirm) {
-      dispatch(deleteProductImage(id, productImage)).then(
+      dispatch(deleteProductImage(id, data)).then(
         (res) =>
           toast.success(res.value.data.msg, {
             position: toast.POSITION.TOP_CENTER,
@@ -189,19 +187,30 @@ export default function EditVehicle() {
           })
         )
       );
-      window.location.reload();
     }
+  };
+
+  const navigate = useNavigate();
+  const productIdData = product.productId;
+
+  const handleNavigate = (id) => {
+    navigate(`/vehicle-detail-admin/${id}`);
   };
 
   const imageProduct1 = `https://res.cloudinary.com/dtjeegwiz/image/upload/v1667656027/${product?.image1}`;
   const imageProduct2 = `https://res.cloudinary.com/dtjeegwiz/image/upload/v1667656027/${product?.image2}`;
   const imageProduct3 = `https://res.cloudinary.com/dtjeegwiz/image/upload/v1667656027/${product?.image3}`;
 
+  console.log(id, product?.image1);
+
   return (
     <>
       <Header />
       <div className="container">
-        <button className="btn">
+        <button
+          className="btn"
+          onClick={() => handleNavigate(`${productIdData}`)}
+        >
           <div className="h3">{"< "} Edit Item</div>{" "}
         </button>
 
@@ -211,7 +220,10 @@ export default function EditVehicle() {
               <div className="text-end">
                 <button
                   className="btn-yellow-black-delete"
-                  onClick={handleDeleteImage1}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleDeleteImage1(product?.image1);
+                  }}
                 >
                   X
                 </button>
@@ -229,7 +241,7 @@ export default function EditVehicle() {
                     src={
                       lengthImage1 > 0
                         ? imagePreview1
-                        : imageProduct1
+                        : product?.image1 !== null
                         ? imageProduct1
                         : addImage
                     }
@@ -243,7 +255,9 @@ export default function EditVehicle() {
                   <div className="text-end">
                     <button
                       className="btn-yellow-black-delete"
-                      onClick={handleDeleteImage2}
+                      onClick={() => {
+                        handleDeleteImage2(product?.image2);
+                      }}
                     >
                       X
                     </button>
@@ -261,7 +275,7 @@ export default function EditVehicle() {
                         src={
                           lengthImage2 > 0
                             ? imagePreview2
-                            : imageProduct2
+                            : product?.image2 !== null
                             ? imageProduct2
                             : addImage
                         }
@@ -274,9 +288,11 @@ export default function EditVehicle() {
                 <div className="col-6 text-end">
                   <button
                     className="btn-yellow-black-delete"
-                    onClick={(e) => {
-                      e.preventDefault();
-                      handleDeleteImage3(product.image3);
+                    // onClick={() => {
+                    //   handleDeleteImage3(product?.image3);
+                    // }}
+                    onClick={() => {
+                      handleDeleteImage3(product?.image3);
                     }}
                   >
                     X
@@ -293,7 +309,7 @@ export default function EditVehicle() {
                       src={
                         lengthImage3 > 0
                           ? imagePreview3
-                          : imageProduct3
+                          : product?.image3 !== null
                           ? imageProduct3
                           : addImage
                       }
@@ -311,7 +327,7 @@ export default function EditVehicle() {
                 type="text"
                 name="nameProduct"
                 placeholder={
-                  product.nameproduct ? product.nameproduct : "Name Vehicle"
+                  product?.nameproduct ? product?.nameproduct : "Name Vehicle"
                 }
                 className="form-control mb-4 border-0 border-bottom"
                 onChange={handleChange}
@@ -319,7 +335,7 @@ export default function EditVehicle() {
               <input
                 type="text"
                 name="location"
-                placeholder={product.location ? product.location : "Location"}
+                placeholder={product?.location ? product?.location : "Location"}
                 className="form-control mb-4 border-0 border-bottom"
                 onChange={handleChange}
               />
@@ -327,7 +343,7 @@ export default function EditVehicle() {
                 type="text"
                 name="description"
                 placeholder={
-                  product.description ? product.description : "Description"
+                  product?.description ? product?.description : "Description"
                 }
                 className="form-control mb-4 border-0 border-bottom"
                 onChange={handleChange}
@@ -338,7 +354,7 @@ export default function EditVehicle() {
               <input
                 type="number"
                 name="price"
-                placeholder={product.price ? product.price : "Set Price"}
+                placeholder={product?.price ? product?.price : "Set Price"}
                 className="form-control mb-4 border-0 bg-light"
                 onChange={handleChange}
               />
@@ -351,7 +367,7 @@ export default function EditVehicle() {
                 onChange={handleChange}
               >
                 <option selected>
-                  {product.status ? product.status : "Set Status"}
+                  {product?.status ? product?.status : "Set Status"}
                 </option>
                 <option value="Available">Available</option>
                 <option value="Full Booked">Full Booked</option>
@@ -365,7 +381,7 @@ export default function EditVehicle() {
                     type="number"
                     className="border-0 text-center bg-light form-control"
                     name="stock"
-                    placeholder={product.stock ? product.stock : "Set Stock"}
+                    placeholder={product?.stock ? product?.stock : "Set Stock"}
                     onChange={handleChange}
                   />
                 </div>
@@ -381,8 +397,8 @@ export default function EditVehicle() {
                 onChange={handleChange}
               >
                 <option selected>
-                  {product.category
-                    ? `Added to ${product.category}`
+                  {product?.category
+                    ? `Added to ${product?.category}`
                     : "Add Category"}
                 </option>
                 {category.length > 0 ? (
