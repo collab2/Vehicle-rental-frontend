@@ -1,0 +1,44 @@
+.reservation-list {
+  display: flex;
+  flex-direction: column;
+}
+.list {
+  display: flex;
+  flex-direction: row;
+  padding: 1% 0;
+  border-radius: 5px;
+  box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.25);
+  margin: 2% 0;
+  width: 100%;
+  justify-content: center;
+}
+.list p {
+  margin-bottom: 0;
+  font-family: Nunito;
+  font-size: 20px;
+  font-weight: 700;
+}
+.reservation-list button {
+  background: rgba(255, 205, 97, 1);
+  font-family: Nunito;
+  font-size: 16px;
+  font-weight: 700;
+  border: none;
+  border-radius: 5px;
+  padding: 2% 0;
+}
+
+@media (max-width: 425px) {
+  .list p {
+    font-size: 12px;
+  }
+  .list {
+    width: 100%;
+    justify-content: center;
+  }
+  .reservation-list button {
+    font-size: 12px;
+    padding: 1%;
+    margin: 2% 0;
+  }
+}
