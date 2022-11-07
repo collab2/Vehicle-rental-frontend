@@ -20,9 +20,6 @@ export default function Reservation() {
   const imageProduct = `https://res.cloudinary.com/dtjeegwiz/image/upload/v1667656027/${product[0]?.image1}`;
   // const userId = localStorage.getItem("userId");
 
-  const price = product[0]?.price * 2;
-  console.log(price);
-
   const { id } = useParams();
   const dispatch = useDispatch();
 
