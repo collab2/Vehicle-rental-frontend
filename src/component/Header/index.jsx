@@ -6,9 +6,21 @@ import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import "./index.css";
 import people from "../../assets/img/default-profile.png";
+import axios from "../../utils/axios";
+import { useNavigate } from "react-router-dom";
 
 export default function Header() {
-  const isLogin = true;
+  const navigate = useNavigate();
+  const isLogin = localStorage.getItem("token");
+  const handleLogout = async () => {
+    try {
+      await axios.post("auth/logout");
+      localStorage.clear();
+      navigate("/signin");
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <Navbar bg="white" expand="lg" className="font-nunito py-4">
       <Container>
@@ -40,9 +52,10 @@ export default function Header() {
                 <NavDropdown.Item href="/profile">
                   Edit Profile
                 </NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.2">Help</NavDropdown.Item>
                 <NavDropdown.Divider />
-                <NavDropdown.Item href="#action/3.4">Logout</NavDropdown.Item>
+                <NavDropdown.Item onClick={handleLogout}>
+                  Logout
+                </NavDropdown.Item>
               </NavDropdown>
             </div>
           ) : (
