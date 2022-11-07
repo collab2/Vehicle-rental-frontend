@@ -49,6 +49,10 @@ export default function Signin() {
         });
         dispatch(getProductById(response.value.data.data.productId));
         localStorage.setItem("token", response.value.data.data.token);
+        localStorage.setItem(
+          "refreshtoken",
+          response.value.data.data.refreshToken
+        );
         localStorage.setItem("userId", response.value.data.data.userId);
         setTimeout(() => {
           navigate("/");
