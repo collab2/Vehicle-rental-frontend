@@ -22,8 +22,8 @@ export default function Vehicle(props) {
             onClick={handleDetail}
           />
           <div className="vehicle-desc">
-            <p>{props.data.category}</p>
-            <p>{props.data.location}</p>
+            <p>{props.data.category ? props.data.category : "-"}</p>
+            <p>{props.data.location ? props.data.location : "-"}</p>
           </div>
         </div>
       </div>

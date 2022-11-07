@@ -110,7 +110,7 @@ export default function Signup() {
               >
                 Forgot password?
               </button>
-              <h1 className="separator pt-4 mt-4">Not Have Account?</h1>
+              <h1 className="separator pt-4 mt-4">Have an Account?</h1>
             </form>
             <div className="mx-5 px-5 form-login">
               <div className="">
