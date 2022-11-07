@@ -1,8 +1,15 @@
 import axios from "../../utils/axios";
 
-export const reserve = (data) => {
+export const getReservation = () => {
   return {
-    type: "ADD_RESERVATION",
-    payload: axios.post("/reservation/create", data),
+    type: "GET_RESERVATION",
+    payload: axios.get("/reservation"),
+  };
+};
+
+export const getReservationById = (reservationId) => {
+  return {
+    type: "GET_RESERVATION_BY_ID",
+    payload: axios.get(`/reservation/${reservationId}`),
   };
 };
