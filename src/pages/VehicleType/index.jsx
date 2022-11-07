@@ -11,7 +11,7 @@ export default function VehicleType() {
   const product = useSelector((state) => state.product.allData);
 
   useEffect(() => {
-    dispatch(getProduct());
+    dispatch(getProduct(50));
   }, []);
 
   return (
@@ -68,15 +68,17 @@ export default function VehicleType() {
           </div>
         </nav>
         <section className="main-section gap-3">
-          {product?.length > 0 ? (
-            product?.map((item) => (
-              <div key={item.productId}>
-                <Vehicle data={item} />
-              </div>
-            ))
-          ) : (
-            <div className="text-center">Data Not Found</div>
-          )}
+          <div className="d-flex gap-3 flex-wrap">
+            {product?.length > 0 ? (
+              product?.map((item) => (
+                <div key={item.productId}>
+                  <Vehicle data={item} />
+                </div>
+              ))
+            ) : (
+              <div className="text-center">Data Not Found</div>
+            )}
+          </div>
         </section>
       </main>
       <Footer />

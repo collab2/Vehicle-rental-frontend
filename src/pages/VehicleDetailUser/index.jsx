@@ -21,8 +21,8 @@ export default function VehicleDetailUser() {
   const handleDetailType = () => {
     navigate(`/vehicle-type`);
   };
-  const handleReservation = (productId) => {
-    navigate(`/reservation/${productId}`);
+  const handleReservation = () => {
+    navigate(`/reservation/`);
   };
 
   return (
