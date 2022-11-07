@@ -21,6 +21,7 @@ import VehicleDetailAdmin from "./pages/VehicleDetailAdmin";
 import ApprovalPayment from "./pages/ApprovalPayment";
 import EditVehicle from "./pages/EditVehicle";
 import Reservation from "./pages/Reservation";
+import ReservationList from "./pages/ReservationList";
 
 function App() {
   return (

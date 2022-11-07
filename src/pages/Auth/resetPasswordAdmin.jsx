@@ -3,7 +3,7 @@ import React from "react";
 import "./index.css";
 // import { Icon } from "@iconify/react";
 import { useState } from "react";
-// import { useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 // import Logo from "../../component/Logo";
 // import { register } from "../../stores/actions/signup";
 import { useNavigate, useParams } from "react-router-dom";
@@ -12,6 +12,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { useDispatch } from "react-redux";
 import { resetPassword } from "../../stores/actions/resetPassword";
 // import axios from "../../utils/axios";
+import { resetPassword } from "../../stores/actions/resetPassword";
 
 export default function ResetPasswordAdmin() {
   const { OTPReset } = useParams();
