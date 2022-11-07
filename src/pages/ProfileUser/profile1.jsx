@@ -5,8 +5,37 @@ import InputGroup from "react-bootstrap/InputGroup";
 import Button from "react-bootstrap/Button";
 import Header from "../../component/Header";
 import { Icon } from "@iconify/react";
+import { useParams } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getUserById, editUser } from "../../stores/actions/user";
+import Personal from "../../component/Personal/Personal";
 
 export default function Profile1() {
+  const { id } = useParams();
+  const [isLoading, setIsloading] = useState(false);
+  const [form, setForm] = useState({});
+  const user = useSelector((state) => state.user.data);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getUserById(id));
+  }, []);
+
+  const updateHandler = async () => {
+    try {
+      setIsloading(true);
+      await dispatch(editUser(form, id));
+    } catch (error) {
+      setIsloading(false);
+    }
+  };
+
+  const handleChangeForm = (e) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  };
+  console.log(user);
+  console.log(id);
   return (
     <>
       <Header />
@@ -24,14 +53,7 @@ export default function Profile1() {
                 <Icon icon="bx:pencil" className="profile-icon" />
               </button>
             </div>
-            <div className="col-md-6 d-none d-md-flex flex-column align-items-center">
-              <span className="profile-name mb-4">Samantha Doe</span>
-              <div className="d-flex flex-column profile-contact mb-3">
-                <span>samanthadoe@mail.com</span>
-                <span>+62833467823</span>
-                <span>Has been active since 2013</span>
-              </div>
-            </div>
+            <Personal data={user} />
             <div className="col-3 d-flex justify-content-between my-4">
               <div className="form-check form-check-inline">
                 <input
@@ -64,10 +86,13 @@ export default function Profile1() {
             <span className="profile-input-title">Email adress :</span>
             <InputGroup className="my-3">
               <Form.Control
-                placeholder="Username"
+                placeholder="Email"
                 aria-label="Username"
                 aria-describedby="basic-addon1"
                 className="profile-input"
+                defaultValue={user.email}
+                name="email"
+                onChange={handleChangeForm}
               />
             </InputGroup>
           </div>
@@ -75,10 +100,13 @@ export default function Profile1() {
             <span className="profile-input-title">Adress :</span>
             <InputGroup className="my-3">
               <Form.Control
-                placeholder="Username"
+                placeholder="Address"
                 aria-label="Username"
                 aria-describedby="basic-addon1"
                 className="profile-input"
+                defaultValue={user.address}
+                name="address"
+                onChange={handleChangeForm}
               />
             </InputGroup>
           </div>
@@ -86,10 +114,13 @@ export default function Profile1() {
             <span className="profile-input-title">Mobile number :</span>
             <InputGroup className="my-3">
               <Form.Control
-                placeholder="Username"
+                placeholder="Phone"
                 aria-label="Username"
                 aria-describedby="basic-addon1"
                 className="profile-input"
+                defaultValue={user.phone}
+                name="phone"
+                onChange={handleChangeForm}
               />
             </InputGroup>
           </div>
@@ -102,6 +133,9 @@ export default function Profile1() {
                 aria-label="Username"
                 aria-describedby="basic-addon1"
                 className="profile-input"
+                defaultValue={user.name}
+                name="name"
+                onChange={handleChangeForm}
               />
             </InputGroup>
           </div>
@@ -113,13 +147,30 @@ export default function Profile1() {
                 aria-label="Username"
                 aria-describedby="basic-addon1"
                 className="profile-input"
+                defaultValue={user.birthDate}
+                name="birthDate"
+                onChange={handleChangeForm}
               />
             </InputGroup>
           </div>
           <div className="col-12 d-flex justify-content-between my-5 mx-4">
-            <button className="gold-buttons d-flex d-md-block">
-              Save Change
-            </button>
+            {!isLoading ? (
+              <div
+                className="gold-buttons d-flex d-md-block"
+                onClick={updateHandler}
+              >
+                Simpan
+              </div>
+            ) : (
+              <div className="gold-buttons d-flex d-md-block">
+                <div
+                  className="spinner-border spinner-border-sm text-light"
+                  role="status"
+                >
+                  <span className="visually-hidden" />
+                </div>
+              </div>
+            )}
             <button className="black-buttons px-5 py-2 d-none d-md-block">
               Edit Password
             </button>
