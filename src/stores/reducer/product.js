@@ -77,7 +77,7 @@ const product = (state = initialState, action) => {
         data: {},
         isLoading: false,
         isError: true,
-        message: action.payload.response.data,
+        message: action.payload.message,
       };
 
     case "GET_PRODUCT_BY_ID_FULFILLED":
@@ -135,6 +135,33 @@ const product = (state = initialState, action) => {
       };
 
     case "DELETE_PRODUCT_FULFILLED":
+      return {
+        ...state,
+        data: action.payload.data.data,
+        isLoading: false,
+        isError: false,
+        message: action.payload.data.message,
+      };
+
+    case "DELETE_IMAGE_PRODUCT_PENDING":
+      return {
+        ...state,
+        data: {},
+        isLoading: true,
+        isError: false,
+        message: "Loading...",
+      };
+
+    case "DELETE_IMAGE_PRODUCT_REJECTED":
+      return {
+        ...state,
+        data: {},
+        isLoading: false,
+        isError: true,
+        message: action.payload.message,
+      };
+
+    case "DELETE_IMAGE_PRODUCT_FULFILLED":
       return {
         ...state,
         data: action.payload.data.data,

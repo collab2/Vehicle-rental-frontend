@@ -2,12 +2,68 @@ import { Link } from "react-router-dom";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import "./Reservation.css";
+import { useState } from "react";
+// import { useSelector } from "react-redux";
 import defaultImage from "../../assets/images/vehicle-default.jpg";
-
+// import { reservation } from "../../stores/actions/reservation";
+// import { getProductById } from "../../stores/actions/product";
+// import { useParams } from "react-router-dom";
 import Header from "../../component/Header";
 import Footer from "../../component/Footer";
-
+// import { ToastContainer, toast } from "react-toastify";
+// import "react-toastify/dist/ReactToastify.css";
 export default function Reservation() {
+  // const { productId } = useParams();
+  // const [product, setProduct] = useState({});
+  // const imageProduct = `{process.env.URL_CLOUDINARY}${product.data[0].image}`;
+  // const userId = localStorage.getItem("userId");
+  // const dispatch = useDispatch();
+
+  // useEffect(() => {
+  //   getData();
+  // }, []);
+
+  // const getData = () => {
+  //   try {
+  //     dispatch(getProductById(productId))
+  //       .then((res) => setProduct(res.value.data.data))
+  //       .catch((err) => console.log(err));
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
+
+  const handleReservation = () => {
+    // const setData = {
+    //   startDate: "2022-12-12",
+    //   returnDate: "2022-12-13",
+    //   quantity: counter,
+    //   userId: userId,
+    //   productId: productId,
+    //   amount: 200000,
+    // };
+    // dispatch(reservation(setData))
+    //   .then((response) => {
+    //     toast.success(response.value.data.msg, {
+    //       position: toast.POSITION.TOP_CENTER,
+    //     });
+    //   })
+    //   .catch((error) =>
+    //     toast.error(error.response.data.msg, {
+    //       position: toast.POSITION.TOP_CENTER,
+    //     })
+    //   );
+  };
+
+  const [counter, setCounter] = useState(0);
+
+  const increment = (data) => {
+    setCounter(counter + data);
+  };
+  const decrement = () => {
+    setCounter(counter - 1);
+  };
+
   return (
     <>
       <Header />
@@ -35,12 +91,16 @@ export default function Reservation() {
             <p className="no-pre">No Prepayment</p>
 
             <div className="d-flex flex-row justify-content-between align-items-center  mt-5 mb-5 col-5">
-              <button className="btn-minus-reservation">
-                <i className="fas fa-minus"></i>
+              <button
+                className="btn-grey-minus"
+                onClick={decrement}
+                disabled={counter === 0 ? true : false}
+              >
+                -
               </button>
-              <p className="stock-reservation">10</p>
-              <button className="btn-plus-reservation">
-                <i className="fas fa-plus"></i>
+              <p className="mx-5 fw-bold mt-3 mx-3">{counter}</p>
+              <button className="btn-yellow-plus" onClick={() => increment(1)}>
+                +
               </button>
             </div>
 
@@ -67,7 +127,7 @@ export default function Reservation() {
         </div>
 
         <div className="col-lg-10 p-0">
-          <div className="btn-pay">
+          <div className="btn-pay" onClick={handleReservation}>
             <p>Pay Now : Rp.200000</p>
           </div>
         </div>

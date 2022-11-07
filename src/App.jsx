@@ -68,6 +68,7 @@ function App() {
         <Route path="/edit-vehicle/:id" element={<EditVehicle />} />
         <Route path="/reservation" element={<Reservation />} />
         <Route path="/reservation-list" element={<ReservationList />} />
+        <Route path="/reservation/:id" element={<Reservation />} />
       </Routes>
     </BrowserRouter>
   );

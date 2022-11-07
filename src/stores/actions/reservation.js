@@ -13,3 +13,9 @@ export const getReservationById = (reservationId) => {
     payload: axios.get(`/reservation/${reservationId}`),
   };
 };
+export const reserve = (data) => {
+  return {
+    type: "ADD_RESERVATION",
+    payload: axios.post("/reservation/create", data),
+  };
+};

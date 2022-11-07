@@ -68,8 +68,8 @@ export default function VehicleType() {
           </div>
         </nav>
         <section className="main-section gap-3">
-          {product.length > 0 ? (
-            product.map((item) => (
+          {product?.length > 0 ? (
+            product?.map((item) => (
               <div key={item.productId}>
                 <Vehicle data={item} />
               </div>
