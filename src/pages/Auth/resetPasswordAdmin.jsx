@@ -9,10 +9,8 @@ import { useDispatch } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { useDispatch } from "react-redux";
 import { resetPassword } from "../../stores/actions/resetPassword";
 // import axios from "../../utils/axios";
-import { resetPassword } from "../../stores/actions/resetPassword";
 
 export default function ResetPasswordAdmin() {
   const { OTPReset } = useParams();

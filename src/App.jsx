@@ -57,6 +57,7 @@ function App() {
           <Route path="/reservation" element={<Reservation />} />
           <Route path="/profile" element={<Profile1 />} />
           <Route path="/payment" element={<Payment />} />
+          <Route path="/reservation-list" element={<ReservationList />} />
         </Route>
 
         {/* PRIVATE ADMIN ROUTE */}
