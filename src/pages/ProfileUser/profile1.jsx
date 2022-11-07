@@ -10,12 +10,14 @@ import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getUserById, editUser } from "../../stores/actions/user";
 import Personal from "../../component/Personal/Personal";
+import { Toast, ToastContainer } from "react-bootstrap";
 
 export default function Profile1() {
   const { id } = useParams();
   const [isLoading, setIsloading] = useState(false);
   const [form, setForm] = useState({});
   const user = useSelector((state) => state.user.data);
+  const [showToast, setShowToast] = useState(false);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -27,6 +29,7 @@ export default function Profile1() {
       setIsloading(true);
       await dispatch(editUser(form, id));
     } catch (error) {
+      setShowToast(true);
       setIsloading(false);
     }
   };
@@ -34,7 +37,7 @@ export default function Profile1() {
   const handleChangeForm = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
-  console.log(user);
+  // console.log(user);
   console.log(id);
   return (
     <>
@@ -155,12 +158,12 @@ export default function Profile1() {
           </div>
           <div className="col-12 d-flex justify-content-between my-5 mx-4">
             {!isLoading ? (
-              <div
+              <button
                 className="gold-buttons d-flex d-md-block"
                 onClick={updateHandler}
               >
                 Simpan
-              </div>
+              </button>
             ) : (
               <div className="gold-buttons d-flex d-md-block">
                 <div
@@ -171,6 +174,23 @@ export default function Profile1() {
                 </div>
               </div>
             )}
+            <ToastContainer
+              position="top-center"
+              className="p-3 position-fixed"
+            >
+              <Toast
+                show={showToast}
+                onClose={() => {
+                  setShowToast(false);
+                }}
+              >
+                <Toast.Header>
+                  <strong className="me-auto">Success</strong>
+                  <small className="text-muted">just now</small>
+                </Toast.Header>
+                <Toast.Body>Your profile is updated</Toast.Body>
+              </Toast>
+            </ToastContainer>
             <button className="black-buttons px-5 py-2 d-none d-md-block">
               Edit Password
             </button>
