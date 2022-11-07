@@ -3,35 +3,66 @@ import Footer from "../../component/Footer";
 import Header from "../../component/Header";
 import Vehicle from "../../component/Vehicle";
 import "./index.css";
-import { getProduct, getProductByCategory } from "../../stores/actions/product";
+import { getProduct } from "../../stores/actions/product";
 import { useDispatch, useSelector } from "react-redux";
+import axios from "../../utils/axios";
 import { useState } from "react";
+import { getCategory } from "../../stores/actions/category";
 
 export default function VehicleType() {
   const dispatch = useDispatch();
   const product = useSelector((state) => state.product.allData);
-  const [searchName, setSearchName] = useState("");
-  const [searchLocation, setSearchLocation] = useState("");
+  const category = useSelector((state) => state.category);
+  const [products, setProducts] = useState([]);
+  const [form, setForm] = useState({
+    nameproduct: "",
+    location: "",
+    filter: "",
+  });
+
+  const handleChange = (e) => {
+    return setForm((prev) => {
+      return {
+        ...prev,
+        [e.target.name]: e.target.value,
+      };
+    });
+  };
+
+  const handleFilter = (e) => {
+    e.preventDefault();
+    axios
+      .get(
+        `/product?category=${form.filter}&nameproduct=${form.nameproduct}&location=${form.location}`
+      )
+      .then((res) => {
+        setProducts(res.data.data);
+        setForm({ nameproduct: "", filter: "", location: "" });
+      });
+  };
+
+  // const handleFilter = (e) => {
+  //   e.preventDefault();
+  //   console.log(form.filter);
+  //   dispatch(filterVehicle(form.filter, form.nameproduct, form.location));
+  //   setProducts(product);
+  // };
+
+  const getAllData = async () => {
+    try {
+      await dispatch(getProduct(50));
+      setProducts(product);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   useEffect(() => {
-    dispatch(getProduct(50, searchLocation, searchName));
-  }, [50, searchLocation, searchName]);
+    getAllData();
+    dispatch(getCategory());
+  }, []);
 
-  const handleSearchName = (e) => {
-    setSearchName(e.target.value);
-  };
-
-  const handleSearchLocation = (e) => {
-    setSearchLocation(e.target.value);
-  };
-
-  const handleSearch = () => {
-    dispatch(getProduct(50, searchName, searchLocation));
-  };
-
-  const handleSearchByCategory = (category) => {
-    dispatch(getProductByCategory(category));
-  };
+  console.log(form);
 
   return (
     <>
@@ -39,65 +70,41 @@ export default function VehicleType() {
       <main className="vehicle-type">
         <nav className="navbar-search-vehicle navbar-expand-xl">
           <div className="collapse-search navbar-collapse">
-            <form className="input-searchbar d-flex">
+            <form className="input-searchbar d-flex" onSubmit={handleFilter}>
               <input
                 className="form-control"
                 type="text"
+                value={form.name}
+                name="nameproduct"
+                onChange={handleChange}
                 placeholder="Vehicle Name"
                 aria-label="Search"
-                onChange={handleSearchName}
               />
               <input
                 className="form-control"
                 type="text"
+                name="location"
+                onChange={handleChange}
+                value={form.location}
                 placeholder="Location"
                 aria-label="Search"
-                onChange={handleSearchLocation}
               />
-              <a
-                className="dropdown-searchbar-filter nav-link dropdown-toggle mx-5 mt-1"
-                href="#"
-                role="button"
-                data-bs-toggle="dropdown"
+              <select
+                className="form-select"
+                aria-label="Default select example"
+                name="filter"
+                onChange={handleChange}
               >
-                Filter
-              </a>
-              <ul className="dropdown-menu">
-                <li>
-                  <a
-                    className="dropdown-item"
-                    onClick={() => handleSearchByCategory("popular")}
-                  >
-                    Popular In Town
-                  </a>
-                </li>
-                <li>
-                  <a
-                    className="dropdown-item"
-                    onClick={() => handleSearchByCategory("popular")}
-                  >
-                    Cars
-                  </a>
-                </li>
-                <li>
-                  <a className="dropdown-item" href="#">
-                    Motorbike
-                  </a>
-                </li>
-                <li>
-                  <a
-                    className="dropdown-item"
-                    onClick={() => handleSearchByCategory("bike")}
-                  >
-                    Bike
-                  </a>
-                </li>
-              </ul>
-              <button
-                className="btn-search"
-                type="button"
-                onClick={handleSearch}
-              >
+                {category?.data?.map((elem) => (
+                  <>
+                    <option name="filter" value={elem}>
+                      {elem}
+                    </option>
+                  </>
+                ))}
+              </select>
+
+              <button className="btn-search" type="submit">
                 Search
               </button>
             </form>
@@ -105,8 +112,8 @@ export default function VehicleType() {
         </nav>
         <section className="main-section gap-3">
           <div className="d-flex gap-3 flex-wrap">
-            {product?.length > 0 ? (
-              product?.map((item) => (
+            {products?.length > 0 ? (
+              products?.map((item) => (
                 <div key={item.productId}>
                   <Vehicle data={item} />
                 </div>

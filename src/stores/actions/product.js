@@ -30,6 +30,16 @@ export const editProduct = (productId, data) => {
   };
 };
 
+export const filterVehicle = (sort, nameproduct, location) => {
+  console.log(nameproduct, location, sort);
+  return {
+    type: "FILTER_PRODUCT",
+    payload: axios.get(
+      `/product?location=${location}&sort=${sort}&nameproduct=${nameproduct}`
+    ),
+  };
+};
+
 export const deleteProduct = (id) => {
   return {
     type: "DELETE_PRODUCT",

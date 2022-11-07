@@ -10,7 +10,7 @@ const category = (state = initialState, action) => {
     case "GET_CATEGORY_PENDING":
       return {
         ...state,
-        data: {},
+        data: [],
         isLoading: true,
         isError: false,
         message: "Loading...",
@@ -19,7 +19,7 @@ const category = (state = initialState, action) => {
     case "GET_CATEGORY_REJECTED":
       return {
         ...state,
-        data: {},
+        data: [],
         isLoading: false,
         isError: true,
         message: action.payload.message,
