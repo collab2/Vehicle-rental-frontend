@@ -50,7 +50,7 @@ export default function SignupAdmin() {
           position: toast.POSITION.TOP_CENTER,
         });
         setTimeout(() => {
-          navigate("/signin");
+          navigate("/signin-admin");
         }, 3000);
       })
       .catch((error) =>
@@ -106,7 +106,7 @@ export default function SignupAdmin() {
               </div>
               <button
                 className="text-start click-me mt-1"
-                onClick={() => handleNavigate("forgot-password")}
+                onClick={() => handleNavigate("forgot-password-admin")}
               >
                 Forgot password?
               </button>
@@ -117,7 +117,7 @@ export default function SignupAdmin() {
                 <div className="d-grid">
                   <button
                     className="sign-btn"
-                    onClick={() => handleNavigate("signin")}
+                    onClick={() => handleNavigate("signin-admin")}
                   >
                     Login
                   </button>

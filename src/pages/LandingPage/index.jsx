@@ -21,6 +21,7 @@ export default function LandingPage() {
   const handleNav = (path) => {
     navigate(`/${path}`);
   };
+
   return (
     <>
       <Header />

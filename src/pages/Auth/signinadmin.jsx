@@ -49,6 +49,10 @@ export default function SigninAdmin() {
           position: toast.POSITION.TOP_CENTER,
         });
         localStorage.setItem("token", response.value.data.data.token);
+        localStorage.setItem(
+          "refreshtoken",
+          response.value.data.data.refreshToken
+        );
         setTimeout(() => {
           navigate("/");
         }, 3000);
@@ -100,7 +104,7 @@ export default function SigninAdmin() {
               </div>
               <button
                 className="text-start click-me mt-4"
-                onClick={() => handleNavigate("forgot-password")}
+                onClick={() => handleNavigate("forgot-password-admin")}
               >
                 Forgot password?
               </button>
