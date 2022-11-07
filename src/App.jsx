@@ -65,7 +65,7 @@ function App() {
         />
         <Route path="/approval-payment" element={<ApprovalPayment />} />
         <Route path="/edit-vehicle/:id" element={<EditVehicle />} />
-        <Route path="/reservation" element={<Reservation />} />
+        <Route path="/reservation/:id" element={<Reservation />} />
       </Routes>
     </BrowserRouter>
   );
