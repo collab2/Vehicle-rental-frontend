@@ -20,7 +20,6 @@ import VehicleDetailUser from "./pages/VehicleDetailUser";
 import VehicleDetailAdmin from "./pages/VehicleDetailAdmin";
 import ApprovalPayment from "./pages/ApprovalPayment";
 import EditVehicle from "./pages/EditVehicle";
-import Reservation from "./pages/Reservation";
 import ReservationList from "./pages/ReservationList";
 
 function App() {
@@ -66,9 +65,7 @@ function App() {
         />
         <Route path="/approval-payment/:id" element={<ApprovalPayment />} />
         <Route path="/edit-vehicle/:id" element={<EditVehicle />} />
-        <Route path="/reservation" element={<Reservation />} />
         <Route path="/reservation-list" element={<ReservationList />} />
-        <Route path="/reservation/:id" element={<Reservation />} />
       </Routes>
     </BrowserRouter>
   );
