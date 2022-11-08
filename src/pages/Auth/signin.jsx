@@ -10,6 +10,8 @@ import { getProduct } from "../../stores/actions/product";
 import "react-toastify/dist/ReactToastify.css";
 // import axios from "../../utils/axios";
 import logo from "../../assets/img/logo.png";
+import { getUserById } from "../../stores/actions/user";
+import { getCategory } from "../../stores/actions/category";
 
 export default function Signin() {
   const navigate = useNavigate();
@@ -50,6 +52,8 @@ export default function Signin() {
         });
         // dispatch(getProductById(response.value?.data?.data?.productId));
         dispatch(getProduct(50));
+        dispatch(getUserById(response.value.data.data.userId));
+        dispatch(getCategory());
         localStorage.setItem("token", response.value?.data?.data?.token);
         localStorage.setItem(
           "refreshtoken",
