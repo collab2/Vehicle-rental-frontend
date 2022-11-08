@@ -8,17 +8,18 @@ import "./index.css";
 import people from "../../assets/img/default-profile.png";
 import axios from "../../utils/axios";
 import { useNavigate } from "react-router-dom";
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { getUserById } from "../../stores/actions/user";
+// import { useEffect } from "react";
+import { useSelector } from "react-redux";
+// import { getUserById } from "../../stores/actions/user";
 
 export default function Header() {
   const id = localStorage.getItem("userId");
   const navigate = useNavigate();
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   const isLogin = localStorage.getItem("token");
 
   const user = useSelector((state) => state.user);
+  console.log(user);
   const handleLogout = async () => {
     try {
       await axios.post("auth/logout");
@@ -32,9 +33,7 @@ export default function Header() {
     e.preventDefault();
     navigate(`/profile/${id}`);
   };
-  useEffect(() => {
-    dispatch(getUserById(id));
-  }, []);
+
   console.log(user);
   return (
     <Navbar bg="white" expand="lg" className="font-nunito py-4">
@@ -53,9 +52,7 @@ export default function Header() {
           </Nav>
           {isLogin ? (
             <div className="d-flex align-items-center justify-content-center">
-              <div>
-                {user?.data.data?.name ? user.data.data.name : "no name"}
-              </div>
+              <div>{user.data.name ? user.data.name : "no name"}</div>
               <NavDropdown
                 title={
                   <img

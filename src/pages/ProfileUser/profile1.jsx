@@ -7,7 +7,7 @@ import Button from "react-bootstrap/Button";
 import Header from "../../component/Header";
 import { Icon } from "@iconify/react";
 import { useParams } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { editUser, getUserById } from "../../stores/actions/user";
 import Personal from "../../component/Personal/Personal";
@@ -29,32 +29,20 @@ export default function Profile1() {
   const [showToast, setShowToast] = useState(false);
   const dispatch = useDispatch();
 
-  // useEffect(() => {
-  //   dispatch(getUserById(id));
-  // }, []);
-
   const updateHandler = () => {
     setIsloading(true);
     const formData = new FormData();
     for (const data in form) {
       formData.append(data, form[data]);
     }
-    // setIsloading(true);
     dispatch(editUser(id, formData)).then(() => {
       dispatch(getUserById(id));
       setIsloading(false);
     });
-    // try {
-    //   console.log(form);
-    // } catch (error) {
-    //   setShowToast(true);
-    //   setIsloading(false);
-    // }
   };
 
   const handleChangeForm = (e) => {
     const { name, value, files } = e.target;
-
     if (name === "image") {
       setForm({ ...form, [name]: files[0] });
       setImagePreview(URL.createObjectURL(files[0]));
@@ -62,8 +50,7 @@ export default function Profile1() {
       setForm({ ...form, [name]: value });
     }
   };
-  // console.log(user);
-  console.log(id);
+
   return (
     <>
       <Header />

@@ -10,6 +10,8 @@ import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { getProduct } from "../../stores/actions/product";
+import { getUserById } from "../../stores/actions/user";
+import { getCategory } from "../../stores/actions/category";
 // import axios from "../../utils/axios";
 
 export default function SigninAdmin() {
@@ -50,7 +52,9 @@ export default function SigninAdmin() {
           position: toast.POSITION.TOP_CENTER,
         });
         // dispatch(getProductById(response.value.data.data.productId));
-        dispatch(getProduct());
+        dispatch(getProduct(50));
+        dispatch(getUserById(response.value.data.data.userId));
+        dispatch(getCategory());
         localStorage.setItem("token", response.value.data.data.token);
         localStorage.setItem(
           "refreshtoken",
