@@ -46,19 +46,20 @@ export default function Header() {
           <Nav className="align-items-center gap-4 me-5">
             <Nav.Link href="/">Home</Nav.Link>
             <Nav.Link href="/vehicle-type">Vehicle Type</Nav.Link>
-            <Nav.Link href="">History</Nav.Link>
-            <Nav.Link href="">About</Nav.Link>
-            <Nav.Link href=""></Nav.Link>
+            <Nav.Link href="/history">History</Nav.Link>
           </Nav>
           {isLogin ? (
             <div className="d-flex align-items-center justify-content-center">
-              <div>{user.data.name ? user.data.name : "no name"}</div>
+              <div className="me-3">
+                {user.data.name ? user.data.name : "no name"}
+              </div>
               <NavDropdown
                 title={
                   <img
                     src={
-                      user.data.data?.image
-                        ? `https://res.cloudinary.com/dtjeegwiz/image/upload/v1667500751/AutoRent/user/${user.data.data.image}`
+                      user.data.image
+                        ? process.env.REACT_APP_CLOUDINARY_URL_IMAGE +
+                          user.data.image
                         : people
                     }
                     className="rounded-circle"
