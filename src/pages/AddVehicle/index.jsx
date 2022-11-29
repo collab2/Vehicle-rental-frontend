@@ -4,13 +4,15 @@ import Header from "../../component/Header";
 import Footer from "../../component/Footer";
 import { useDispatch } from "react-redux";
 import { getCategory, addCategory } from "../../stores/actions/category";
-import { addProduct } from "../../stores/actions/product";
+import { addProduct, getProduct } from "../../stores/actions/product";
 
 import addImage from "../../assets/img/addImage.png";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useNavigate } from "react-router-dom";
 
 export default function EditVehicle() {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const [form, setForm] = useState({});
   const [category, setCategory] = useState({});
@@ -93,6 +95,7 @@ export default function EditVehicle() {
         toast.success(response.value.data.msg, {
           position: toast.POSITION.TOP_CENTER,
         });
+        dispatch(getProduct());
       })
       .catch((error) => {
         toast.error(error.response.data.msg, {
@@ -120,11 +123,15 @@ export default function EditVehicle() {
     );
   };
 
+  const handleNav = (path) => {
+    navigate(`/${path}`);
+  };
+
   return (
     <>
       <Header />
       <div className="container">
-        <button className="btn">
+        <button className="btn" onClick={() => handleNav("")}>
           <div className="h3">{"< "} Add New Item</div>{" "}
         </button>
 

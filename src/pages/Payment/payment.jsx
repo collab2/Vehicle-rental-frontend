@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Header from "../../component/Header";
-import Bike from "../../assets/img/bike.png";
+// import Bike from "../../assets/img/bike.png";
 import Dropdown from "react-bootstrap/Dropdown";
 import { reserve } from "../../stores/actions/reservation";
 // import Button from "react-bootstrap/Button";
@@ -22,7 +22,9 @@ export default function Payment() {
   const dispatch = useDispatch();
   const userId = localStorage.getItem("userId");
   const productId = state.productId;
-
+  const imageProduct = `https://res.cloudinary.com/dtjeegwiz/image/upload/v1667656027/${product[0]?.image1}`;
+  const locationProduct = product[0]?.location;
+  console.log(locationProduct);
   const getDataProduct = () => {
     try {
       dispatch(getProductById(productId))
@@ -56,8 +58,9 @@ export default function Payment() {
   };
   const handleReservation = () => {
     const setData = {
+      location: locationProduct,
       startDate: state.startDate,
-      returnDate: state.endDate,
+      returnDate: state.returnDate,
       quantity: state.quantity,
       userId: userId,
       productId: productId,
@@ -65,6 +68,7 @@ export default function Payment() {
     };
     dispatch(reserve(setData))
       .then((response) => {
+        console.log(response);
         toast.success(response.value.data.msg, {
           position: toast.POSITION.TOP_CENTER,
         });
@@ -91,7 +95,7 @@ export default function Payment() {
             <span className="ms-5">Payment</span>
           </div>
           <div className="col-md-5 me-5">
-            <img src={Bike} className="img-fluid" alt="bike" />
+            <img src={imageProduct} className="img-fluid" alt="bike" />
           </div>
           <div className="col-md-6 d-flex flex-column justify-content-center gap-4 mb-5 mt-3">
             <span className="payment-item-name mb-2">
@@ -114,21 +118,24 @@ export default function Payment() {
             </span>
           </div>
           <div className="col-md-6 border rounded py-3 px-5 mb-4 d-flex justify-content-between">
-            <span className="payment-quantity">Reservation Date :</span>
+            <span className="payment-quantity">
+              Reservation Date : {state.startDate} - {state.returnDate}
+            </span>
             <span className="payment-date">{state.firstDate}</span>
           </div>
           <div className="col-md-5 border rounded py-3 gap-2 px-5 me-5 d-flex flex-column">
             <span className="payment-order-identity">Order Details :</span>
-            <span className="payment-order">1 bike : 78000</span>
-            <span className="payment-order">1 bike : 78000</span>
+            <span className="payment-order">
+              {state.quantity} {product[0]?.nameproduct} : {product[0]?.price}
+            </span>
             <span className="mt-3 payment-total">Total : {state.amount}</span>
           </div>
           <div className="col-md-6 border rounded py-3 gap-2 px-5 d-flex flex-column justify-content-center">
             <span className="payment-order-identity">Identity :</span>
             <span className="payment-identity">
-              {user[0]?.name} {user[0]?.phone}
+              User & Phone Number : {user[0]?.name} / {user[0]?.phone}
             </span>
-            <span className="payment-identity">{user[0]?.email}</span>
+            <span className="payment-identity">Email : {user[0]?.email}</span>
           </div>
           <div className="col-md-12 d-flex justify-content-between align-items-center pe-5 my-5">
             <span className="payment-payment-code">Payment code :</span>
@@ -158,7 +165,7 @@ export default function Payment() {
               size="lg"
               onClick={handleReservation}
             >
-              Finish payment : <span className="text-danger">59:30</span>
+              Finish payment
             </button>
           </div>
         </div>

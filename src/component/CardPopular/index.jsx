@@ -1,14 +1,18 @@
 import React from "react";
 import { Card } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+import "./index.css";
 
 import card1 from "../../assets/img/card-1.png";
+import { useSelector } from "react-redux";
 
 export default function CardPopular(props) {
   const navigate = useNavigate();
-  const isLogin = localStorage.getItem("token");
+  const user = useSelector((state) => state.user.data);
+  const isAdmin = user.role;
 
-  const imageProduct1 = `https://res.cloudinary.com/dtjeegwiz/image/upload/v1667656027/${props.data.image1}`;
+  console.log(props.data);
+  const imageProduct = `https://res.cloudinary.com/dtjeegwiz/image/upload/v1667656027/${props.data.image1}`;
 
   const handleDetailVehicleUser = () => {
     navigate(`/vehicle-detail-user/${props.data.productId}`);
@@ -20,10 +24,10 @@ export default function CardPopular(props) {
 
   return (
     <>
-      <div className=" col-3 card-responsive">
+      <div className=" col-3 card-responsive image-container">
         <Card className="border-0 me-3">
           <Card.Img
-            src={props.data.image !== null ? imageProduct1 : card1}
+            src={props.data.image !== null ? imageProduct : card1}
             alt="Card image"
             className="rounded-image"
           />
@@ -31,11 +35,13 @@ export default function CardPopular(props) {
             <div
               className="box-image"
               onClick={
-                isLogin ? handleDetailVehicleUser : handleDetailVehicleAdmin
+                isAdmin !== "admin"
+                  ? handleDetailVehicleUser
+                  : handleDetailVehicleAdmin
               }
             >
               <p className="fw-bold">
-                {props.data.nameProduct ? props.data.nameProduct : "-"}
+                {props.data.category ? props.data.category : "-"}
               </p>
               <p>{props.data.location ? props.data.location : "-"}</p>
             </div>
