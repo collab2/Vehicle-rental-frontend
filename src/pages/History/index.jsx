@@ -4,9 +4,22 @@ import Footer from "../../component/Footer";
 import { Container } from "react-bootstrap";
 import { Icon } from "@iconify/react";
 import vespa from "../../assets/img/vespa.png";
-import lambo from "../../assets/img/lambo.png";
+// import lambo from "../../assets/img/lambo.png";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { getProduct } from "../../stores/actions/product";
+import vehicleDefault from "../../assets/img/vehicle-default.jpg";
 
 export default function History() {
+  const dispatch = useDispatch();
+  const products = useSelector((state) => state.product);
+
+  useEffect(() => {
+    dispatch(getProduct(2));
+  }, []);
+
+  console.log(products.allData);
+
   return (
     <>
       <Header />
@@ -32,34 +45,7 @@ export default function History() {
               </select>
             </form>
 
-            <section>
-              <h4
-                className="title-history font-nunito"
-                style={{ marginBottom: "45px", marginTop: "45px" }}
-              >
-                Today
-              </h4>
-              <div>
-                <p className="text-history">
-                  Please finish your payment for vespa for Vespa Rental Jogja
-                </p>
-                <hr />
-              </div>
-              <div>
-                <p className="text-history">
-                  Please finish your payment for vespa for Vespa Rental Jogja
-                </p>
-                <hr />
-              </div>
-            </section>
-
             <section style={{ marginTop: "45px" }}>
-              <h4
-                className="title-history font-nunito"
-                style={{ marginBottom: "50px" }}
-              >
-                A week ago
-              </h4>
               <div className="d-flex gap-4">
                 <div>
                   <img src={vespa} alt="" />
@@ -126,9 +112,12 @@ export default function History() {
           </div>
 
           <div className="col-12 col-xl-3 text-center pb-4 mt-5 mt-xl-0">
-            <div style={{ borderRadius: "10px" }} className="border">
+            <div
+              style={{ borderRadius: "10px" }}
+              className="border pb-5 px-4 h-auto"
+            >
               <h4
-                className="font-playfair mt-5 mb-4"
+                className="font-playfair mt-5 mb-5"
                 style={{
                   fontWeight: "900",
                   fontSize: "24px",
@@ -137,16 +126,46 @@ export default function History() {
               >
                 New Arrival
               </h4>
-              <div className="d-flex flex-column" style={{ rowGap: "3rem" }}>
-                <div>
+              <div className="d-flex flex-column" style={{ rowGap: "40px" }}>
+                {products.allData.map((item) => (
+                  <div
+                    key={item.productId}
+                    className="position-relative"
+                    // className="mb-5"
+                  >
+                    {/* <p>{item.location}</p> */}
+                    <div
+                      className="position-absolute bottom-0 start-0 bg-white d-flex flex-column align-items-start font-nunito pt-2 pe-4"
+                      style={{ borderTopRightRadius: "6px" }}
+                    >
+                      <span className="fw-bold">{item.nameproduct}</span>
+                      <span>{item.location}</span>
+                    </div>
+                    <img
+                      src={
+                        item.image1
+                          ? process.env.REACT_APP_CLOUDINARY_URL_IMAGE +
+                            item.image1
+                          : vehicleDefault
+                      }
+                      alt="Vehicle Image"
+                      style={{
+                        objectFit: "cover",
+                        width: "100%",
+                        borderRadius: "6px",
+                      }}
+                      // className="w-full"
+                      height={350}
+                      // width={200}
+                    />
+                  </div>
+                ))}
+                {/* <div>
                   <img src={lambo} alt="" />
-                </div>
-                <div>
-                  <img src={lambo} alt="" />
-                </div>
+                </div> */}
               </div>
 
-              <div className="d-flex flex-column align-items-center mt-5">
+              {/* <div className="d-flex flex-column align-items-center mt-5">
                 <span
                   className="font-nunito"
                   style={{ color: "#B8BECD", fontSize: "18px" }}
@@ -154,7 +173,7 @@ export default function History() {
                   View More
                 </span>
                 <Icon icon={"bi:chevron-compact-down"} width={43} />
-              </div>
+              </div> */}
             </div>
           </div>
         </div>

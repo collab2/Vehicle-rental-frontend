@@ -20,7 +20,7 @@ export default function Header() {
   const user = useSelector((state) => state.user);
   const isAdmin = user.data.role;
 
-  console.log(user.data.role);
+  // console.log(user.data.role);
 
   const handleLogout = async () => {
     try {
@@ -36,9 +36,10 @@ export default function Header() {
     navigate(`/profile/${id}`);
   };
 
-  console.log(
-    `https://res.cloudinary.com/dtjeegwiz/image/upload/v1667500751/AutoRent/user/${user.data.image}`
-  );
+  // console.log(
+  //   `https://res.cloudinary.com/dtjeegwiz/image/upload/v1667500751/AutoRent/user/${user.data.image}`
+  // );
+
   return (
     <Navbar bg="white" expand="lg" className="font-nunito py-4">
       <Container>
