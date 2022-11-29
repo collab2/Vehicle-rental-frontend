@@ -22,7 +22,7 @@ export default function VehicleDetailUser() {
     navigate(`/vehicle-type`);
   };
   const handleReservation = () => {
-    navigate(`/reservation/`);
+    navigate(`/reservation/${id}`);
   };
 
   return (
