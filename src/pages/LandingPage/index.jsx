@@ -35,12 +35,12 @@ export default function LandingPage() {
 
   const getDataProduct = () => {
     dispatch(getProduct(50)).then((res) => {
-      console.log(res);
+      // console.log(res);
       setProducts(res.value.data.data);
     });
   };
 
-  console.log(products);
+  // console.log(products);
 
   return (
     <>

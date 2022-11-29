@@ -1,10 +1,15 @@
 import axios from "../../utils/axios";
 
-export const getProduct = (limit = "", location = "", name = "") => {
+export const getProduct = (
+  limit = "",
+  location = "",
+  name = "",
+  sort = "newest"
+) => {
   return {
     type: "GET_PRODUCT",
     payload: axios.get(
-      `/product?limit=${limit}&location=${location}&nameproduct=${name}&sort=latest`
+      `/product?limit=${limit}&location=${location}&nameproduct=${name}&sort=${sort}`
     ),
   };
 };

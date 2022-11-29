@@ -11,7 +11,7 @@ export default function CardPopular(props) {
   const user = useSelector((state) => state.user.data);
   const isAdmin = user.role;
 
-  console.log(props.data);
+  // console.log(props.data);
   const imageProduct =
     process.env.REACT_APP_CLOUDINARY_URL_IMAGE + props.data.image1;
 
