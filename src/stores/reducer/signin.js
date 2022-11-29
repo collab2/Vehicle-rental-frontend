@@ -12,7 +12,7 @@ const signin = (state = initialState, action) => {
       return {
         ...state,
         data: {},
-        isLoading: false,
+        isLoading: true,
         isError: false,
         message: "",
       };
