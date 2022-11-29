@@ -23,7 +23,7 @@ export default function Vehicle(props) {
             src={
               props.data.image1
                 ? `https://res.cloudinary.com/dtjeegwiz/image/upload/v1667656027/${props.data.image1}`
-                : require("../../assets/images/vehicle-default.jpg")
+                : require("../../assets/img/vehicle-default.jpg")
             }
             alt="van"
             onClick={handleDetail}

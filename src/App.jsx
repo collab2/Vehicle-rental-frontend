@@ -18,9 +18,9 @@ import VehicleDetailAdmin from "./pages/VehicleDetailAdmin";
 import ApprovalPayment from "./pages/ApprovalPayment";
 import EditVehicle from "./pages/EditVehicle";
 import Reservation from "./pages/Reservation";
-import SignupAdmin from "./pages/Auth/signupAdmin";
-import SigninAdmin from "./pages/Auth/signinAdmin";
-import ForgotPassword from "./pages/Auth/forgotPassword";
+import SignupAdmin from "./pages/Auth/signupadmin";
+import SigninAdmin from "./pages/Auth/signinadmin";
+import ForgotPassword from "./pages/Auth/forgotpassword";
 import ReservationList from "./pages/ReservationList";
 
 function App() {

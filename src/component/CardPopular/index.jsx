@@ -3,7 +3,7 @@ import { Card } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import "./index.css";
 
-import card1 from "../../assets/img/card-1.png";
+// import card1 from "../../assets/img/card-1.png";
 import { useSelector } from "react-redux";
 
 export default function CardPopular(props) {
@@ -12,7 +12,8 @@ export default function CardPopular(props) {
   const isAdmin = user.role;
 
   console.log(props.data);
-  const imageProduct = `https://res.cloudinary.com/dtjeegwiz/image/upload/v1667656027/${props.data.image1}`;
+  const imageProduct =
+    process.env.REACT_APP_CLOUDINARY_URL_IMAGE + props.data.image1;
 
   const handleDetailVehicleUser = () => {
     navigate(`/vehicle-detail-user/${props.data.productId}`);
@@ -27,7 +28,11 @@ export default function CardPopular(props) {
       <div className=" col-3 card-responsive image-container">
         <Card className="border-0 me-3">
           <Card.Img
-            src={props.data.image !== null ? imageProduct : card1}
+            src={
+              props.data.image1
+                ? imageProduct
+                : require("../../assets/img/vehicle-default.jpg")
+            }
             alt="Card image"
             className="rounded-image"
           />

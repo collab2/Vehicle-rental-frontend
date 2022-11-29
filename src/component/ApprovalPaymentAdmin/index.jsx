@@ -15,7 +15,7 @@ export default function ApprovalPaymentAdmin(props) {
                 src={
                   props.data.image1
                     ? `https://res.cloudinary.com/dtjeegwiz/image/upload/v1667656027/${props.data.image1}`
-                    : require("../../assets/images/vehicle-default.jpg")
+                    : require("../../assets/img/vehicle-default.jpg")
                 }
                 alt="bike"
               />
@@ -24,7 +24,7 @@ export default function ApprovalPaymentAdmin(props) {
                 src={
                   props.data.image2
                     ? `https://res.cloudinary.com/dtjeegwiz/image/upload/v1667656027/${props.data.image2}`
-                    : require("../../assets/images/vehicle-default.jpg")
+                    : require("../../assets/img/vehicle-default.jpg")
                 }
                 alt="bike"
               />
@@ -33,7 +33,7 @@ export default function ApprovalPaymentAdmin(props) {
                 src={
                   props.data.image3
                     ? `https://res.cloudinary.com/dtjeegwiz/image/upload/v1667656027/${props.data.image3}`
-                    : require("../../assets/images/vehicle-default.jpg")
+                    : require("../../assets/img/vehicle-default.jpg")
                 }
                 alt="bike"
               />
