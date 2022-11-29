@@ -1,6 +1,7 @@
 import React from "react";
 import { Card } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+import "./index.css";
 
 import card1 from "../../assets/img/card-1.png";
 
@@ -20,7 +21,7 @@ export default function CardPopular(props) {
 
   return (
     <>
-      <div className=" col-3 card-responsive">
+      <div className=" col-3 card-responsive image-container">
         <Card className="border-0 me-3">
           <Card.Img
             src={props.data.image !== null ? imageProduct1 : card1}
