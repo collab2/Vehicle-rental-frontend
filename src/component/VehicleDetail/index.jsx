@@ -1,19 +1,19 @@
 import React from "react";
 import "./index.css";
-import { useSelector, useDispatch } from "react-redux";
-import plus from "../../assets/img/vehicle/plus.png";
-import min from "../../assets/img/vehicle/min.png";
+// import { useSelector, useDispatch } from "react-redux";
+// import plus from "../../assets/img/vehicle/plus.png";
+// import min from "../../assets/img/vehicle/min.png";
 import Card from "react-bootstrap/Card";
 import { Slide } from "react-slideshow-image";
 
-import {
-  incrementCounter,
-  decrementCounter,
-} from "../../stores/action/counter";
+// import {
+//   incrementCounter,
+//   decrementCounter,
+// } from "../../stores/action/counter";
 
 export default function VehicleDetailComponent(props) {
-  const counterData = useSelector((state) => state.counter);
-  const dispatch = useDispatch();
+  // const counterData = useSelector((state) => state.counter);
+  // const dispatch = useDispatch();
 
   return (
     <>
@@ -59,7 +59,7 @@ export default function VehicleDetailComponent(props) {
           <p>Reservation before : 2 PM</p>
           <h3>Rp. {props.data?.price}/ day</h3>
           <hr />
-          <div className="counter">
+          {/* <div className="counter">
             <button
               className="btn-min"
               onClick={() => dispatch(decrementCounter())}
@@ -73,7 +73,7 @@ export default function VehicleDetailComponent(props) {
             >
               <img src={plus} alt="" />
             </button>
-          </div>
+          </div> */}
         </div>
       </div>
     </>

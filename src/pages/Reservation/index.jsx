@@ -17,7 +17,7 @@ import { getProductById } from "../../stores/actions/product";
 // import "react-toastify/dist/ReactToastify.css";
 export default function Reservation() {
   // const { productId } = useParams();
-  const [product, setProduct] = useState([]);
+  const [product, setProduct] = useState({});
   const imageProduct = `https://res.cloudinary.com/dtjeegwiz/image/upload/v1667656027/${product[0]?.image1}`;
   // const userId = localStorage.getItem("userId");
 
@@ -34,6 +34,8 @@ export default function Reservation() {
       console.log(error);
     }
   };
+
+  console.log(product[0]?.price);
 
   const handleNavigate = (nav) => {
     navigate(`/${nav}`);
@@ -82,7 +84,7 @@ export default function Reservation() {
         day: day,
         startDate: startAndReturnDate(startDate, day).startDate,
         returnDate: startAndReturnDate(startDate, day).returnDate,
-        amount: currencyConvert(product[0]?.amount * day * counter),
+        amount: currencyConvert(product[0]?.price * day * counter),
       },
     });
   };
@@ -99,8 +101,6 @@ export default function Reservation() {
   useEffect(() => {
     getData();
   }, []);
-
-  console.log(product[0]);
 
   return (
     <>
@@ -174,7 +174,7 @@ export default function Reservation() {
         <div className="col-lg-10 p-0">
           <div className="btn-pay" onClick={handleReservation}>
             <p className="reservation-amount">
-              Pay Now : Rp.{product[0]?.price}
+              Pay Now : Rp.{product[0]?.price * day * counter}
             </p>
           </div>
         </div>
