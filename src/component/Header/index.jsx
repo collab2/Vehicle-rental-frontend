@@ -17,9 +17,11 @@ export default function Header() {
   const navigate = useNavigate();
   // const dispatch = useDispatch();
   const isLogin = localStorage.getItem("token");
-
   const user = useSelector((state) => state.user);
-  console.log(user);
+  const isAdmin = user.data.role;
+
+  console.log(user.data.role);
+
   const handleLogout = async () => {
     try {
       await axios.post("auth/logout");
@@ -34,7 +36,9 @@ export default function Header() {
     navigate(`/profile/${id}`);
   };
 
-  console.log(user);
+  console.log(
+    `https://res.cloudinary.com/dtjeegwiz/image/upload/v1667500751/AutoRent/user/${user.data.image}`
+  );
   return (
     <Navbar bg="white" expand="lg" className="font-nunito py-4">
       <Container>
@@ -43,12 +47,26 @@ export default function Header() {
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
-          <Nav className="align-items-center gap-4 me-5">
+          <Nav className="align-items-center gap-2 me-5">
             <Nav.Link href="/">Home</Nav.Link>
             <Nav.Link href="/vehicle-type">Vehicle Type</Nav.Link>
             <Nav.Link href="">History</Nav.Link>
-            <Nav.Link href="">About</Nav.Link>
             <Nav.Link href=""></Nav.Link>
+            <Nav.Link href="">About</Nav.Link>
+            {isAdmin === "admin" ? (
+              <>
+                <NavDropdown title="Admin Management" id="basic-nav-dropdown">
+                  <NavDropdown.Item href="/add-vehicle">
+                    Add Vehicle
+                  </NavDropdown.Item>
+                  <NavDropdown.Item href="/approval-payment">
+                    Approval Payment
+                  </NavDropdown.Item>
+                </NavDropdown>
+              </>
+            ) : (
+              <> </>
+            )}
           </Nav>
           {isLogin ? (
             <div className="d-flex align-items-center justify-content-center">
@@ -57,11 +75,11 @@ export default function Header() {
                 title={
                   <img
                     src={
-                      user.data.data?.image
-                        ? `https://res.cloudinary.com/dtjeegwiz/image/upload/v1667500751/AutoRent/user/${user.data.data.image}`
+                      user.data?.image
+                        ? `https://res.cloudinary.com/dtjeegwiz/image/upload/v1667500751/${user.data.image}`
                         : people
                     }
-                    className="rounded-circle"
+                    className="rounded-circle ms-3"
                     style={{ width: "50px", height: "50px" }}
                   />
                 }
