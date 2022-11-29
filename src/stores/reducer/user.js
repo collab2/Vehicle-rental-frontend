@@ -1,8 +1,10 @@
 const initialState = {
   data: {},
   isLoading: false,
+  isLoadingUpdate: false,
   isError: false,
   message: "",
+  messageUpdate: "",
 };
 
 const user = (state = initialState, action) => {
@@ -22,7 +24,7 @@ const user = (state = initialState, action) => {
         data: {},
         isLoading: false,
         isError: true,
-        message: action.payload.message,
+        message: action.payload.response.data.message,
       };
 
     case "GET_USER_BY_ID_FULFILLED":
@@ -31,30 +33,29 @@ const user = (state = initialState, action) => {
         data: action.payload.data.data[0],
         isLoading: false,
         isError: false,
-        message: action.payload.data.message,
+        message: action.payload.data.msg,
       };
     case "EDIT_USER_PENDING":
       return {
         ...state,
-        isLoading: true,
+        isLoadingUpdate: true,
         isError: false,
-        message: "Loading...",
+        messageUpdate: "Loading...",
       };
 
     case "EDIT_USER_REJECTED":
       return {
         ...state,
-        isLoading: false,
+        isLoadingUpdate: false,
         isError: true,
-        message: action.payload.response.data,
+        messageUpdate: action.payload.response.data.message,
       };
-
     case "EDIT_USER_FULFILLED":
       return {
         ...state,
-        isLoading: false,
+        isLoadingUpdate: false,
         isError: false,
-        message: action.payload.data.message,
+        messageUpdate: action.payload.data.msg,
       };
     default: {
       return state;

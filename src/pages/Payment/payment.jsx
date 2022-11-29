@@ -68,6 +68,7 @@ export default function Payment() {
     };
     dispatch(reserve(setData))
       .then((response) => {
+        console.log(response);
         toast.success(response.value.data.msg, {
           position: toast.POSITION.TOP_CENTER,
         });
