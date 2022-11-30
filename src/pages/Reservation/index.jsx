@@ -1,29 +1,28 @@
 import { useNavigate, useParams } from "react-router-dom";
-import DatePicker from "react-datepicker";
+// import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 // import addDays from "date-fns/addDays"
 import "./Reservation.css";
 import { useEffect, useState } from "react";
-// import { useSelector } from "react-redux";
-// import defaultImage from "../../assets/images/vehicle-default.jpg";
-// import { reservation } from "../../stores/actions/reservation";
-// import { useParams } from "react-router-dom";
 import Header from "../../component/Header";
 import Footer from "../../component/Footer";
-import { currencyConvert } from "../../utils/helper/currencyConvert";
 import { useDispatch } from "react-redux";
 import { getProductById } from "../../stores/actions/product";
-// import { ToastContainer, toast } from "react-toastify";
-// import "react-toastify/dist/ReactToastify.css";
+import moment from "moment/moment";
+
 export default function Reservation() {
-  // const { productId } = useParams();
+  const navigate = useNavigate();
   const [product, setProduct] = useState({});
   const imageProduct = `https://res.cloudinary.com/dtjeegwiz/image/upload/v1667656027/${product[0]?.image1}`;
-  // const userId = localStorage.getItem("userId");
 
   const { productId } = useParams();
+  const [counter, setCounter] = useState(0);
 
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    getData();
+  }, []);
 
   const getData = () => {
     try {
@@ -35,46 +34,19 @@ export default function Reservation() {
     }
   };
 
-  console.log(product[0]?.price);
-
   const handleNavigate = (nav) => {
     navigate(`/${nav}`);
   };
-  const [startDate, setStartDate] = useState(new Date());
+  const [startDate, setStartDate] = useState();
   const [day, setDay] = useState("");
   const onChangeDay = (e) => {
     setDay(e.target.value);
   };
-  const dateLocal = (iso8601) => {
-    const date = new Date(iso8601).toISOString();
-    const newDate = new Date(date);
-    const day = ("0" + newDate.getDate()).slice(-2);
-    const month = ("0" + newDate.getMonth() + 1).slice(-2);
-    const year = newDate.getFullYear();
-    return [day, month, year].join("-");
-  };
 
-  const startAndReturnDate = (date, day) => {
-    const dateAPI = dateLocal(date);
-    let dateArray = dateAPI.split("-");
-    Array.prototype.move = function (from, to) {
-      this.splice(to, 0, this.splice(from, 1)[0]);
-      return this;
-    };
-    dateArray.move(2, 0);
-    dateArray.move(1, 2);
-    const newDate = dateArray.join("-");
-    let someDate = new Date(newDate);
-    someDate.setDate(someDate.getDate() + parseInt(day, 10));
-    const returnDate = dateLocal(someDate);
-    const dateData = {
-      startDate: dateAPI,
-      returnDate: returnDate,
-    };
-    return dateData;
+  const handleDate = (e) => {
+    const value = e.target.value;
+    setStartDate(value);
   };
-
-  const navigate = useNavigate();
 
   const handleReservation = () => {
     navigate("/payment", {
@@ -82,14 +54,14 @@ export default function Reservation() {
         quantity: counter,
         productId: productId,
         day: day,
-        startDate: startAndReturnDate(startDate, day).startDate,
-        returnDate: startAndReturnDate(startDate, day).returnDate,
-        amount: currencyConvert(product[0]?.price * day * counter),
+        startDate: startDate,
+        returnDate: moment(startDate)
+          .subtract(-day, "days")
+          .format("YYYY-MM-DD"),
+        amount: product[0]?.price * day * counter,
       },
     });
   };
-
-  const [counter, setCounter] = useState(0);
 
   const increment = (data) => {
     setCounter(counter + data);
@@ -97,10 +69,6 @@ export default function Reservation() {
   const decrement = () => {
     setCounter(counter - 1);
   };
-
-  useEffect(() => {
-    getData();
-  }, []);
 
   return (
     <>
@@ -148,13 +116,7 @@ export default function Reservation() {
 
             <p className="date-reservation">Start Date :</p>
 
-            <DatePicker
-              className="datePicker"
-              dateFormat="dd-MM-yyyy"
-              placeholderText="Select Date"
-              selected={startDate}
-              onChange={(date) => setStartDate(date)}
-            />
+            <input type={"date"} onChange={handleDate} name={"date"} />
             <p className="date-reservation">Return Date :</p>
             <select className="datePicker" onChange={onChangeDay}>
               <option value="" disabled selected>
