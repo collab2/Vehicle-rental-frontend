@@ -14,6 +14,15 @@ export const getReservationById = (reservationId) => {
   };
 };
 
+export const getReservationByUserId = (userId) => {
+  return {
+    type: "GET_RESERVATION_BY_USER_ID",
+    payload: axios.get(
+      `/reservation/user/${userId}?page=&limit=&asc=&nameProduct=`
+    ),
+  };
+};
+
 export const reserve = (data) => {
   return {
     type: "ADD_RESERVATION",
