@@ -3,13 +3,17 @@ import Header from "../../component/Header";
 import Footer from "../../component/Footer";
 import { Container } from "react-bootstrap";
 import { Icon } from "@iconify/react";
-import vespa from "../../assets/img/vespa.png";
+// import vespa from "../../assets/img/vespa.png";
 // import lambo from "../../assets/img/lambo.png";
+import ListReservation from "../../component/ListReservation";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { getProduct } from "../../stores/actions/product";
 import vehicleDefault from "../../assets/img/vehicle-default.jpg";
-import { getReservationByUserId } from "../../stores/actions/reservation";
+import {
+  getReservationByUserId,
+  getReservation,
+} from "../../stores/actions/reservation";
 
 export default function History() {
   const dispatch = useDispatch();
@@ -21,10 +25,13 @@ export default function History() {
   useEffect(() => {
     dispatch(getProduct(2));
     dispatch(getReservationByUserId(user.data.userId));
+    dispatch(getReservation());
   }, []);
 
-  console.log(products.allData);
+  // console.log(products.allData);
   console.log(user.data.userId);
+  // console.log(dataUserReservation);
+  console.log(dataUserReservation);
 
   return (
     <>
@@ -54,39 +61,8 @@ export default function History() {
               style={{ marginTop: "45px" }}
               className="d-flex flex-column gap-5"
             >
-              {dataUserReservation.map((item) => (
-                <div className="d-flex gap-4" key={item.reservationId}>
-                  <div>
-                    <img src={vespa} alt="" />
-                  </div>
-                  <div className="d-flex flex-column">
-                    <span
-                      className="font-nunito fw-bold"
-                      style={{ color: "#393939", fontSize: "24px" }}
-                    >
-                      Vespa Matic
-                    </span>
-                    <span
-                      className="font-nunito"
-                      style={{ color: "#393939", fontSize: "24px" }}
-                    >
-                      Jan 18 to 21 2021
-                    </span>
-                    <span
-                      className="font-nunito fw-bold mt-2"
-                      style={{ color: "#393939", fontSize: "24px" }}
-                    >
-                      Prepayment : Rp.245.000
-                    </span>
-                    <span
-                      className="font-nunito"
-                      style={{ color: "#087E0D", fontSize: "24px" }}
-                    >
-                      Has been returned
-                    </span>
-                  </div>
-                </div>
-              ))}
+              <ListReservation data={dataUserReservation} />
+
               {/* <div className="d-flex gap-4 mt-5">
                 <div>
                   <img src={vespa} alt="" />
