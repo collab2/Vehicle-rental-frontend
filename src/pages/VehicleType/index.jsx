@@ -97,6 +97,9 @@ export default function VehicleType() {
                 name="filter"
                 onChange={handleChange}
               >
+                <option selected disabled name="filter" value="">
+                  Selected
+                </option>
                 {category?.data?.map((elem) => (
                   <>
                     <option name="filter" value={elem}>

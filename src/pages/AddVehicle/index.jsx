@@ -123,7 +123,7 @@ export default function EditVehicle() {
       (res) => {
         console.log(res);
         alert("success");
-        navigate("/");
+        window.location.reload();
       }
       // toast
       //   .success(res.value.data.msg, {
