@@ -47,29 +47,34 @@ export default function Header() {
           <Logo />
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
-          <Nav className="align-items-center gap-2 me-5">
-            <Nav.Link href="/">Home</Nav.Link>
-            <Nav.Link href="/vehicle-type">Vehicle Type</Nav.Link>
-            <Nav.Link href="/history">History</Nav.Link>
-            {isAdmin === "admin" ? (
-              <>
-                <NavDropdown title="Admin Management" id="basic-nav-dropdown">
-                  <NavDropdown.Item href="/add-vehicle">
-                    Add Vehicle
-                  </NavDropdown.Item>
-                  <NavDropdown.Item href="/approval-payment">
-                    Approval Payment
-                  </NavDropdown.Item>
-                </NavDropdown>
-              </>
-            ) : (
-              <> </>
-            )}
-          </Nav>
+        <Navbar.Collapse
+          id="basic-navbar-nav"
+          className="justify-content-between"
+        >
+          <div className="mx-auto">
+            <Nav className="align-items-center gap-2">
+              <Nav.Link href="/">Home</Nav.Link>
+              <Nav.Link href="/vehicle-type">Vehicle Type</Nav.Link>
+              <Nav.Link href="/history">History</Nav.Link>
+              {isAdmin === "admin" ? (
+                <>
+                  <NavDropdown title="Admin Management" id="basic-nav-dropdown">
+                    <NavDropdown.Item href="/add-vehicle">
+                      Add Vehicle
+                    </NavDropdown.Item>
+                    <NavDropdown.Item href="/approval-payment">
+                      Approval Payment
+                    </NavDropdown.Item>
+                  </NavDropdown>
+                </>
+              ) : (
+                <> </>
+              )}
+            </Nav>
+          </div>
           {isLogin ? (
             <div className="d-flex align-items-center justify-content-center">
-              <div className="me-3">
+              <div className="me-4 ms-5">
                 {user.data.name ? user.data.name : "no name"}
               </div>
               <NavDropdown
@@ -81,7 +86,7 @@ export default function Header() {
                           user.data.image
                         : people
                     }
-                    className="rounded-circle ms-3"
+                    className="rounded-circle"
                     style={{ width: "50px", height: "50px" }}
                   />
                 }

@@ -1,15 +1,36 @@
+@import url("https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;600;700&family=Nunito:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700;900&family=Poppins:wght@300;400;500;600;700&display=swap");
+
 .text-slide-banner {
-  font-size: 4rem;
+  font-size: 96px;
   font-weight: 600;
   color: #fff;
-  text-align: left;
+  text-align: center;
   margin: 20% 3rem;
-  font-family: "Times New Roman", Times, serif;
+  font-family: "Playfair Display", serif;
 }
 
 .slide-banner {
   background: rgba(rgb(0, 0, 0));
   opacity: 0.5;
+}
+
+.testimonial-text {
+  font-size: 24px;
+  margin: 0;
+  font-family: "Nunito", sans-serif;
+  font-weight: 200;
+}
+
+.title-landing {
+  font-size: 48px;
+  font-weight: 1000;
+  color: #000;
+  line-height: 50px;
+  font-family: "Playfair Display", serif;
+}
+
+.container-divider-landing {
+  margin: 5rem 0;
 }
 
 @media screen and (max-width: 768px) {

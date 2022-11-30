@@ -58,7 +58,7 @@ export default function VehicleDetailComponent(props) {
           <p>Type : {props.data?.category}</p>
           <p>Reservation before : 2 PM</p>
           <h3>Rp. {props.data?.price}/ day</h3>
-          <hr />
+
           {/* <div className="counter">
             <button
               className="btn-min"

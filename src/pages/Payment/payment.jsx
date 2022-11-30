@@ -119,7 +119,11 @@ export default function Payment() {
           </div>
           <div className="col-md-6 border rounded py-3 px-5 mb-4 d-flex justify-content-between">
             <span className="payment-quantity">
-              Reservation Date : {state.startDate} - {state.returnDate}
+              Reservation Date :{" "}
+              <span className="reservation-date">
+                <br />
+                {state.startDate} - {state.returnDate}{" "}
+              </span>
             </span>
             <span className="payment-date">{state.firstDate}</span>
           </div>
@@ -133,9 +137,11 @@ export default function Payment() {
           <div className="col-md-6 border rounded py-3 gap-2 px-5 d-flex flex-column justify-content-center">
             <span className="payment-order-identity">Identity :</span>
             <span className="payment-identity">
-              User & Phone Number : {user[0]?.name} / {user[0]?.phone}
+              User & Phone Number : <br /> {user[0]?.name} ( {user[0]?.phone} )
             </span>
-            <span className="payment-identity">Email : {user[0]?.email}</span>
+            <span className="payment-identity">
+              Email : <br /> {user[0]?.email}
+            </span>
           </div>
           <div className="col-md-12 d-flex justify-content-between align-items-center pe-5 my-5">
             <span className="payment-payment-code">Payment code :</span>
@@ -143,7 +149,10 @@ export default function Payment() {
               <span className="payment-code-bottom">#FG1209878YZS</span>
               <button className="px-4 payment-copy-bottom">Copy</button>
             </div>
-            <div className="border col-md-4 rounded me-3 py-3 px-5">
+            <div
+              className="border col-md-4 rounded me-3"
+              style={{ padding: "12px" }}
+            >
               <Dropdown>
                 <Dropdown.Toggle
                   className="payment-dropdown"
@@ -153,8 +162,8 @@ export default function Payment() {
                 </Dropdown.Toggle>
 
                 <Dropdown.Menu>
-                  <Dropdown.Item href="#/action-1">Cash</Dropdown.Item>
-                  <Dropdown.Item href="#/action-2">Transfer</Dropdown.Item>
+                  <Dropdown.Item href="#">Cash</Dropdown.Item>
+                  <Dropdown.Item href="#">Transfer</Dropdown.Item>
                 </Dropdown.Menu>
               </Dropdown>
             </div>
