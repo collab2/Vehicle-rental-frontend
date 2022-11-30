@@ -13,6 +13,40 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+.pagination {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 5rem;
+  font-size: 1.2rem;
+  gap: 5;
+  margin-top: 100px;
+  text-decoration: none;
+}
+
+.pagination .page-num {
+  padding: 8px 15px;
+  cursor: pointer;
+  border-radius: 3px;
+  font-weight: 400;
+  text-decoration: none;
+}
+
+.pagination .page-num:hover {
+  background-color: #5ab1bb;
+  color: white;
+}
+
+.pagination .active {
+  background-color: #5ab1bb;
+}
+
+.pageHistory--container--image__history {
+  width: 350px;
+  height: 50px;
+}
+
 .profile-name {
   font-family: "Playfair Display";
   font-style: normal;
