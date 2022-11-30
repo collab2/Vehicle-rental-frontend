@@ -4,7 +4,7 @@ import Header from "../../component/Header";
 import Footer from "../../component/Footer";
 import { useDispatch } from "react-redux";
 import { getCategory, addCategory } from "../../stores/actions/category";
-import { addProduct, getProduct } from "../../stores/actions/product";
+import { addProduct } from "../../stores/actions/product";
 
 import addImage from "../../assets/img/addImage.png";
 import { ToastContainer, toast } from "react-toastify";
@@ -70,56 +70,70 @@ export default function EditVehicle() {
     });
   };
 
-  const handleImageChange1 = (e) => {
+  const handleImageChange = (e) => {
     const { name, files } = e.target;
-    setNewImage1({ [name]: files[0] });
-    setImagePreview1(URL.createObjectURL(files[0]));
+    if (e.target.name === "image1") {
+      setForm({ ...form, [e.target.name]: e.target.files[0] });
+      setNewImage1({ [name]: files[0] });
+      setImagePreview1(URL.createObjectURL(files[0]));
+    } else if (e.target.name === "image2") {
+      setForm({ ...form, [e.target.name]: e.target.files[0] });
+      setNewImage2({ [name]: files[0] });
+      setImagePreview2(URL.createObjectURL(files[0]));
+      setForm({ ...form, [e.target.name]: e.target.files[0] });
+    } else if (e.target.name === "image3") {
+      setNewImage3({ [name]: files[0] });
+      setImagePreview3(URL.createObjectURL(files[0]));
+      setForm({ ...form, [e.target.name]: e.target.files[0] });
+    } else {
+      setForm({ ...form, [e.target.name]: e.target.value });
+    }
   };
 
-  const handleImageChange2 = (e) => {
-    const { name, files } = e.target;
-    setNewImage2({ [name]: files[0] });
-    setImagePreview2(URL.createObjectURL(files[0]));
-  };
+  // console.log(form);
 
-  const handleImageChange3 = (e) => {
-    const { name, files } = e.target;
-    setNewImage3({ [name]: files[0] });
-    setImagePreview3(URL.createObjectURL(files[0]));
-  };
-
-  const handleAddProduct = () => {
-    // e.preventDefault();
-    dispatch(addProduct(form))
-      .then((response) => {
-        toast.success(response.value.data.msg, {
-          position: toast.POSITION.TOP_CENTER,
-        });
-        dispatch(getProduct());
-      })
-      .catch((error) => {
-        toast.error(error.response.data.msg, {
-          position: toast.POSITION.TOP_CENTER,
-        });
-      });
-  };
+  // const handleAddProduct = () => {
+  // e.preventDefault();
+  // dispatch(addProduct(form))
+  //   .then((response) => {
+  //     toast.success(response.value.data.msg, {
+  //       position: toast.POSITION.TOP_CENTER,
+  //     });
+  //     dispatch(getProduct());
+  //   })
+  //   .catch((error) => {
+  //     toast.error(error.response.data.msg, {
+  //       position: toast.POSITION.TOP_CENTER,
+  //     });
+  //   });
+  // };
 
   const handleAddImage = () => {
     // e.preventDefault();
     const formData = new FormData();
-    formData.append("image1", newImage1.image1);
-    formData.append("image2", newImage2.image2);
-    formData.append("image3", newImage3.image3);
-    dispatch(addProduct(formData)).then((res) =>
-      toast
-        .success(res.value.data.msg, {
-          position: toast.POSITION.TOP_CENTER,
-        })
-        .catch((err) =>
-          toast.error(err.value.data.msg, {
-            position: toast.POSITION.TOP_CENTER,
-          })
-        )
+    // formData.append("name", form.name);
+    for (const data in form) {
+      // console.log(data);
+      formData.append(data, form[data]);
+      console.log(formData);
+    }
+    // console.log(form);
+    formData.append("nameproduct", "test");
+    dispatch(addProduct(formData)).then(
+      (res) => {
+        console.log(res);
+        alert("success");
+        navigate("/");
+      }
+      // toast
+      //   .success(res.value.data.msg, {
+      //     position: toast.POSITION.TOP_CENTER,
+      //   })
+      //   .catch((err) =>
+      //     toast.error(err.value.data.msg, {
+      //       position: toast.POSITION.TOP_CENTER,
+      //     })
+      //   )
     );
   };
 
@@ -146,7 +160,7 @@ export default function EditVehicle() {
                     name="image1"
                     id="image1"
                     style={{ display: "none" }}
-                    onChange={handleImageChange1}
+                    onChange={handleImageChange}
                   />
                   <img
                     src={lengthImage1 > 0 ? imagePreview1 : addImage}
@@ -165,7 +179,7 @@ export default function EditVehicle() {
                         name="image2"
                         id="image2"
                         style={{ display: "none" }}
-                        onChange={handleImageChange2}
+                        onChange={handleImageChange}
                       />
                       <img
                         src={lengthImage2 > 0 ? imagePreview2 : addImage}
@@ -182,7 +196,7 @@ export default function EditVehicle() {
                       name="image3"
                       id="image3"
                       style={{ display: "none" }}
-                      onChange={handleImageChange3}
+                      onChange={handleImageChange}
                     />
                     <img
                       src={lengthImage3 > 0 ? imagePreview3 : addImage}
@@ -224,6 +238,7 @@ export default function EditVehicle() {
               <input
                 type="number"
                 name="price"
+                defaultValue={0}
                 placeholder="Type the price"
                 className="form-control mb-4 border-0 bg-light price-input"
                 onChange={handleChange}
@@ -231,21 +246,16 @@ export default function EditVehicle() {
               <label htmlFor="" className="mb-2 ms-1 h5 font-playfair fw-bold">
                 Status :
               </label>
-              <select className="form-select mb-3 bg-light border-0 status-input">
+              <select
+                onChange={handleChange}
+                name="status"
+                className="form-select mb-3 bg-light border-0 status-input"
+              >
                 <option selected>Select Status</option>
-                <option
-                  value="available"
-                  className="selected-dropup"
-                  style={{ color: "green" }}
-                  onChange={handleChange}
-                >
+                <option className="selected-dropup" style={{ color: "green" }}>
                   Available
                 </option>
-                <option
-                  value="fullBooked"
-                  style={{ color: "red" }}
-                  onChange={handleChange}
-                >
+                <option value="fullBooked" style={{ color: "red" }}>
                   Full Booked
                 </option>
               </select>
@@ -261,6 +271,7 @@ export default function EditVehicle() {
                     type="number"
                     className="border-0 text-center bg-light form-control"
                     name="stock"
+                    defaultValue={0}
                     placeholder="Set Stock"
                     onChange={handleChange}
                   />
@@ -303,7 +314,7 @@ export default function EditVehicle() {
             <button
               className="btn save-item"
               onClick={() => {
-                handleAddProduct();
+                // handleAddProduct();
                 handleAddImage();
               }}
             >

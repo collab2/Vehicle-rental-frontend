@@ -48,8 +48,9 @@ export default function Profile1() {
           position: toast.POSITION.TOP_CENTER,
         });
       })
-      .catch(() => {
-        toast.error("Failed Update Profile", {
+      .catch((error) => {
+        console.log(error);
+        toast.error(error.response.data.msg, {
           position: toast.POSITION.TOP_CENTER,
         });
       });
