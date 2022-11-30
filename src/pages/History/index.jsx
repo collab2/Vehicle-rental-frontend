@@ -23,13 +23,13 @@ export default function History() {
   const dataUserReservation = reservation.dataByUser;
 
   useEffect(() => {
-    dispatch(getProduct(2));
+    dispatch(getProduct(10));
     dispatch(getReservationByUserId(user.data.userId));
     dispatch(getReservation());
   }, []);
 
   // console.log(products.allData);
-  console.log(user.data.userId);
+  // console.log(user.data.userId);
   // console.log(dataUserReservation);
   console.log(dataUserReservation);
 

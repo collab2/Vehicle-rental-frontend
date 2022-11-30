@@ -22,6 +22,7 @@ export default function Header() {
 
   // console.log(user.data.role);
 
+  console.log(user.data.role);
   const handleLogout = async () => {
     try {
       await axios.post("auth/logout");

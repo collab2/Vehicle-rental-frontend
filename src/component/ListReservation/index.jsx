@@ -17,8 +17,8 @@ const ListReservation = (props) => {
 
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user);
-  const reservation = useSelector((state) => state.reservation);
-  const dataUserReservation = reservation.dataByUser;
+  //   const reservation = useSelector((state) => state.reservation);
+  //   const dataUserReservation = reservation.dataByUser;
 
   useEffect(() => {
     dispatch(getProduct(2));
@@ -26,10 +26,12 @@ const ListReservation = (props) => {
     dispatch(getReservation());
   }, []);
 
+  console.log(data);
+
   // console.log(products.allData);
-  console.log(user.data.userId);
-  // console.log(dataUserReservation);
-  console.log(dataUserReservation);
+  //   console.log(user.data.userId);
+  //   console.log(dataUserReservation);
+  //   console.log(currentData);
 
   useEffect(() => {
     const endOffset = itemOffset + itemsPerpage;
@@ -46,7 +48,7 @@ const ListReservation = (props) => {
   return (
     <>
       {currentData?.map((item) => (
-        <div className="d-flex gap-4" key={item.reservationId}>
+        <div className="d-flex my-5 gap-4" key={item.reservationId}>
           <div className="pageHistory--container--image__history">
             <img
               src={`https://res.cloudinary.com/dtjeegwiz/image/upload/${item.product.image1}`}
@@ -59,7 +61,9 @@ const ListReservation = (props) => {
               className="font-nunito fw-bold"
               style={{ color: "#393939", fontSize: "24px" }}
             >
-              {item.nameproduct ? item.nameproduct : "empty name product"}
+              {item.product.nameproduct
+                ? item.product.nameproduct
+                : "empty name product"}
             </span>
             <span
               className="font-nunito"
