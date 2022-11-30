@@ -129,9 +129,9 @@ export default function Signin() {
               >
                 Forgot password?
               </button>
-              <h1 className="separator pt-4 my-2">
+              <h3 className="separator pt-4 my-2">
                 {"Don't have an account?"}
-              </h1>
+              </h3>
             </form>
             <div className="m-5 px-5 form-login">
               <div className="">

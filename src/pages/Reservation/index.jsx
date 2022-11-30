@@ -80,7 +80,7 @@ export default function Reservation() {
               className="btn"
               onClick={() => handleNavigate("vehicle-type")}
             >
-              <div className="h3">{"< "} Reservation</div>{" "}
+              <div className="h1">{"< "} Reservation</div>{" "}
             </button>
           </div>
         </div>
@@ -91,7 +91,7 @@ export default function Reservation() {
         </div>
         <div className="col-lg-6 p-3 mb-3">
           <div className="wrapper-form">
-            <h1 className="title-detail">
+            <h1 className="title-detail font-playfair">
               {product[0]?.nameproduct} <br />
               <span className="detail-title-location">
                 {product[0]?.location}
@@ -102,22 +102,30 @@ export default function Reservation() {
 
             <div className="d-flex flex-row justify-content-between align-items-center  mt-5 mb-5 col-5">
               <button
-                className="btn-grey-minus"
+                className="btn-grey-minus p-3"
                 onClick={decrement}
                 disabled={counter === 0 ? true : false}
               >
                 -
               </button>
-              <p className="mx-5 fw-bold mt-3 mx-3">{counter}</p>
-              <button className="btn-yellow-plus" onClick={() => increment(1)}>
+              <p className="mx-5 fw-bold mt-3 mx-3 h4">{counter}</p>
+              <button
+                className="btn-yellow-plus px-3 py-3"
+                onClick={() => increment(1)}
+              >
                 +
               </button>
             </div>
 
             <p className="date-reservation">Start Date :</p>
 
-            <input type={"date"} onChange={handleDate} name={"date"} />
-            <p className="date-reservation">Return Date :</p>
+            <input
+              type={"date"}
+              onChange={handleDate}
+              name={"date"}
+              className="datePicker"
+            />
+            <p className="date-reservation ">Return Date :</p>
             <select className="datePicker" onChange={onChangeDay}>
               <option value="" disabled selected>
                 Select Day
