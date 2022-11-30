@@ -77,13 +77,15 @@ const ListReservation = (props) => {
               className="font-nunito fw-bold mt-2"
               style={{ color: "#393939", fontSize: "24px" }}
             >
-              {item.amount ? `Prepayment : Rp.${item.amount}` : "Free Rent"}
+              {item.product.price
+                ? `Prepayment : Rp.${item.product.price}`
+                : "Free Rent"}
             </span>
             <span
               className="font-nunito"
               style={{ color: "#087E0D", fontSize: "24px" }}
             >
-              {item.statusPayment} and has been returned
+              Success
             </span>
           </div>
         </div>

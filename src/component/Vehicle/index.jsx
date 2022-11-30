@@ -20,6 +20,7 @@ export default function Vehicle(props) {
       <div className="vehicle-bar">
         <div className="vehicle-type">
           <img
+            style={{ objectFit: "cover", objectPosition: "center" }}
             src={
               props.data.image1
                 ? `https://res.cloudinary.com/dtjeegwiz/image/upload/v1667656027/${props.data.image1}`

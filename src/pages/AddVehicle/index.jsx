@@ -5,10 +5,9 @@ import Footer from "../../component/Footer";
 import { useDispatch } from "react-redux";
 import { getCategory, addCategory } from "../../stores/actions/category";
 import { addProduct } from "../../stores/actions/product";
-
+import "react-toastify/dist/ReactToastify.css";
 import addImage from "../../assets/img/addImage.png";
 import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router-dom";
 
 export default function EditVehicle() {
@@ -22,6 +21,7 @@ export default function EditVehicle() {
   const [imagePreview3, setImagePreview3] = useState({});
   const [newImage1, setNewImage1] = useState({});
   const [newImage2, setNewImage2] = useState({});
+  const [setIsLoading] = useState(false);
   const [newImage3, setNewImage3] = useState({});
   const lengthImage1 = Object.keys(newImage1).length;
   const lengthImage2 = Object.keys(newImage2).length;
@@ -30,6 +30,8 @@ export default function EditVehicle() {
   useEffect(() => {
     getCategoryData();
   }, []);
+
+  // const product = useSelector((state) => state.product);
 
   const getCategoryData = () => {
     dispatch(getCategory())
@@ -110,31 +112,55 @@ export default function EditVehicle() {
 
   const handleAddImage = () => {
     // e.preventDefault();
+
+    if (
+      !form.image3 ||
+      !form.image1 ||
+      !form.image2 ||
+      !form.nameProduct ||
+      !form.location ||
+      !form.category ||
+      !form.description ||
+      !form.status ||
+      !form.stock
+    ) {
+      return toast.error("some field is null, everything must be fill !", {
+        position: toast.POSITION.TOP_CENTER,
+      });
+    }
     const formData = new FormData();
     // formData.append("name", form.name);
     for (const data in form) {
       // console.log(data);
       formData.append(data, form[data]);
-      console.log(formData);
     }
     // console.log(form);
     formData.append("nameproduct", "test");
-    dispatch(addProduct(formData)).then(
-      (res) => {
-        console.log(res);
-        alert("success");
-        navigate("/");
-      }
-      // toast
-      //   .success(res.value.data.msg, {
-      //     position: toast.POSITION.TOP_CENTER,
-      //   })
-      //   .catch((err) =>
-      //     toast.error(err.value.data.msg, {
-      //       position: toast.POSITION.TOP_CENTER,
-      //     })
-      //   )
-    );
+    setIsLoading(true);
+    dispatch(addProduct(formData))
+      .then(
+        () => {
+          setIsLoading(false);
+          toast.error("success create product !", {
+            position: toast.POSITION.TOP_CENTER,
+          });
+          window.location.reload();
+        }
+        // toast
+        //   .success(res.value.data.msg, {
+        //     position: toast.POSITION.TOP_CENTER,
+        //   })
+        //   .catch((err) =>
+        //     toast.error(err.value.data.msg, {
+        //       position: toast.POSITION.TOP_CENTER,
+        //     })
+        //   )
+      )
+      .catch((error) =>
+        toast.error(error.response?.data?.msg, {
+          position: toast.POSITION.TOP_CENTER,
+        })
+      );
   };
 
   const handleNav = (path) => {
@@ -144,6 +170,7 @@ export default function EditVehicle() {
   return (
     <>
       <Header />
+      <ToastContainer />
       <div className="container">
         <button className="btn" onClick={() => handleNav("")}>
           <div className="h3">{"< "} Add New Item</div>{" "}
@@ -156,6 +183,7 @@ export default function EditVehicle() {
               <div className="text-center">
                 <label htmlFor="image1">
                   <input
+                    required
                     type="file"
                     name="image1"
                     id="image1"
@@ -175,6 +203,7 @@ export default function EditVehicle() {
                   <div className="text-start">
                     <label htmlFor="image2">
                       <input
+                        required
                         type="file"
                         name="image2"
                         id="image2"
@@ -192,6 +221,7 @@ export default function EditVehicle() {
                 <div className="col-6 text-end">
                   <label htmlFor="image3">
                     <input
+                      required
                       type="file"
                       name="image3"
                       id="image3"
@@ -210,6 +240,7 @@ export default function EditVehicle() {
 
             <div className="col-lg-4 col-sm-12 ms-2">
               <input
+                required
                 type="text"
                 name="nameProduct"
                 placeholder="Name (max up to 50 words)"
@@ -218,6 +249,7 @@ export default function EditVehicle() {
                 onChange={handleChange}
               />
               <input
+                required
                 type="text"
                 name="location"
                 placeholder="Location"
@@ -225,6 +257,7 @@ export default function EditVehicle() {
                 onChange={handleChange}
               />
               <input
+                required
                 type="text"
                 name="description"
                 placeholder="Description (max up to 150 words)"
@@ -236,6 +269,7 @@ export default function EditVehicle() {
                 Price :
               </label>
               <input
+                required
                 type="number"
                 name="price"
                 defaultValue={0}
@@ -268,6 +302,7 @@ export default function EditVehicle() {
                 </label>
                 <div className="d-flex align-items-center justify-content-evenly">
                   <input
+                    required
                     type="number"
                     className="border-0 text-center bg-light form-control"
                     name="stock"
@@ -345,6 +380,7 @@ export default function EditVehicle() {
               <div className="modal-body">
                 <div className="d-flex justify-content-between">
                   <input
+                    required
                     type="text"
                     className="form-control"
                     placeholder="Name Category"
@@ -357,7 +393,6 @@ export default function EditVehicle() {
                     onClick={handleAddCategory}
                   >
                     Add
-                    <ToastContainer />
                   </button>
                 </div>
                 <div className="d-flex flex-column mt-3">
@@ -376,9 +411,7 @@ export default function EditVehicle() {
                     ))
                   ) : (
                     <>
-                      <div className="h6 selected-category">Bicycle</div>
-                      <div className="h6 selected-category">Cars</div>
-                      <div className="h6 selected-category">Bus</div>
+                      <div className="h6 selected-category">Empty</div>
                     </>
                   )}
                 </div>

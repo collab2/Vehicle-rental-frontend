@@ -39,7 +39,7 @@ export default function VehicleType() {
       )
       .then((res) => {
         setProducts(res.data.data);
-        setForm({ nameproduct: "", filter: "", location: "" });
+        // setForm({ nameproduct: "", filter: "", location: "" });
       });
   };
 
@@ -100,6 +100,9 @@ export default function VehicleType() {
                 name="filter"
                 onChange={handleChange}
               >
+                <option selected disabled name="filter" value="">
+                  Selected
+                </option>
                 {category?.data?.map((elem) => (
                   <>
                     <option name="filter" value={elem}>
