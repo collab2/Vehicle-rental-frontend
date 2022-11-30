@@ -39,7 +39,7 @@ export default function VehicleType() {
       )
       .then((res) => {
         setProducts(res.data.data);
-        setForm({ nameproduct: "", filter: "", location: "" });
+        // setForm({ nameproduct: "", filter: "", location: "" });
       });
   };
 

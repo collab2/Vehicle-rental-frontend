@@ -173,7 +173,7 @@ export default function EditVehicle() {
     }
   };
 
-  const handleDeleteImage3 = (data) => {
+  const handleDeleteImage3 = (data, id) => {
     const deleteConfirm = window.confirm("Do you want delete the image?");
     if (deleteConfirm) {
       dispatch(deleteProductImage(id, data)).then(
@@ -220,7 +220,7 @@ export default function EditVehicle() {
                   className="btn-yellow-black-delete"
                   onClick={(e) => {
                     e.preventDefault();
-                    handleDeleteImage1(product?.image1);
+                    handleDeleteImage1(product?.image1, product?.productId);
                   }}
                 >
                   X
@@ -254,7 +254,7 @@ export default function EditVehicle() {
                     <button
                       className="btn-yellow-black-delete"
                       onClick={() => {
-                        handleDeleteImage2(product?.image2);
+                        handleDeleteImage2(product?.image2, product?.productId);
                       }}
                     >
                       X
@@ -290,7 +290,7 @@ export default function EditVehicle() {
                     //   handleDeleteImage3(product?.image3);
                     // }}
                     onClick={() => {
-                      handleDeleteImage3(product?.image3);
+                      handleDeleteImage3(product?.image3, product?.productId);
                     }}
                   >
                     X
