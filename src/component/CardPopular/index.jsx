@@ -45,10 +45,12 @@ export default function CardPopular(props) {
                   : handleDetailVehicleAdmin
               }
             >
-              <p className="fw-bold">
+              <p className="card-category">
                 {props.data.category ? props.data.category : "-"}
               </p>
-              <p>{props.data.location ? props.data.location : "-"}</p>
+              <p className="card-location">
+                {props.data.location ? props.data.location : "-"}
+              </p>
             </div>
           </Card.ImgOverlay>
         </Card>

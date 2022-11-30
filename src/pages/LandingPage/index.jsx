@@ -51,7 +51,7 @@ export default function LandingPage() {
             <Card.Img src={banner1} alt="Card image" className="slide-banner" />
             <Card.ImgOverlay>
               <Card.Text className="text-slide-banner">
-                LETS EXPLORE <br /> AND TRAVEL
+                LETS EXPLORE AND <br /> TRAVEL
               </Card.Text>
             </Card.ImgOverlay>
           </Card>
@@ -75,42 +75,51 @@ export default function LandingPage() {
           </Card>
         </Slide>
 
-        <div className="container mt-5">
-          <div className="d-flex justify-content-between my-5">
-            <h1>Popular in town</h1>
-            <button
-              className="btn color-yellow"
-              onClick={() => handleNav("vehicle-type")}
-            >
-              View all {">"}
-            </button>
-          </div>
-          <div className="d-flex flex-nowrap my-5 overflow-auto">
-            {products.length > 0 ? (
-              products.map((item, index) => (
-                <CardPopular key={index} data={item} />
-              ))
-            ) : (
-              <h6>Something Popular Coming ...</h6>
-            )}
+        <div className="container my-5">
+          <div className="container-divider-landing">
+            <div className="d-flex justify-content-between my-5 title-landing">
+              <h1>Popular in town</h1>
+              <button
+                className="btn color-yellow"
+                onClick={() => handleNav("vehicle-type")}
+              >
+                View all {">"}
+              </button>
+            </div>
+            <div className="d-flex flex-nowrap my-5 overflow-auto">
+              {products.length > 0 ? (
+                products.map((item, index) => (
+                  <CardPopular key={index} data={item} />
+                ))
+              ) : (
+                <h6>Something Popular Coming ...</h6>
+              )}
+            </div>
           </div>
 
-          <div className="my-5">
-            <h1>Testimonials</h1>
-          </div>
-          <div className="row">
-            <div className="col-6 d-flex flex-column justify-content-center">
-              <img src={stars} alt="rating" className="w-25 my-3" />
-              <p className="testimonial-text">
-                ”It was the right decision to rent vehicle here, I spent less
-                money and enjoy the trip. It was an amazing experience to have a
-                ride for wildlife trip!”
-              </p>
-              <p className="fw-bold mt-3 testimonial-text">Edward Newgate</p>
-              <p className="testimonial-text">Founder Circle</p>
+          {/* Testimonial */}
+          <div className="container-divider-landing">
+            <div className="my-5 font-playfair title-landing">
+              <h1>Testimonials</h1>
             </div>
-            <div className="col-6 text-center">
-              <img src={testimonial} alt="testimonial-pict" className="w-75" />
+            <div className="row my-5">
+              <div className="col-6 d-flex flex-column justify-content-center">
+                <img src={stars} alt="rating" className="w-25 my-3" />
+                <p className="testimonial-text">
+                  ”It was the right decision to rent vehicle here, I spent less
+                  money and enjoy the trip. It was an amazing experience to have
+                  a ride for wildlife trip!”
+                </p>
+                <p className="fw-bold mt-3 testimonial-text">Edward Newgate</p>
+                <p className="fw-light">Founder Circle</p>
+              </div>
+              <div className="col-6 text-center mb-5">
+                <img
+                  src={testimonial}
+                  alt="testimonial-pict"
+                  className="w-75"
+                />
+              </div>
             </div>
           </div>
         </div>

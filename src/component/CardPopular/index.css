@@ -5,7 +5,7 @@
 
 .rounded-image {
   object-fit: fill;
-  height: 350px;
+  height: 400px;
   border-radius: 20px;
 }
 
@@ -22,12 +22,23 @@
 .box-image {
   background: rgb(255, 255, 255);
   border-radius: 5px;
+  width: 180px;
 }
 
 .card-popular {
   width: 25%;
   border: 50px #0000;
   border-radius: 50px;
+}
+
+.card-category {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.card-location {
+  font-size: 18px;
+  font-weight: 400;
 }
 
 @media screen and (max-width: 425px) {

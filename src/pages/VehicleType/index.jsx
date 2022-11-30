@@ -72,7 +72,10 @@ export default function VehicleType() {
       <main className="vehicle-type">
         <nav className="navbar-search-vehicle navbar-expand-xl">
           <div className="collapse-search navbar-collapse">
-            <form className="input-searchbar d-flex" onSubmit={handleFilter}>
+            <form
+              className="input-searchbar d-flex gap-2"
+              onSubmit={handleFilter}
+            >
               <input
                 className="form-control"
                 type="text"
@@ -112,8 +115,8 @@ export default function VehicleType() {
             </form>
           </div>
         </nav>
-        <section className="main-section gap-3">
-          <div className="d-flex gap-3 flex-wrap">
+        <section className="container">
+          <div className="vehicle-data">
             {products?.length > 0 ? (
               products?.map((item) => (
                 <div key={item.productId}>
