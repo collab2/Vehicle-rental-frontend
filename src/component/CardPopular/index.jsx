@@ -25,7 +25,14 @@ export default function CardPopular(props) {
 
   return (
     <>
-      <div className=" col-3 card-responsive image-container">
+      <div
+        className=" col-3 card-responsive image-container"
+        onClick={
+          isAdmin !== "admin"
+            ? handleDetailVehicleUser
+            : handleDetailVehicleAdmin
+        }
+      >
         <Card className="border-0 me-3">
           <Card.Img
             src={
@@ -37,14 +44,7 @@ export default function CardPopular(props) {
             className="rounded-image"
           />
           <Card.ImgOverlay className="d-flex image-popular">
-            <div
-              className="box-image"
-              onClick={
-                isAdmin !== "admin"
-                  ? handleDetailVehicleUser
-                  : handleDetailVehicleAdmin
-              }
-            >
+            <div className="box-image">
               <p className="card-category">
                 {props.data.category ? props.data.category : "-"}
               </p>
