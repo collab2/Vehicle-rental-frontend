@@ -11,7 +11,8 @@ import { getCategory } from "../../stores/actions/category";
 
 export default function VehicleType() {
   const dispatch = useDispatch();
-  const product = useSelector((state) => state.product.allData);
+  const productState = useSelector((state) => state.product);
+  const product = productState.allData;
   const category = useSelector((state) => state.category);
   const [products, setProducts] = useState([]);
   const [form, setForm] = useState({
@@ -119,17 +120,25 @@ export default function VehicleType() {
           </div>
         </nav>
         <section className="container">
-          <div className="vehicle-data">
-            {products?.length > 0 ? (
-              products?.map((item) => (
-                <div key={item.productId}>
-                  <Vehicle data={item} />
-                </div>
-              ))
-            ) : (
-              <div className="text-center">Data Not Found</div>
-            )}
-          </div>
+          {productState.isLoading ? (
+            <div className="d-flex vh-100 justify-content-center">
+              <div className="spinner-border text-primary mt-5" role="status">
+                <span className="visually-hidden" />
+              </div>
+            </div>
+          ) : (
+            <div className="vehicle-data">
+              {products?.length > 0 ? (
+                products?.map((item) => (
+                  <div key={item.productId}>
+                    <Vehicle data={item} />
+                  </div>
+                ))
+              ) : (
+                <div className="text-center">Data Not Found</div>
+              )}
+            </div>
+          )}
         </section>
       </main>
       <Footer />
