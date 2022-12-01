@@ -13,11 +13,13 @@ export default function VehicleDetailUser() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { id } = useParams();
-  const product = useSelector((state) => state.product.data);
+  const productState = useSelector((state) => state.product);
+  const product = productState.data;
 
   useEffect(() => {
     dispatch(getProductById(id));
   }, []);
+
   const handleDetailType = () => {
     navigate(`/vehicle-type`);
   };
@@ -28,25 +30,33 @@ export default function VehicleDetailUser() {
   return (
     <>
       <Header />
-      <main className="Detail">
-        <div className="vehicle-detail">
-          <button onClick={handleDetailType}>
-            <img src={Arrow} alt="Arrow" />
-          </button>
-          <h1>Detail</h1>
+      {productState.isLoading ? (
+        <div className="vh-100 d-flex justify-content-center">
+          <div className="spinner-border text-primary mt-5" role="status">
+            <span className="visually-hidden" />
+          </div>
         </div>
-        <VehicleDetailComponent data={product} />
-        <div className="row-button-detail">
-          <button className="chat-admin">Chat Admin</button>
-          <button className="reservation" onClick={handleReservation}>
-            Reservation
-          </button>
-          <button className="favorite">
-            <img src={love} alt="" />
-            Like
-          </button>
-        </div>
-      </main>
+      ) : (
+        <main className="Detail">
+          <div className="vehicle-detail">
+            <button onClick={handleDetailType}>
+              <img src={Arrow} alt="Arrow" />
+            </button>
+            <h1>Detail</h1>
+          </div>
+          <VehicleDetailComponent data={product} />
+          <div className="row-button-detail">
+            <button className="chat-admin">Chat Admin</button>
+            <button className="reservation" onClick={handleReservation}>
+              Reservation
+            </button>
+            <button className="favorite">
+              <img src={love} alt="" />
+              Like
+            </button>
+          </div>
+        </main>
+      )}
       <Footer />
     </>
   );
