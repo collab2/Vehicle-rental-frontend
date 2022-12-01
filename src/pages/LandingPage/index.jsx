@@ -14,33 +14,29 @@ import stars from "../../assets/img/stars.png";
 import CardPopular from "../../component/CardPopular";
 import Footer from "../../component/Footer";
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { getProduct } from "../../stores/actions/product";
 import { useEffect } from "react";
 
 export default function LandingPage() {
-  const [products, setProducts] = useState({});
-
   const navigate = useNavigate();
-
-  const handleNav = (path) => {
-    navigate(`/${path}`);
-  };
+  const dispatch = useDispatch();
+  const [products, setProducts] = useState({});
+  const productState = useSelector((state) => state.product);
 
   useEffect(() => {
     getDataProduct();
   }, []);
 
-  const dispatch = useDispatch();
+  const handleNav = (path) => {
+    navigate(`/${path}`);
+  };
 
   const getDataProduct = () => {
     dispatch(getProduct(50)).then((res) => {
-      // console.log(res);
       setProducts(res.value.data.data);
     });
   };
-
-  // console.log(products);
 
   return (
     <>
@@ -86,15 +82,23 @@ export default function LandingPage() {
                 View all {">"}
               </button>
             </div>
-            <div className="d-flex flex-nowrap my-5 overflow-auto">
-              {products.length > 0 ? (
-                products.map((item, index) => (
-                  <CardPopular key={index} data={item} />
-                ))
-              ) : (
-                <h6>Something Popular Coming ...</h6>
-              )}
-            </div>
+            {productState.isLoading ? (
+              <div className="d-flex justify-content-center">
+                <div className="spinner-border text-primary mt-5" role="status">
+                  <span className="visually-hidden" />
+                </div>
+              </div>
+            ) : (
+              <div className="d-flex flex-nowrap my-5 overflow-auto">
+                {products.length > 0 ? (
+                  products.map((item, index) => (
+                    <CardPopular key={index} data={item} />
+                  ))
+                ) : (
+                  <h6>Something Popular Coming ...</h6>
+                )}
+              </div>
+            )}
           </div>
 
           {/* Testimonial */}
