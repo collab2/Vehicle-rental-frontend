@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const axiosAPIInstances = axios.create({
-  baseURL: "http://localhost:3001/api",
+  baseURL: "https://vechicle-rental-backend.vercel.app/api",
 });
 
 // Add a request interceptor
@@ -9,7 +9,8 @@ axiosAPIInstances.interceptors.request.use(
   function (config) {
     // Do something before request is sent
     config.headers = {
-      Authorization: `Bearer ${localStorage.getItem("token")}`,
+      authorization: `Bearer ${localStorage.getItem("token")}`,
+      refreshtoken: localStorage.getItem("refreshtoken"),
     };
     return config;
   },
