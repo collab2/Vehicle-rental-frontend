@@ -37,7 +37,8 @@ export default function CardPopular(props) {
           <Card.Img
             src={
               props.data.image1
-                ? imageProduct
+                ? "https://res.cloudinary.com/dtjeegwiz/image/upload/" +
+                  imageProduct
                 : require("../../assets/img/vehicle-default.jpg")
             }
             alt="Card image"
