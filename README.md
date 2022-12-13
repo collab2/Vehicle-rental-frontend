@@ -1,46 +1,65 @@
-# Getting Started with Create React App
+<div align='center'>
+    <img src="./src/assets/img/logo.png" alt="autorent-logo" width="180" height="180">
+</div>
+<h1 align='center'>AutoRent</h1>
+  <p align="center">
+    <a href="http://vechicle-rental-backend.vercel.app/">View Demo Frontend</a>
+    ·
+    <a href="https://github.com/collab2/Vechicle-rental-backend/issues">Report Bug</a>
+    ·
+    <a href="https://github.com/collab2/Vechicle-rental-backend/pulls">Request Feature</a>
+  </p>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## About The Project
 
-## Available Scripts
+ <p>
+ <strong>AutoRent</strong> is a website that provides vehicle rental services in various major cities in Indonesia. It has features such as users can rent the desired vehicle, search for vehicles based on certain categories, order history, admin can add vehicles, change vehicles, and users can update personal data.
+ </p>
 
-In the project directory, you can run:
+## Built With
 
-### `npm start`
+<div align='center'>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+[![React](https://img.shields.io/badge/React-v18.2.0-blue)](https://github.com/facebook/react) [![Bootstrap](https://img.shields.io/badge/Bootstrap-v5.2.x-blue)](https://github.com/react-bootstrap/react-bootstrap) [![Axios](https://img.shields.io/badge/Axios-v1.1.x-blue)](https://axios-http.com/) [![Redux](https://img.shields.io/badge/Redux-v4.2.x-blue)](https://redux.js.org/) <br/> other packages see file `package.json`
 
 The page will reload when you make changes.\
 You may also see any lint errors in the console.!
 
+## Requirements
 
-### `npm test`
+1. <a href="https://nodejs.org/en/download/">Node Js</a>
+2. Node_modules `npm install` or `yarn install` or `pnpm install`
+3. Backend API AutoRent [`here`](https://github.com/collab2/vechicle-rental-backend)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Getting Started
 
-### `npm run build`
+1. Download these repos [`Backend`](https://github.com/collab2/vechicle-rental-backend) and [`Frontend`](https://github.com/collab2/Vechicle-rental-frontend) or you can type `git clone`[`backend-url`](https://github.com/collab2/vechicle-rental-backend) and [`frontend-url`](https://github.com/collab2/Vechicle-rental-frontend)
+2. Open app's directory in CMD or Terminal
+3. Type `npm install` or `yarn install` or `pnpm install`
+4. Add .env file at root folder project see file `.env.example`
+5. Type `npm start` or `yarn start` or `pnpm start` for run this app.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Acknowledgements
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- [React.js](https://reactjs.org/)
+- [Bootstrap](https://github.com/react-bootstrap/react-bootstrap)
+- [Axios](https://axios-http.com/)
+- [Redux](https://redux.js.org/)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Team
 
-### `npm run eject`
+> All Members of AutoRent Team
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+|                                   <a href="#" target="_blank">**Full-Stack Developer & Team Leader**</a>                                    |                                             <a href="#" target="_blank">**Full-stack Developer**</a>                                              |                                            <a href="#" target="_blank">**Back-End Developer**</a>                                             |                                                <a href="#" target="_blank">**Front-End Developer**</a>                                                |                                       <a href="#" target="_blank">**Front-End Developer**</a>                                       |                                             <a href="#" target="_blank">**Front-End Developer**</a>                                             |                                         <a href="#" target="_blank">**Front-End Developer**</a>                                         |                                         <a href="#" target="_blank">**Front-End Developer**</a>                                         |
+| :-----------------------------------------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------------------------------------------------------------: |
+| [<img src="https://avatars.githubusercontent.com/u/44898840" alt="autorent-logo" width="96" height="96">](https://github.com/setyawandwiki) | [<img src="https://avatars.githubusercontent.com/u/111334061?v=4" alt="autorent-logo" width="96" height="96">](https://github.com/mabdullah12101) |    [<img src ="https://avatars.githubusercontent.com/u/88246152?v=4" alt="avatar" width="96" height="96">](https://github.com/graciasvito)    |     [<img src="https://avatars.githubusercontent.com/u/102915785?v=4" alt="avatar" width="96" height="96">)](https://github.com/IrfanAlfiansyah)      | [<img width="96" height="96" alt="avatar" src="https://avatars.githubusercontent.com/u/101547733?v=4">)](https://github.com/Fhmi00) |    [<img width="96" height="96" alt="avatar" src="https://avatars.githubusercontent.com/u/109788771?v=4">](https://github.com/KevinReyhanW)     |   [<img width="96" height="96" alt="avatar" src="https://avatars.githubusercontent.com/u/74675235?v=4">](https://github.com/azkar-sh)   |   [<img width="96" height="96" alt="avatar" src="https://avatars.githubusercontent.com/u/33439031?v=4">](https://github.com/vvahyudi)   |
+|             <a href="https://github.com/collab2/Vehicle-rental-frontend" target="_blank">`https://github.com/setyawandwiki`</a>             |                        <a href="https://github.com/mabdullah12101" target="_blank">`https://github.com/mabdullah12101`</a>                        | <a href="https://github.com/graciasvito/vechicle-rental-backend" target="_blank">`https://github.com/graciasvito/vechicle-rental-backend`</a> | <a href="https://github.com/IrfanAlfiansyah/Vehicle-rental-frontend" target="_blank">`https://github.com/IrfanAlfiansyah/Vehicle-rental-frontend`</a> | <a href="https://github.com/Fhmi00/Vehicle-rental-frontend" target="_blank">`https://github.com/Fhmi00/Vehicle-rental-frontend`</a> | <a href="https://github.com/KevinReyhanW/Vehicle-rental-frontend" target="_blank">`https://github.com/KevinReyhanW/Vehicle-rental-frontend`</a> | <a href="https://github.com/azkar-sh/Vehicle-rental-frontend" target="_blank">`https://github.com/azkar-sh/Vehicle-rental-frontend`</a> | <a href="https://github.com/vvahyudi/Vehicle-rental-frontend" target="_blank">`https://github.com/vvahyudi/Vehicle-rental-frontend`</a> |
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+---
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+<br/>
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
+## Related Project
 
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
@@ -70,10 +89,9 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
 
-
 ## Website Interface
+
 <img width="946" alt="Home 1" src="https://user-images.githubusercontent.com/117269805/204763901-400fc35a-9c1d-4b89-8201-387710b4c326.png">
 <img width="946" alt="Home 1" src="https://user-images.githubusercontent.com/117269805/204826918-0955fe18-89e3-4330-85f4-dc3c9607b4ca.png">
 <img width="519" alt="Profile 1" src="https://user-images.githubusercontent.com/117269805/204764337-72e52ed4-faea-43ff-a407-72841f1efd93.png">
 <img width="850" alt="Home 1" src="https://user-images.githubusercontent.com/117269805/204830390-68e25fd3-cbc3-4975-81cd-637f544e3479.png">
-

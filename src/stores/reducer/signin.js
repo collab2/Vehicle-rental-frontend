@@ -6,12 +6,13 @@ const initialState = {
 };
 
 const signin = (state = initialState, action) => {
+  console.log(action);
   switch (action.type) {
     case "LOGIN_PENDING": {
       return {
         ...state,
         data: {},
-        isLoading: false,
+        isLoading: true,
         isError: false,
         message: "",
       };

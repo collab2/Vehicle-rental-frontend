@@ -23,6 +23,7 @@ export default function ApprovalPayment() {
   const handleHome = () => {
     navigate(`/reservation-list`);
   };
+  console.log(id);
   return (
     <>
       <Header />

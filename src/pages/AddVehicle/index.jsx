@@ -1,96 +1,292 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./index.css";
-import { useState } from "react";
 import Header from "../../component/Header";
 import Footer from "../../component/Footer";
-import Camera from "../../assets/img/camera.png";
-import SmallCamera from "../../assets/img/smallcamera.png";
-import { Icon } from "@iconify/react";
+import { useDispatch } from "react-redux";
+import { getCategory, addCategory } from "../../stores/actions/category";
+import { addProduct } from "../../stores/actions/product";
+import "react-toastify/dist/ReactToastify.css";
+import addImage from "../../assets/img/addImage.png";
+import { ToastContainer, toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 export default function EditVehicle() {
-  const [counter, setCounter] = useState(0);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const [form, setForm] = useState({});
+  const [category, setCategory] = useState({});
+  const [addCategories, setAddCategories] = useState({});
+  const [imagePreview1, setImagePreview1] = useState({});
+  const [imagePreview2, setImagePreview2] = useState({});
+  const [imagePreview3, setImagePreview3] = useState({});
+  const [newImage1, setNewImage1] = useState({});
+  const [newImage2, setNewImage2] = useState({});
+  const [setIsLoading] = useState(false);
+  const [newImage3, setNewImage3] = useState({});
+  const lengthImage1 = Object.keys(newImage1).length;
+  const lengthImage2 = Object.keys(newImage2).length;
+  const lengthImage3 = Object.keys(newImage3).length;
 
-  const increment = (data) => {
-    setCounter(counter + data);
+  useEffect(() => {
+    getCategoryData();
+  }, []);
+
+  // const product = useSelector((state) => state.product);
+
+  const getCategoryData = () => {
+    dispatch(getCategory())
+      .then((res) => {
+        setCategory(res.value.data.data);
+      })
+      .catch((err) => {
+        alert(err.value.data.message);
+      });
   };
-  const decrement = () => {
-    setCounter(counter - 1);
+
+  const handleManageCatagory = (e) => {
+    setAddCategories({
+      ...addCategories,
+      [e.target.name]: e.target.value,
+    });
   };
+
+  const handleAddCategory = (e) => {
+    e.preventDefault();
+    dispatch(addCategory(addCategories)).then(
+      (res) =>
+        toast.success(res.value.data.msg, {
+          position: toast.POSITION.TOP_CENTER,
+        }),
+      dispatch(getCategory()).catch((err) =>
+        toast.error(err.value.response.msg, {
+          position: toast.POSITION.TOP_CENTER,
+        })
+      )
+    );
+  };
+
+  const handleChange = (e) => {
+    setForm({
+      ...form,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleImageChange = (e) => {
+    const { name, files } = e.target;
+    if (e.target.name === "image1") {
+      setForm({ ...form, [e.target.name]: e.target.files[0] });
+      setNewImage1({ [name]: files[0] });
+      setImagePreview1(URL.createObjectURL(files[0]));
+    } else if (e.target.name === "image2") {
+      setForm({ ...form, [e.target.name]: e.target.files[0] });
+      setNewImage2({ [name]: files[0] });
+      setImagePreview2(URL.createObjectURL(files[0]));
+      setForm({ ...form, [e.target.name]: e.target.files[0] });
+    } else if (e.target.name === "image3") {
+      setNewImage3({ [name]: files[0] });
+      setImagePreview3(URL.createObjectURL(files[0]));
+      setForm({ ...form, [e.target.name]: e.target.files[0] });
+    } else {
+      setForm({ ...form, [e.target.name]: e.target.value });
+    }
+  };
+
+  // console.log(form);
+
+  // const handleAddProduct = () => {
+  // e.preventDefault();
+  // dispatch(addProduct(form))
+  //   .then((response) => {
+  //     toast.success(response.value.data.msg, {
+  //       position: toast.POSITION.TOP_CENTER,
+  //     });
+  //     dispatch(getProduct());
+  //   })
+  //   .catch((error) => {
+  //     toast.error(error.response.data.msg, {
+  //       position: toast.POSITION.TOP_CENTER,
+  //     });
+  //   });
+  // };
+
+  const handleAddImage = () => {
+    // e.preventDefault();
+
+    if (
+      !form.image3 ||
+      !form.image1 ||
+      !form.image2 ||
+      !form.nameProduct ||
+      !form.location ||
+      !form.category ||
+      !form.description ||
+      !form.status ||
+      !form.stock
+    ) {
+      return toast.error("some field is null, everything must be fill !", {
+        position: toast.POSITION.TOP_CENTER,
+      });
+    }
+    const formData = new FormData();
+    // formData.append("name", form.name);
+    for (const data in form) {
+      // console.log(data);
+      formData.append(data, form[data]);
+    }
+    // console.log(form);
+    formData.append("nameproduct", "test");
+    setIsLoading(true);
+    dispatch(addProduct(formData))
+      .then(
+        () => {
+          setIsLoading(false);
+          toast.error("success create product !", {
+            position: toast.POSITION.TOP_CENTER,
+          });
+          window.location.reload();
+        }
+        // toast
+        //   .success(res.value.data.msg, {
+        //     position: toast.POSITION.TOP_CENTER,
+        //   })
+        //   .catch((err) =>
+        //     toast.error(err.value.data.msg, {
+        //       position: toast.POSITION.TOP_CENTER,
+        //     })
+        //   )
+      )
+      .catch((error) =>
+        toast.error(error.response?.data?.msg, {
+          position: toast.POSITION.TOP_CENTER,
+        })
+      );
+  };
+
+  const handleNav = (path) => {
+    navigate(`/${path}`);
+  };
+
   return (
     <>
       <Header />
+      <ToastContainer />
       <div className="container">
-        <button className="btn">
+        <button className="btn" onClick={() => handleNav("")}>
           <div className="h3">{"< "} Add New Item</div>{" "}
         </button>
 
         <div className="container">
           <div className="d-flex flex-wrap my-5 justify-content-evenly">
             <div className="col-lg-6 col-sm-12 text-center">
-              <label htmlFor="image" className="w-100">
-                <input
-                  type="file"
-                  name="image"
-                  id="image"
-                  style={{ display: "none" }}
-                />
-                <div className="case w-100 d-flex flex-column align-items-center justify-content-center">
-                  <img src={Camera} alt="camera" />
-                  <h1 className="mt-3">Click to add image</h1>
-                </div>
-                <div className="d-flex mt-4">
-                  <div className="col-6 case2 d-flex flex-column align-items-center justify-content-center">
-                    <img src={SmallCamera} alt="camera" />
-                    <h1 className="mt-1">Click to add image</h1>
+              <div className="text-end"></div>
+              <div className="text-center">
+                <label htmlFor="image1">
+                  <input
+                    required
+                    type="file"
+                    name="image1"
+                    id="image1"
+                    style={{ display: "none" }}
+                    onChange={handleImageChange}
+                  />
+                  <img
+                    src={lengthImage1 > 0 ? imagePreview1 : addImage}
+                    alt=""
+                    className="big-image"
+                  />
+                </label>
+              </div>
+              <div className="d-flex mt-5">
+                <div className="col-6">
+                  <div className="text-end"></div>
+                  <div className="text-start">
+                    <label htmlFor="image2">
+                      <input
+                        required
+                        type="file"
+                        name="image2"
+                        id="image2"
+                        style={{ display: "none" }}
+                        onChange={handleImageChange}
+                      />
+                      <img
+                        src={lengthImage2 > 0 ? imagePreview2 : addImage}
+                        alt=""
+                        className="small-image"
+                      />
+                    </label>
                   </div>
-                  <div className="col-6 case3 ms-2 d-flex flex-column align-items-center justify-content-center">
-                    <Icon icon="entypo:plus" color="#B8BECD" width="54px" />
-                    <h1>Add more</h1>
-                  </div>
                 </div>
-              </label>
+                <div className="col-6 text-end">
+                  <label htmlFor="image3">
+                    <input
+                      required
+                      type="file"
+                      name="image3"
+                      id="image3"
+                      style={{ display: "none" }}
+                      onChange={handleImageChange}
+                    />
+                    <img
+                      src={lengthImage3 > 0 ? imagePreview3 : addImage}
+                      alt=""
+                      className="small-image"
+                    />
+                  </label>
+                </div>
+              </div>
             </div>
 
             <div className="col-lg-4 col-sm-12 ms-2">
               <input
+                required
                 type="text"
-                name="nameproduct"
+                name="nameProduct"
                 placeholder="Name (max up to 50 words)"
                 maxLength="50"
                 className="form-control mb-4 border-0 border-bottom"
+                onChange={handleChange}
               />
               <input
+                required
                 type="text"
                 name="location"
                 placeholder="Location"
                 className="form-control mb-4 border-0 border-bottom"
+                onChange={handleChange}
               />
               <input
+                required
                 type="text"
                 name="description"
                 placeholder="Description (max up to 150 words)"
                 maxLength="150"
                 className="form-control mb-4 border-0 border-bottom"
+                onChange={handleChange}
               />
               <label htmlFor="" className="mb-2 ms-1 h5 font-playfair fw-bold">
                 Price :
               </label>
               <input
+                required
                 type="number"
                 name="price"
+                defaultValue={0}
                 placeholder="Type the price"
                 className="form-control mb-4 border-0 bg-light price-input"
+                onChange={handleChange}
               />
               <label htmlFor="" className="mb-2 ms-1 h5 font-playfair fw-bold">
                 Status :
               </label>
-              <select className="form-select mb-3 bg-light border-0 status-input">
+              <select
+                onChange={handleChange}
+                name="status"
+                className="form-select mb-3 bg-light border-0 status-input"
+              >
                 <option selected>Select Status</option>
-                <option
-                  value="available"
-                  className="selected-dropup"
-                  style={{ color: "green" }}
-                >
+                <option className="selected-dropup" style={{ color: "green" }}>
                   Available
                 </option>
                 <option value="fullBooked" style={{ color: "red" }}>
@@ -105,56 +301,132 @@ export default function EditVehicle() {
                   Stock :{" "}
                 </label>
                 <div className="d-flex align-items-center justify-content-evenly">
-                  <button
-                    className="btn-yellow-plus"
-                    onClick={() => increment(1)}
-                  >
-                    +
-                  </button>
-                  <p className="mx-5 fw-bold mt-3 mx-3">{counter}</p>
-                  <button
-                    className="btn-grey-minus"
-                    onClick={decrement}
-                    disabled={counter === 0 ? true : false}
-                  >
-                    -
-                  </button>
+                  <input
+                    required
+                    type="number"
+                    className="border-0 text-center bg-light form-control"
+                    name="stock"
+                    defaultValue={0}
+                    placeholder="Set Stock"
+                    onChange={handleChange}
+                  />
                 </div>
               </div>
             </div>
           </div>
 
-          <div className="d-flex justify-content-between mb-5">
+          <div className="d-flex flex-wrap justify-content-between mb-5">
+            <div className="input-group text-center btn-edit-category">
+              <select
+                className="form-select text-center"
+                name="category"
+                onChange={handleChange}
+              >
+                <option selected>Add item to</option>
+                {category.length > 0 ? (
+                  category.map((item, index) => (
+                    <option key={index} value={item}>
+                      {item}
+                    </option>
+                  ))
+                ) : (
+                  <>
+                    <option value="Bicycle">Bicycle</option>
+                    <option value="Cars">Cars</option>
+                    <option value="Bus">Bus</option>
+                  </>
+                )}
+              </select>
+              <button
+                className="input-group-text btn-add-category"
+                data-bs-toggle="modal"
+                data-bs-target="#manageCategory"
+                style={{ padding: "0 1rem" }}
+              >
+                +
+              </button>
+            </div>
             <button
-              type="button"
-              className="btn add-item dropdown-toggle"
-              data-bs-toggle="dropdown"
+              className="btn save-item"
+              onClick={() => {
+                // handleAddProduct();
+                handleAddImage();
+              }}
             >
-              Add item to
+              Save Item
             </button>
-            <ul className="dropdown-menu mx-2">
-              <li>
-                <option value="car" className="ps-2 selected-dropup">
-                  Cars
-                </option>
-              </li>
-              <li>
-                <option value="bike" className="ps-2 selected-dropup">
-                  Bike
-                </option>
-              </li>
-              <li>
-                <option value="motorbike" className="ps-2 selected-dropup">
-                  Motorbike
-                </option>
-              </li>
-              <li>
-                <option value="homepage " className="ps-2 pe-5 selected-dropup">
-                  Homepage {"(Popular)"}
-                </option>
-              </li>
-            </ul>
-            <button className="btn save-item me-5">Save Item</button>
+          </div>
+        </div>
+        <div
+          className="modal fade"
+          id="manageCategory"
+          tabIndex="-1"
+          aria-labelledby="manageCategoryLabel"
+          aria-hidden="true"
+        >
+          <div className="modal-dialog modal-dialog-centered">
+            <div className="modal-content">
+              <div className="modal-header">
+                <h5 className="modal-title" id="manageCategoryLabel">
+                  Manage Category
+                </h5>
+                <button
+                  type="button"
+                  className="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <div className="modal-body">
+                <div className="d-flex justify-content-between">
+                  <input
+                    required
+                    type="text"
+                    className="form-control"
+                    placeholder="Name Category"
+                    name="categoryName"
+                    onChange={handleManageCatagory}
+                  />
+                  <button
+                    className="btn-yellow-black"
+                    style={{ padding: "0.5rem 0", width: "25%" }}
+                    onClick={handleAddCategory}
+                  >
+                    Add
+                  </button>
+                </div>
+                <div className="d-flex flex-column mt-3">
+                  {category.length > 0 ? (
+                    category.map((item, index) => (
+                      <div key={index} className="row">
+                        <div className="col-10">
+                          <div className="selected-category">{item}</div>
+                        </div>
+                        <div className="col-2">
+                          <button className="border-0 bg-white">
+                            &#128465;
+                          </button>
+                        </div>
+                      </div>
+                    ))
+                  ) : (
+                    <>
+                      <div className="h6 selected-category">Empty</div>
+                    </>
+                  )}
+                </div>
+              </div>
+              <div className="modal-footer">
+                <button
+                  type="button"
+                  className="btn-black-yellow"
+                  data-bs-dismiss="modal"
+                  style={{ padding: "0.5rem 0", width: "25%" }}
+                >
+                  Close
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       </div>
