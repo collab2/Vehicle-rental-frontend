@@ -22,7 +22,8 @@
 
 [![React](https://img.shields.io/badge/React-v18.2.0-blue)](https://github.com/facebook/react) [![Bootstrap](https://img.shields.io/badge/Bootstrap-v5.2.x-blue)](https://github.com/react-bootstrap/react-bootstrap) [![Axios](https://img.shields.io/badge/Axios-v1.1.x-blue)](https://axios-http.com/) [![Redux](https://img.shields.io/badge/Redux-v4.2.x-blue)](https://redux.js.org/) <br/> other packages see file `package.json`
 
-</div>
+The page will reload when you make changes.\
+You may also see any lint errors in the console.!
 
 ## Requirements
 
@@ -49,10 +50,10 @@
 
 > All Members of AutoRent Team
 
-| <a href="#" target="_blank">**Full-Stack Developer & Team Leader**</a> | <a href="#" target="_blank">**Full-stack Developer**</a> | <a href="#" target="_blank">**Back-End Developer**</a> | <a href="#" target="_blank">**Front-End Developer**</a> | <a href="#" target="_blank">**Front-End Developer**</a> | <a href="#" target="_blank">**Front-End Developer**</a> | <a href="#" target="_blank">**Front-End Developer**</a> | <a href="#" target="_blank">**Front-End Developer**</a> |
-| :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: |
-| [<img src="https://avatars.githubusercontent.com/u/44898840" alt="autorent-logo" width="96" height="96">](https://github.com/setyawandwiki) | [<img src="https://avatars.githubusercontent.com/u/111334061?v=4" alt="autorent-logo" width="96" height="96">](https://github.com/mabdullah12101) | [<img src ="https://avatars.githubusercontent.com/u/88246152?v=4" alt="avatar" width="96" height="96">](https://github.com/graciasvito) | [<img src="https://avatars.githubusercontent.com/u/102915785?v=4" alt="avatar" width="96" height="96">)](https://github.com/IrfanAlfiansyah) | [<img width="96" height="96" alt="avatar" src="https://avatars.githubusercontent.com/u/101547733?v=4">)](https://github.com/Fhmi00) | [<img width="96" height="96" alt="avatar" src="https://avatars.githubusercontent.com/u/109788771?v=4">](https://github.com/KevinReyhanW) | [<img width="96" height="96" alt="avatar" src="https://avatars.githubusercontent.com/u/74675235?v=4">](https://github.com/azkar-sh) | [<img width="96" height="96" alt="avatar" src="https://avatars.githubusercontent.com/u/33439031?v=4">](https://github.com/vvahyudi) |
-| <a href="https://github.com/collab2/Vehicle-rental-frontend" target="_blank">`https://github.com/setyawandwiki`</a> | <a href="https://github.com/mabdullah12101" target="_blank">`https://github.com/mabdullah12101`</a> | <a href="https://github.com/graciasvito/vechicle-rental-backend" target="_blank">`https://github.com/graciasvito/vechicle-rental-backend`</a> | <a href="https://github.com/IrfanAlfiansyah/Vehicle-rental-frontend" target="_blank">`https://github.com/IrfanAlfiansyah/Vehicle-rental-frontend`</a> | <a href="https://github.com/Fhmi00/Vehicle-rental-frontend" target="_blank">`https://github.com/Fhmi00/Vehicle-rental-frontend`</a> | <a href="https://github.com/KevinReyhanW/Vehicle-rental-frontend" target="_blank">`https://github.com/KevinReyhanW/Vehicle-rental-frontend`</a> | <a href="https://github.com/azkar-sh/Vehicle-rental-frontend" target="_blank">`https://github.com/azkar-sh/Vehicle-rental-frontend`</a> | <a href="https://github.com/vvahyudi/Vehicle-rental-frontend" target="_blank">`https://github.com/vvahyudi/Vehicle-rental-frontend`</a> |
+|                                   <a href="#" target="_blank">**Full-Stack Developer & Team Leader**</a>                                    |                                             <a href="#" target="_blank">**Full-stack Developer**</a>                                              |                                            <a href="#" target="_blank">**Back-End Developer**</a>                                             |                                                <a href="#" target="_blank">**Front-End Developer**</a>                                                |                                       <a href="#" target="_blank">**Front-End Developer**</a>                                       |                                             <a href="#" target="_blank">**Front-End Developer**</a>                                             |                                         <a href="#" target="_blank">**Front-End Developer**</a>                                         |                                         <a href="#" target="_blank">**Front-End Developer**</a>                                         |
+| :-----------------------------------------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------------------------------------------------------------: |
+| [<img src="https://avatars.githubusercontent.com/u/44898840" alt="autorent-logo" width="96" height="96">](https://github.com/setyawandwiki) | [<img src="https://avatars.githubusercontent.com/u/111334061?v=4" alt="autorent-logo" width="96" height="96">](https://github.com/mabdullah12101) |    [<img src ="https://avatars.githubusercontent.com/u/88246152?v=4" alt="avatar" width="96" height="96">](https://github.com/graciasvito)    |     [<img src="https://avatars.githubusercontent.com/u/102915785?v=4" alt="avatar" width="96" height="96">)](https://github.com/IrfanAlfiansyah)      | [<img width="96" height="96" alt="avatar" src="https://avatars.githubusercontent.com/u/101547733?v=4">)](https://github.com/Fhmi00) |    [<img width="96" height="96" alt="avatar" src="https://avatars.githubusercontent.com/u/109788771?v=4">](https://github.com/KevinReyhanW)     |   [<img width="96" height="96" alt="avatar" src="https://avatars.githubusercontent.com/u/74675235?v=4">](https://github.com/azkar-sh)   |   [<img width="96" height="96" alt="avatar" src="https://avatars.githubusercontent.com/u/33439031?v=4">](https://github.com/vvahyudi)   |
+|             <a href="https://github.com/collab2/Vehicle-rental-frontend" target="_blank">`https://github.com/setyawandwiki`</a>             |                        <a href="https://github.com/mabdullah12101" target="_blank">`https://github.com/mabdullah12101`</a>                        | <a href="https://github.com/graciasvito/vechicle-rental-backend" target="_blank">`https://github.com/graciasvito/vechicle-rental-backend`</a> | <a href="https://github.com/IrfanAlfiansyah/Vehicle-rental-frontend" target="_blank">`https://github.com/IrfanAlfiansyah/Vehicle-rental-frontend`</a> | <a href="https://github.com/Fhmi00/Vehicle-rental-frontend" target="_blank">`https://github.com/Fhmi00/Vehicle-rental-frontend`</a> | <a href="https://github.com/KevinReyhanW/Vehicle-rental-frontend" target="_blank">`https://github.com/KevinReyhanW/Vehicle-rental-frontend`</a> | <a href="https://github.com/azkar-sh/Vehicle-rental-frontend" target="_blank">`https://github.com/azkar-sh/Vehicle-rental-frontend`</a> | <a href="https://github.com/vvahyudi/Vehicle-rental-frontend" target="_blank">`https://github.com/vvahyudi/Vehicle-rental-frontend`</a> |
 
 ---
 
@@ -60,5 +61,37 @@
 
 ## Related Project
 
-- <a href="https://github.com/collab2/Vehicle-rental-frontend" target="_blank">AutoRent Frontend</a>
-- <a href="https://github.com/collab2/vechicle-rental-backend" target="_blank">AutoRent Backend</a>
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+
+To learn React, check out the [React documentation](https://reactjs.org/).
+
+### Code Splitting
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+
+### Analyzing the Bundle Size
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+
+### Making a Progressive Web App
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+
+### Advanced Configuration
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+
+### Deployment
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+
+### `npm run build` fails to minify
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+## Website Interface
+
+<img width="946" alt="Home 1" src="https://user-images.githubusercontent.com/117269805/204763901-400fc35a-9c1d-4b89-8201-387710b4c326.png">
+<img width="946" alt="Home 1" src="https://user-images.githubusercontent.com/117269805/204826918-0955fe18-89e3-4330-85f4-dc3c9607b4ca.png">
+<img width="519" alt="Profile 1" src="https://user-images.githubusercontent.com/117269805/204764337-72e52ed4-faea-43ff-a407-72841f1efd93.png">
+<img width="850" alt="Home 1" src="https://user-images.githubusercontent.com/117269805/204830390-68e25fd3-cbc3-4975-81cd-637f544e3479.png">
