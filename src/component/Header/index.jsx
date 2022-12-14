@@ -83,7 +83,7 @@ export default function Header() {
                   <img
                     src={
                       user.data.image
-                        ? process.env.REACT_APP_CLOUDINARY_URL_IMAGE +
+                        ? "https://res.cloudinary.com/dtjeegwiz/image/upload/" +
                           user.data.image
                         : people
                     }

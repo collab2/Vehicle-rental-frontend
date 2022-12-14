@@ -21,7 +21,7 @@ export default function EditVehicle() {
   const [imagePreview3, setImagePreview3] = useState({});
   const [newImage1, setNewImage1] = useState({});
   const [newImage2, setNewImage2] = useState({});
-  const [setIsLoading] = useState(false);
+  // const [setIsLoading] = useState(false);
   const [newImage3, setNewImage3] = useState({});
   const lengthImage1 = Object.keys(newImage1).length;
   const lengthImage2 = Object.keys(newImage2).length;
@@ -136,11 +136,11 @@ export default function EditVehicle() {
     }
     // console.log(form);
     formData.append("nameproduct", "test");
-    setIsLoading(true);
+    // setIsLoading(true);
     dispatch(addProduct(formData))
       .then(
         () => {
-          setIsLoading(false);
+          // setIsLoading(false);
           toast.error("success create product !", {
             position: toast.POSITION.TOP_CENTER,
           });
