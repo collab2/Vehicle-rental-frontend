@@ -23,6 +23,8 @@ export default function CardPopular(props) {
     navigate(`/vehicle-detail-admin/${props.data.productId}`);
   };
 
+  console.log("object");
+
   return (
     <>
       <div
@@ -37,8 +39,7 @@ export default function CardPopular(props) {
           <Card.Img
             src={
               props.data.image1
-                ? "https://res.cloudinary.com/dtjeegwiz/image/upload/" +
-                  imageProduct
+                ? imageProduct
                 : require("../../assets/img/vehicle-default.jpg")
             }
             alt="Card image"
