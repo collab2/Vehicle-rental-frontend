@@ -23,6 +23,8 @@ export default function CardPopular(props) {
     navigate(`/vehicle-detail-admin/${props.data.productId}`);
   };
 
+  console.log("object");
+
   return (
     <>
       <div
