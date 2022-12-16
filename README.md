@@ -22,9 +22,6 @@
 
 [![React](https://img.shields.io/badge/React-v18.2.0-blue)](https://github.com/facebook/react) [![Bootstrap](https://img.shields.io/badge/Bootstrap-v5.2.x-blue)](https://github.com/react-bootstrap/react-bootstrap) [![Axios](https://img.shields.io/badge/Axios-v1.1.x-blue)](https://axios-http.com/) [![Redux](https://img.shields.io/badge/Redux-v4.2.x-blue)](https://redux.js.org/) <br/> other packages see file `package.json`
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.!
-
 ## Requirements
 
 1. <a href="https://nodejs.org/en/download/">Node Js</a>
