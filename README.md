@@ -3,11 +3,11 @@
 </div>
 <h1 align='center'>AutoRent</h1>
   <p align="center">
-    <a href="http://vechicle-rental-backend.vercel.app/">View Demo Frontend</a>
+    <a href="https://vehicle-rental-frontend-sigma.vercel.app/">View Demo Frontend</a>
     ·
-    <a href="https://github.com/collab2/Vechicle-rental-backend/issues">Report Bug</a>
+    <a href="https://github.com/collab2/Vehicle-rental-frontend/issues">Report Bug</a>
     ·
-    <a href="https://github.com/collab2/Vechicle-rental-backend/pulls">Request Feature</a>
+    <a href="https://github.com/collab2/Vehicle-rental-frontend/pulls">Request Feature</a>
   </p>
 
 ## About The Project
